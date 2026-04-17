@@ -1,0 +1,48 @@
+.kintaro-navbar {
+    position: fixed;
+    top: 0;
+    z-index: var(--navbar-z-index);
+    width: 100%;
+    height: var(--navbar-height);
+    background: var(--kintaro-color-1-transparent);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 var(--kintaro-spacing-content-sm);
+}
+
+.kintaro-navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.kintaro-navbar-links {
+    display: flex;
+    align-items: center;
+    gap: var(--kintaro-gap-md);
+}
+
+.kintaro-navbar-links-item {
+    color: var(--kintaro-text-color-2);
+    font-size: var(--kintaro-font-sm);
+    transition: var(--kintaro-transition-1);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+}
+
+.kintaro-navbar-links-item:hover {
+    color: var(--kintaro-text-color-1);
+}
+
+.kintaro-navbar-links-item.active-link {
+    color: var(--kintaro-text-color-1);
+}
+
+@media (max-width: 768px) {
+    .kintaro-navbar-links {
+        display: none;
+    }
+}

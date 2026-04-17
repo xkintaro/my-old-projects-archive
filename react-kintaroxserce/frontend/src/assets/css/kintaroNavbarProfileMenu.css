@@ -1,0 +1,56 @@
+.kintaro-profile {
+    display: flex;
+}
+
+.kintaro-profile-button {
+    cursor: pointer;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: var(--kintaro-color-3);
+    padding: 8px;
+    color: var(--kintaro-text-color-2);
+    transition: var(--kintaro-transition-1);
+}
+
+.kintaro-profile-button:hover {
+    background-color: var(--kintaro-color-3);
+}
+
+.kintaro-profile-menu {
+    right: var(--kintaro-spacing-content-sm);
+    background: var(--kintaro-color-3);
+    padding: var(--kintaro-spacing-content-xs);
+    box-shadow: var(--kintaro-box-shadow);
+    visibility: hidden;
+    position: absolute;
+    top: calc(100% + var(--kintaro-spacing-content-sm));
+    transform: translateY(-10px);
+    transition: var(--kintaro-transition-1);
+    z-index: 1000;
+    opacity: 0;
+    min-width: 200px;
+    border-radius: 12px;
+}
+
+.kintaro-profile-menu.visible {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+}
+
+.kintaro-profile-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.8rem 1rem;
+    color: var(--kintaro-text-color-1);
+    text-decoration: none;
+    border-radius: 8px;
+    transition: var(--kintaro-transition-1);
+    font-size: var(--kintaro-font-md);
+}
+
+.kintaro-profile-item:hover {
+    background: var(--kintaro-hover);
+}

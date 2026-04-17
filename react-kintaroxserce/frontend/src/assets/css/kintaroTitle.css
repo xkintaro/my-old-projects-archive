@@ -1,0 +1,17 @@
+.kintaro-title-reset {
+    color: var(--kintaro-text-color-1);
+    text-shadow: var(--kintaro-text-shadow);
+    font-weight: var(--kintaro-font-weight);
+}
+
+.kintaro-title-1 {
+    font-size: var(--kintaro-font-xl);
+}
+
+.kintaro-title-2 {
+    font-size: var(--kintaro-font-lg);
+}
+
+.kintaro-title-3 {
+    font-size: var(--kintaro-font-md);
+}

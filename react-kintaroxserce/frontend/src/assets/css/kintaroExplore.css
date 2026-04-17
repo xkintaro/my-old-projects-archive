@@ -1,0 +1,6 @@
+.kintaro-explore {
+    padding: var(--kintaro-spacing-content-md);
+    gap: var(--kintaro-gap-sm);
+    display: flex;
+    flex-direction: column;
+}

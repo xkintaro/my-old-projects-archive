@@ -1,0 +1,156 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="./assets/images/icon.png" type="image/png" />
+    <link rel="stylesheet" href="./assets/css/main.css" />
+    <link rel="stylesheet" href="./assets/css/media_query.css" />
+    <link href="https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+    <style>
+        .navbar-link {
+            font-size: var(--fs-sm);
+            font-weight: var(--fw-5);
+            color: #fff;
+        }
+
+        .navbar-signin img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-left: 5px;
+        }
+
+        .navbar-menu-btn {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <form id="form1" runat="server">
+
+        <div class="container">
+            <header class="">
+                <div class="navbar">
+                    <a class="navbar-menu-btn">
+                        <span class="one"></span>
+                        <span class="two"></span>
+                        <span class="three"></span>
+                    </a>
+                    <div class="navbar-brand">
+                        <asp:ImageButton ID="ImageButton1" ImageUrl="~/assets/images/logo.png" runat="server" OnClick="ImageButton1_Click" />
+                    </div>
+                    <nav class="">
+                        <ul class="navbar-nav">
+                            <li>
+                                <asp:Button ID="ButtonAnasayfa" CssClass="navbar-link" runat="server" Text="Anasayfa" OnClick="ButtonAnasayfa_Click" />
+
+                            </li>
+                            <li>
+                                <asp:Button ID="ButtonKategoriler" CssClass="navbar-link" runat="server" Text="Kategoriler" OnClick="ButtonKategoriler_Click1" />
+                            </li>
+                            <li>
+                                <asp:Button ID="ButtonHakkimda" CssClass="navbar-link" runat="server" Text="Hakkimda" OnClick="ButtonHakkimda_Click" />
+
+                            </li>
+                        </ul>
+                    </nav>
+                    <div class="navbar-actions">
+                        <div action="#" class="navbar-form">
+                            <input type="text" name="search" placeholder="Ara..." class="navbar-form-search">
+                            <a class="navbar-form-btn">
+                                <ion-icon name="search-outline"></ion-icon>
+                            </a>
+                            <a class="navbar-form-close">
+                                <ion-icon name="close-circle-outline"></ion-icon>
+                            </a>
+                        </div>
+                        <a class="navbar-search-btn">
+                            <ion-icon name="search-outline"></ion-icon>
+                        </a>
+                        <div class="navbar-signin">
+                            <asp:LinkButton ID="LinkButton1" CssClass="navbar-signin" runat="server" OnClick="LinkButton1_Click">
+                                <asp:Label ID="LabelHesabim" runat="server" Text="Label"></asp:Label>
+                            </asp:LinkButton>
+                            <asp:Image ID="ImageProfile" runat="server" />
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+            <!--FOOTER-->
+            <footer>
+                <div class="footer-content">
+                    <div class="footer-brand">
+                        <asp:Image ID="Image2" runat="server" ImageUrl="~/assets/images/logo.png" CssClass="footer-logo" />
+                        <p class="slogan">Reklamsız ve kaliteli filmler için doğru adres </p>
+                        <div class="social-link">
+                            <a href="#">
+                                <ion-icon name="logo-facebook"></ion-icon>
+                            </a>
+                            <a href="#">
+                                <ion-icon name="logo-twitter"></ion-icon>
+                            </a>
+                            <a href="#">
+                                <ion-icon name="logo-instagram"></ion-icon>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="footer-links">
+                        <ul>
+                            <li>
+                                <h4 class="link-heading">TEKNOFİLM</h4>
+                            </li>
+                            <li class="link-item"><a href="#">Anasayfa</a></li>
+                            <li class="link-item"><a href="#">Kategoriler</a></li>
+                            <li class="link-item"><a href="#">Hakkımda</a></li>
+                            <li class="link-item"><a href="#">Giriş yap</a></li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <h4 class="link-heading">ADMİN</h4>
+                            </li>
+                            <li class="link-item"><a href="#">Kurucu Giriş</a></li>
+                            <li class="link-item"><a href="admin/Default.aspx">Admin Giriş</a></li>
+                            <li class="link-item"><a href="#">Admin Başvuru</a></li>
+                            <li class="link-item"><a href="#">Reklam ve iş birliği</a></li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <h4 class="link-heading">İLETİŞİM</h4>
+                            </li>
+                            <li class="link-item"><a href="#">Bize yazın</a></li>
+                            <li class="link-item"><a href="#">Discord</a></li>
+                            <li class="link-item"><a href="#">İnsagram</a></li>
+                            <li class="link-item"><a href="#">Tiktok</a></li>
+                        </ul>
+
+                    </div>
+                </div>
+                <div class="footer-copyright">
+                    <div class="copyright">
+                        <p>&copy;Kintaro</p>
+                    </div>
+                    <div class="wrapper">
+                        <a href="#">Privacy policy</a>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        <script src="assets/js/main.js"></script>
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    </form>
+
+</body>
+
+</html>

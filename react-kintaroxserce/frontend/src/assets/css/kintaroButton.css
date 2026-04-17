@@ -1,0 +1,137 @@
+.kintaro-button-reset {
+    border-radius: var(--kintaro-border-radius-1);
+    font-size: var(--kintaro-font-md);
+    transition: var(--kintaro-transition-1);
+    color: var(--kintaro-text-color-1);
+    text-shadow: var(--kintaro-text-shadow);
+    width: fit-content;
+    background: transparent;
+    user-select: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+}
+
+.kintaro-button-1 {
+    background: var(--kintaro-color-3);
+}
+
+.kintaro-button-1:hover {
+    background: var(--kintaro-hover);
+}
+
+.kintaro-button-2 {
+    color: var(--kintaro-text-color-2);
+    background: var(--kintaro-color-3);
+    font-size: var(--kintaro-font-sm);
+    padding: 0.5rem 1rem;
+    border-radius: 35px;
+    cursor: pointer;
+}
+
+.kintaro-button-2:hover {
+    background: var(--kintaro-hover);
+}
+
+.kintaro-icon-button-1 {
+    background: var(--kintaro-color-3);
+    gap: 0.5rem;
+}
+
+.kintaro-icon-button-1:hover {
+    background: var(--kintaro-hover);
+}
+
+.kintaro-icon-button-2 {
+    color: var(--kintaro-text-color-2);
+    background: var(--kintaro-color-3);
+    font-size: var(--kintaro-font-sm);
+    padding: 0.5rem 1rem;
+    border-radius: 35px;
+    cursor: pointer;
+    gap: 0.5rem;
+}
+
+.kintaro-icon-button-2:hover {
+    background: var(--kintaro-hover);
+}
+
+.kintaro-only-icon-button {
+    border-radius: 50%;
+    padding: 6px;
+}
+
+.kintaro-only-icon-button:hover {
+    background: var(--kintaro-hover);
+}
+
+.kintaro-accent-button {
+    background: var(--kintaro-accent-color-1);
+}
+
+.kintaro-accent-button:hover {
+    background: var(--kintaro-accent-color-1-transparent);
+}
+
+.kintaro-text-button-1 {
+    color: var(--kintaro-text-color-1);
+    font-size: var(--kintaro-font-sm);
+    text-shadow: var(--kintaro-text-shadow);
+    font-weight: var(--kintaro-font-weight);
+    padding: 0;
+}
+
+.kintaro-text-button-1:hover {
+    color: var(--kintaro-text-color-2);
+}
+
+.kintaro-accent-text-button {
+    color: var(--kintaro-accent-color-1);
+    font-size: var(--kintaro-font-sm);
+    text-shadow: var(--kintaro-text-shadow);
+    font-weight: var(--kintaro-font-weight);
+    padding: 0;
+}
+
+.kintaro-accent-text-button:hover {
+    color: var(--kintaro-accent-color-1-transparent);
+}
+
+.kintaro-error-button {
+    background: var(--kintaro-error-color);
+}
+
+.kintaro-error-button:hover {
+    background: var(--kintaro-error-color-transparent);
+}
+
+.kintaro-error-text-button {
+    color: var(--kintaro-error-color);
+    font-size: var(--kintaro-font-sm);
+    text-shadow: var(--kintaro-text-shadow);
+    font-weight: var(--kintaro-font-weight);
+    padding: 0;
+}
+
+.kintaro-error-text-button:hover {
+    color: var(--kintaro-error-color-transparent);
+}
+
+.kintaro-close-button {
+    color: var(--kintaro-text-color-2);
+    font-size: var(--kintaro-font-xl);
+    padding: 0;
+}
+
+.kintaro-close-button:hover {
+    color: var(--kintaro-text-color-1);
+    transform: scale(1.1);
+}
+
+.button-w100 {
+    width: 100%;
+}

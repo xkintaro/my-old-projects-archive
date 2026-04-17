@@ -1,0 +1,585 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manga Slayer</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!--! navbar start -->
+    <div class="navbar">
+      <div class="navbar-wrapper">
+        <div class="logo-wrapper">
+          <h1 class="logo">MangaSlayer</h1>
+        </div>
+        <div class="menu-container">
+          <ul class="menu-list">
+            <li class="menu-list-item active">
+              <a href="index.html"> Ana Sayfa</a>
+            </li>
+            <li class="menu-list-item">
+              <a href="#populerkategori">Popüler Seriler</a>
+            </li>
+            <li class="menu-list-item">
+              <a href="#yenicikanlar"> Yeni Çıkanlar</a>
+            </li>
+            <li class="menu-list-item"><a href="#noveller"> Noveller</a></li>
+            <li class="menu-list-item"><a href="#manhwalar"> Manhwalar</a></li>
+          </ul>
+        </div>
+        <div class="profile-container">
+          <img
+            class="profile-picture"
+            src="img/Arthur_Realmheart_pp.webp"
+            alt=""
+          />
+          <div class="profile-text-container">
+            <span class="profile-text">Hesabım</span>
+            <i class="bi bi-caret-down-fill"></i>
+          </div>
+          <div class="toggle">
+            <i class="bi bi-moon-fill toggle-icon"></i>
+            <i class="bi bi-brightness-high-fill toggle-icon"></i>
+            <div class="toggle-ball"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--! navbar end -->
+
+    <!--! sidebar start -->
+    <div class="sidebar">
+      <i class="bi bi-search"></i>
+      <i class="bi bi-house-door-fill"></i>
+      <i class="bi bi-people-fill"></i>
+      <i class="bi bi-bookmarks-fill"></i>
+      <i class="bi bi-hourglass-top"></i>
+      <i class="bi bi-cart-fill"></i>
+      <i class="bi bi-gear-fill"></i>
+    </div>
+    <!--! sidebar end -->
+
+    <!--! content start -->
+    <div class="container">
+      <!-- featured content start -->
+      <div class="content-wrapper">
+        <div class="featured-content">
+          <img class="featured" src="" alt="" />
+          <p class="featured-desc">
+            Savaş yetenekleriyle yönetilen bir dünyada Kral Grey’in eşsiz gücü,
+            zenginliği ve nüfuzu vardı. Lakin, bu büyük güç ardında ki
+            yalnızlığı atlatamıyordu. Kabuğunun dışında güçlü bir kralın
+            ihtişamlı görünüşü bulunuyor olsa bile içinde arzu ve amaçlarını
+            kaybetmiş bir adam yatıyordu. taaa ki… Büyü ve Canavarlarla dolu
+            yeni bir dünyaya reenkarne olup kral hayatını tekrar yaşamak için
+            ikinci bir şans yakalayana kadar. lakin, geçmişteki hatalarını
+            tekrar yapmamak tek engeli değildi. yeni dünyanın refah ve barışının
+            altında emek harcadığı her şeyi yok edebilecek bir tehdit bulunuyor.
+            neden tekrar doğdum? neden doğdum…?
+          </p>
+          <div class="featured-buttons">
+            <button class="read-button">
+              <i class="bi bi-book"></i>
+              Oku
+            </button>
+            <button class="mark-button">
+              <i class="bi bi-bookmark"></i>
+              Kaydet
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- featured content end -->
+
+      <!-- filter start  -->
+      <div class="book-list-filter">
+        <select>
+          <option>Top 10</option>
+          <option>İsekai</option>
+          <option>Aksiyon</option>
+          <option>Macera</option>
+        </select>
+      </div>
+
+      <!-- filter end  -->
+
+      <!-- book list start -->
+      <div class="book-list-container">
+        <h1 class="book-list-title" id="populerkategori">Popüler Seriler</h1>
+        <div class="book-list-wrapper">
+          <ul class="book-list">
+            <li class="book-item">
+              <img
+                class="book-item-img"
+                src="img-novel/Mushoku Tensei.webp"
+                alt=""
+              />
+              <div class="book-item-info">
+                <span class="book-item-title">Mushoku Tensei</span>
+                <div class="book-item-buttons">
+                  <i class="bi bi-play-circle-fill"></i>
+                  <i class="bi bi-hand-thumbs-up-fill"></i>
+                  <i class="bi bi-hand-thumbs-down-fill"></i>
+                  <i class="bi bi-plus-circle-fill"></i>
+                </div>
+              </div>
+            </li>
+            <li class="book-item">
+              <img
+                class="book-item-img"
+                src="img-novel/That Time I Got Reincarnated As A Slime.webp"
+                alt=""
+              />
+              <div class="book-item-info">
+                <span class="book-item-title"
+                  >Tensei Shitara Slime Datta Ken</span
+                >
+                <div class="book-item-buttons">
+                  <i class="bi bi-play-circle-fill"></i>
+                  <i class="bi bi-hand-thumbs-up-fill"></i>
+                  <i class="bi bi-hand-thumbs-down-fill"></i>
+                  <i class="bi bi-plus-circle-fill"></i>
+                </div>
+              </div>
+            </li>
+            <li class="book-item">
+              <img class="book-item-img" src="img/Solo Leveling.webp" alt="" />
+              <div class="book-item-info">
+                <span class="book-item-title">Solo Leveling</span>
+                <div class="book-item-buttons">
+                  <i class="bi bi-play-circle-fill"></i>
+                  <i class="bi bi-hand-thumbs-up-fill"></i>
+                  <i class="bi bi-hand-thumbs-down-fill"></i>
+                  <i class="bi bi-plus-circle-fill"></i>
+                </div>
+              </div>
+            </li>
+            <li class="book-item">
+              <img
+                class="book-item-img"
+                src="img-novel/The Rising Of the Shield Hero.webp"
+                alt=""
+              />
+              <div class="book-item-info">
+                <span class="book-item-title">Tate no Yuusha no Nariagari</span>
+                <div class="book-item-buttons">
+                  <i class="bi bi-play-circle-fill"></i>
+                  <i class="bi bi-hand-thumbs-up-fill"></i>
+                  <i class="bi bi-hand-thumbs-down-fill"></i>
+                  <i class="bi bi-plus-circle-fill"></i>
+                </div>
+              </div>
+            </li>
+            <li class="book-item">
+              <img
+                class="book-item-img"
+                src="img/The Beginning After The End.webp"
+                alt=""
+              />
+              <div class="book-item-info">
+                <span class="book-item-title">The Beginning After The End</span>
+                <div class="book-item-buttons">
+                  <i class="bi bi-play-circle-fill"></i>
+                  <i class="bi bi-hand-thumbs-up-fill"></i>
+                  <i class="bi bi-hand-thumbs-down-fill"></i>
+                  <i class="bi bi-plus-circle-fill"></i>
+                </div>
+              </div>
+            </li>
+            <li class="book-item">
+              <img
+                class="book-item-img"
+                src="img/ORV_Volume_3_cover_29.webp"
+                alt=""
+              />
+              <div class="book-item-info">
+                <span class="book-item-title">Omniscient Reader Viewpoint</span>
+                <div class="book-item-buttons">
+                  <i class="bi bi-play-circle-fill"></i>
+                  <i class="bi bi-hand-thumbs-up-fill"></i>
+                  <i class="bi bi-hand-thumbs-down-fill"></i>
+                  <i class="bi bi-plus-circle-fill"></i>
+                </div>
+              </div>
+            </li>
+            <li class="book-item">
+              <img class="book-item-img" src="img-novel/s-l500.webp" alt="" />
+              <div class="book-item-info">
+                <span class="book-item-title"
+                  >Arifureta Shokugyou de Sekai Saikyou</span
+                >
+                <div class="book-item-buttons">
+                  <i class="bi bi-play-circle-fill"></i>
+                  <i class="bi bi-hand-thumbs-up-fill"></i>
+                  <i class="bi bi-hand-thumbs-down-fill"></i>
+                  <i class="bi bi-plus-circle-fill"></i>
+                </div>
+              </div>
+            </li>
+          </ul>
+          <i class="bi bi-chevron-right arrow"></i>
+        </div>
+      </div>
+      <div class="book-list-container">
+        <h1 class="book-list-title" id="yenicikanlar">Yeni Çıkanlar</h1>
+        <div class="book-list-wrapper">
+          <ul class="book-list">
+            <li class="book-item">
+              <img
+                class="book-item-img"
+                src="img-novel/Mushoku Tensei.webp"
+                alt=""
+              />
+              <div class="book-item-info">
+                <span class="book-item-title">Mushoku Tensei</span>
+                <div class="book-item-buttons">
+                  <i class="bi bi-play-circle-fill"></i>
+                  <i class="bi bi-hand-thumbs-up-fill"></i>
+                  <i class="bi bi-hand-thumbs-down-fill"></i>
+                  <i class="bi bi-plus-circle-fill"></i>
+                </div>
+              </div>
+            </li>
+            <li class="book-item">
+              <img
+                class="book-item-img"
+                src="img-novel/That Time I Got Reincarnated As A Slime.webp"
+                alt=""
+              />
+              <div class="book-item-info">
+                <span class="book-item-title"
+                  >Tensei Shitara Slime Datta Ken</span
+                >
+                <div class="book-item-buttons">
+                  <i class="bi bi-play-circle-fill"></i>
+                  <i class="bi bi-hand-thumbs-up-fill"></i>
+                  <i class="bi bi-hand-thumbs-down-fill"></i>
+                  <i class="bi bi-plus-circle-fill"></i>
+                </div>
+              </div>
+            </li>
+            <li class="book-item">
+              <img class="book-item-img" src="img/Solo Leveling.webp" alt="" />
+              <div class="book-item-info">
+                <span class="book-item-title">Solo Leveling</span>
+                <div class="book-item-buttons">
+                  <i class="bi bi-play-circle-fill"></i>
+                  <i class="bi bi-hand-thumbs-up-fill"></i>
+                  <i class="bi bi-hand-thumbs-down-fill"></i>
+                  <i class="bi bi-plus-circle-fill"></i>
+                </div>
+              </div>
+            </li>
+            <li class="book-item">
+              <img
+                class="book-item-img"
+                src="img-novel/The Rising Of the Shield Hero.webp"
+                alt=""
+              />
+              <div class="book-item-info">
+                <span class="book-item-title">Tate no Yuusha no Nariagari</span>
+                <div class="book-item-buttons">
+                  <i class="bi bi-play-circle-fill"></i>
+                  <i class="bi bi-hand-thumbs-up-fill"></i>
+                  <i class="bi bi-hand-thumbs-down-fill"></i>
+                  <i class="bi bi-plus-circle-fill"></i>
+                </div>
+              </div>
+            </li>
+            <li class="book-item">
+              <img
+                class="book-item-img"
+                src="img/The Beginning After The End.webp"
+                alt=""
+              />
+              <div class="book-item-info">
+                <span class="book-item-title">The Beginning After The End</span>
+                <div class="book-item-buttons">
+                  <i class="bi bi-play-circle-fill"></i>
+                  <i class="bi bi-hand-thumbs-up-fill"></i>
+                  <i class="bi bi-hand-thumbs-down-fill"></i>
+                  <i class="bi bi-plus-circle-fill"></i>
+                </div>
+              </div>
+            </li>
+            <li class="book-item">
+              <img
+                class="book-item-img"
+                src="img/ORV_Volume_3_cover_29.webp"
+                alt=""
+              />
+              <div class="book-item-info">
+                <span class="book-item-title">Omniscient Reader Viewpoint</span>
+                <div class="book-item-buttons">
+                  <i class="bi bi-play-circle-fill"></i>
+                  <i class="bi bi-hand-thumbs-up-fill"></i>
+                  <i class="bi bi-hand-thumbs-down-fill"></i>
+                  <i class="bi bi-plus-circle-fill"></i>
+                </div>
+              </div>
+            </li>
+            <li class="book-item">
+              <img class="book-item-img" src="img-novel/s-l500.webp" alt="" />
+              <div class="book-item-info">
+                <span class="book-item-title"
+                  >Arifureta Shokugyou de Sekai Saikyou</span
+                >
+                <div class="book-item-buttons">
+                  <i class="bi bi-play-circle-fill"></i>
+                  <i class="bi bi-hand-thumbs-up-fill"></i>
+                  <i class="bi bi-hand-thumbs-down-fill"></i>
+                  <i class="bi bi-plus-circle-fill"></i>
+                </div>
+              </div>
+            </li>
+          </ul>
+          <i class="bi bi-chevron-right arrow"></i>
+        </div>
+      </div>
+      <div class="book-list-container">
+        <h1 class="book-list-title" id="noveller">Noveller</h1>
+        <div class="book-list-wrapper">
+          <ul class="book-list">
+            <li class="book-item">
+              <img
+                class="book-item-img"
+                src="img-novel/Mushoku Tensei.webp"
+                alt=""
+              />
+              <div class="book-item-info">
+                <span class="book-item-title">Mushoku Tensei</span>
+                <div class="book-item-buttons">
+                  <i class="bi bi-play-circle-fill"></i>
+                  <i class="bi bi-hand-thumbs-up-fill"></i>
+                  <i class="bi bi-hand-thumbs-down-fill"></i>
+                  <i class="bi bi-plus-circle-fill"></i>
+                </div>
+              </div>
+            </li>
+            <li class="book-item">
+              <img
+                class="book-item-img"
+                src="img-novel/That Time I Got Reincarnated As A Slime.webp"
+                alt=""
+              />
+              <div class="book-item-info">
+                <span class="book-item-title"
+                  >Tensei Shitara Slime Datta Ken</span
+                >
+                <div class="book-item-buttons">
+                  <i class="bi bi-play-circle-fill"></i>
+                  <i class="bi bi-hand-thumbs-up-fill"></i>
+                  <i class="bi bi-hand-thumbs-down-fill"></i>
+                  <i class="bi bi-plus-circle-fill"></i>
+                </div>
+              </div>
+            </li>
+            <li class="book-item">
+              <img class="book-item-img" src="img/Solo Leveling.webp" alt="" />
+              <div class="book-item-info">
+                <span class="book-item-title">Solo Leveling</span>
+                <div class="book-item-buttons">
+                  <i class="bi bi-play-circle-fill"></i>
+                  <i class="bi bi-hand-thumbs-up-fill"></i>
+                  <i class="bi bi-hand-thumbs-down-fill"></i>
+                  <i class="bi bi-plus-circle-fill"></i>
+                </div>
+              </div>
+            </li>
+            <li class="book-item">
+              <img
+                class="book-item-img"
+                src="img-novel/The Rising Of the Shield Hero.webp"
+                alt=""
+              />
+              <div class="book-item-info">
+                <span class="book-item-title">Tate no Yuusha no Nariagari</span>
+                <div class="book-item-buttons">
+                  <i class="bi bi-play-circle-fill"></i>
+                  <i class="bi bi-hand-thumbs-up-fill"></i>
+                  <i class="bi bi-hand-thumbs-down-fill"></i>
+                  <i class="bi bi-plus-circle-fill"></i>
+                </div>
+              </div>
+            </li>
+            <li class="book-item">
+              <img
+                class="book-item-img"
+                src="img/The Beginning After The End.webp"
+                alt=""
+              />
+              <div class="book-item-info">
+                <span class="book-item-title">The Beginning After The End</span>
+                <div class="book-item-buttons">
+                  <i class="bi bi-play-circle-fill"></i>
+                  <i class="bi bi-hand-thumbs-up-fill"></i>
+                  <i class="bi bi-hand-thumbs-down-fill"></i>
+                  <i class="bi bi-plus-circle-fill"></i>
+                </div>
+              </div>
+            </li>
+            <li class="book-item">
+              <img
+                class="book-item-img"
+                src="img/ORV_Volume_3_cover_29.webp"
+                alt=""
+              />
+              <div class="book-item-info">
+                <span class="book-item-title">Omniscient Reader Viewpoint</span>
+                <div class="book-item-buttons">
+                  <i class="bi bi-play-circle-fill"></i>
+                  <i class="bi bi-hand-thumbs-up-fill"></i>
+                  <i class="bi bi-hand-thumbs-down-fill"></i>
+                  <i class="bi bi-plus-circle-fill"></i>
+                </div>
+              </div>
+            </li>
+            <li class="book-item">
+              <img class="book-item-img" src="img-novel/s-l500.webp" alt="" />
+              <div class="book-item-info">
+                <span class="book-item-title"
+                  >Arifureta Shokugyou de Sekai Saikyou</span
+                >
+                <div class="book-item-buttons">
+                  <i class="bi bi-play-circle-fill"></i>
+                  <i class="bi bi-hand-thumbs-up-fill"></i>
+                  <i class="bi bi-hand-thumbs-down-fill"></i>
+                  <i class="bi bi-plus-circle-fill"></i>
+                </div>
+              </div>
+            </li>
+          </ul>
+          <i class="bi bi-chevron-right arrow"></i>
+        </div>
+      </div>
+      <div class="book-list-container">
+        <h1 class="book-list-title" id="manhwalar">Manhwalar</h1>
+        <div class="book-list-wrapper">
+          <ul class="book-list">
+            <li class="book-item">
+              <img
+                class="book-item-img"
+                src="img-novel/Mushoku Tensei.webp"
+                alt=""
+              />
+              <div class="book-item-info">
+                <span class="book-item-title">Mushoku Tensei</span>
+                <div class="book-item-buttons">
+                  <i class="bi bi-play-circle-fill"></i>
+                  <i class="bi bi-hand-thumbs-up-fill"></i>
+                  <i class="bi bi-hand-thumbs-down-fill"></i>
+                  <i class="bi bi-plus-circle-fill"></i>
+                </div>
+              </div>
+            </li>
+            <li class="book-item">
+              <img
+                class="book-item-img"
+                src="img-novel/That Time I Got Reincarnated As A Slime.webp"
+                alt=""
+              />
+              <div class="book-item-info">
+                <span class="book-item-title"
+                  >Tensei Shitara Slime Datta Ken</span
+                >
+                <div class="book-item-buttons">
+                  <i class="bi bi-play-circle-fill"></i>
+                  <i class="bi bi-hand-thumbs-up-fill"></i>
+                  <i class="bi bi-hand-thumbs-down-fill"></i>
+                  <i class="bi bi-plus-circle-fill"></i>
+                </div>
+              </div>
+            </li>
+            <li class="book-item">
+              <img class="book-item-img" src="img/Solo Leveling.webp" alt="" />
+              <div class="book-item-info">
+                <span class="book-item-title">Solo Leveling</span>
+                <div class="book-item-buttons">
+                  <i class="bi bi-play-circle-fill"></i>
+                  <i class="bi bi-hand-thumbs-up-fill"></i>
+                  <i class="bi bi-hand-thumbs-down-fill"></i>
+                  <i class="bi bi-plus-circle-fill"></i>
+                </div>
+              </div>
+            </li>
+            <li class="book-item">
+              <img
+                class="book-item-img"
+                src="img-novel/The Rising Of the Shield Hero.webp"
+                alt=""
+              />
+              <div class="book-item-info">
+                <span class="book-item-title">Tate no Yuusha no Nariagari</span>
+                <div class="book-item-buttons">
+                  <i class="bi bi-play-circle-fill"></i>
+                  <i class="bi bi-hand-thumbs-up-fill"></i>
+                  <i class="bi bi-hand-thumbs-down-fill"></i>
+                  <i class="bi bi-plus-circle-fill"></i>
+                </div>
+              </div>
+            </li>
+            <li class="book-item">
+              <img
+                class="book-item-img"
+                src="img/The Beginning After The End.webp"
+                alt=""
+              />
+              <div class="book-item-info">
+                <span class="book-item-title">The Beginning After The End</span>
+                <div class="book-item-buttons">
+                  <i class="bi bi-play-circle-fill"></i>
+                  <i class="bi bi-hand-thumbs-up-fill"></i>
+                  <i class="bi bi-hand-thumbs-down-fill"></i>
+                  <i class="bi bi-plus-circle-fill"></i>
+                </div>
+              </div>
+            </li>
+            <li class="book-item">
+              <img
+                class="book-item-img"
+                src="img/ORV_Volume_3_cover_29.webp"
+                alt=""
+              />
+              <div class="book-item-info">
+                <span class="book-item-title">Omniscient Reader Viewpoint</span>
+                <div class="book-item-buttons">
+                  <i class="bi bi-play-circle-fill"></i>
+                  <i class="bi bi-hand-thumbs-up-fill"></i>
+                  <i class="bi bi-hand-thumbs-down-fill"></i>
+                  <i class="bi bi-plus-circle-fill"></i>
+                </div>
+              </div>
+            </li>
+            <li class="book-item">
+              <img class="book-item-img" src="img-novel/s-l500.webp" alt="" />
+              <div class="book-item-info">
+                <span class="book-item-title"
+                  >Arifureta Shokugyou de Sekai Saikyou</span
+                >
+                <div class="book-item-buttons">
+                  <i class="bi bi-play-circle-fill"></i>
+                  <i class="bi bi-hand-thumbs-up-fill"></i>
+                  <i class="bi bi-hand-thumbs-down-fill"></i>
+                  <i class="bi bi-plus-circle-fill"></i>
+                </div>
+              </div>
+            </li>
+          </ul>
+          <i class="bi bi-chevron-right arrow"></i>
+        </div>
+      </div>
+      <!-- book list end -->
+    </div>
+    <!--! content end -->
+
+    <script src="script.js"></script>
+  </body>
+</html>

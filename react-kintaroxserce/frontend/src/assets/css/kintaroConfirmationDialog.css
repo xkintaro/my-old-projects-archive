@@ -1,0 +1,52 @@
+.kintaro-confirmation-dialog {
+    z-index: var(--popup-z-index);
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100dvh;
+}
+
+.kintaro-confirmation-dialog-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+}
+
+.kintaro-confirmation-dialog-box {
+    background-color: var(--kintaro-color-2);
+    border-radius: var(--kintaro-border-radius-1);
+    box-shadow: var(--kintaro-box-shadow);
+    animation: var(--kintaro-animation);
+    position: relative;
+    overflow: auto;
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+}
+
+.kintaro-confirmation-dialog-header {
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--kintaro-color-3);
+}
+
+.kintaro-confirmation-dialog-content {
+    padding: 1rem;
+}
+
+.kintaro-confirmation-dialog-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--kintaro-gap-sm);
+    padding: 1rem;
+}

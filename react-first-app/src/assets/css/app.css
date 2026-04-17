@@ -1,0 +1,35 @@
+:root {
+  --darkColor1: #0d1b2a;
+  --darkColor2: #1b263b;
+  --darkColor3: #415a77;
+  --darkColor4: #778da9;
+  --darkColor5: #e0e1dd;
+
+  --color1: #0d1b2a;
+  --color2: #1b263b;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body {
+  padding-top: 60px;
+  background-color: var(--darkColor1);
+}
+
+::-webkit-scrollbar {
+  background: transparent;
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--darkColor1);
+  border-radius: 20px;
+  border: 2px solid var(--darkColor3);
+}

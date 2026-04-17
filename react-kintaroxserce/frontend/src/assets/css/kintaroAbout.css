@@ -1,0 +1,18 @@
+.kintaro-about-content {
+    padding: var(--kintaro-spacing-content-md);
+    gap: var(--kintaro-gap-sm);
+    display: flex;
+    flex-direction: column;
+}
+
+.kintaro-about-text {
+    font-size: var(--kintaro-font-md);
+    color: var(--kintaro-text-color-2);
+}
+
+.kintaro-about-links {
+    gap: var(--kintaro-gap-sm);
+    width: 100%;
+    display: flex;
+
+}

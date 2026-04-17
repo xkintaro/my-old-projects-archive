@@ -1,0 +1,363 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TeknoFilm</title>
+  <!--CSS BAĞLANTI-->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/media_query.css">
+</head>
+
+<body>
+  <!--MAİN CONTAİNER-->
+  <div class="container">
+    <!--HEADER-->
+    <header>
+      <div class="navbar">
+        <!--NAVBAR MENÜLER TELEFON GÖRÜNÜMÜ-->
+        <button class="navbar-menu-btn">
+          <span class="one"></span>
+          <span class="two"></span>
+          <span class="three"></span>
+        </button>
+        <a href="#" class="navbar-brand">
+          <img src="images/logo.webp">
+        </a>
+        <!--NAVBAR MENÜLER-->
+        <nav>
+          <ul class="navbar-nav">
+            <li> <a href="index.html" class="navbar-link">AnaSayfa</a> </li>
+            <li> <a href="diger_html/hakkimda.html" class="navbar-link">Hakkımda</a> </li>
+            <li> <a href="#kategoriler" class="navbar-link">Kategoriler</a> </li>
+          </ul>
+        </nav>
+        <!--OTURUM AÇ-->
+        <div class="navbar-actions">
+          <a href="diger_html/oturumac.html" class="navbar-signin"><span>Oturum Aç</span></a>
+        </div>
+      </div>
+    </header>
+    <!--MAİN-->
+    <main>
+      <!--DROPDOWN MENÜ-->
+      <section class="movies">
+        <div class="filter-bar">
+          <div class="filter-dropdowns">
+            <select name="genre" class="genre">
+              <option value="all genres">Tüm Filmler</option>
+            </select>
+          </div>
+        </div>
+        <!--FİLMLER-->
+        <!--SPİDERMAN-->
+        <div class="movies-grid">
+          <a href="html_sayfalari/spiderman.html">
+            <div class="movie-card">
+              <div class="card-head">
+                <img src="images/movies/spider-men.webp" class="card-img">
+                <div class="card-overlay">
+                  <div class="rating">
+                    <span>7.4</span>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <h3 class="card-title">Spider-Man <br> Eve Dönüş</h3>
+                <div class="card-info">
+                  <span class="genre">Aksiyon</span>
+                </div>
+              </div>
+            </div>
+          </a>
+          <!--Matrix-->
+          <a href="html_sayfalari/matrix.html">
+            <div class="movie-card">
+              <div class="card-head">
+                <img src="images/movies/matrix.webp" class="card-img">
+                <div class="card-overlay">
+                  <div class="rating">
+                    <span>8.1</span>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <h3 class="card-title">The Matrix Resurrections</h3>
+                <div class="card-info">
+                  <span class="genre">Bilim Kurgu</span>
+                </div>
+              </div>
+            </div>
+          </a>
+          <!--END GAME-->
+          <a href="html_sayfalari/endgame.html">
+            <div class="movie-card">
+              <div class="card-head">
+                <img src="images/movies/endgame.webp" alt="" class="card-img">
+                <div class="card-overlay">
+                  <div class="rating">
+                    <span>9.0</span>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <h3 class="card-title">Avengers: EndGame</h3>
+                <div class="card-info">
+                  <span class="genre">Aksiyon</span>
+                </div>
+              </div>
+            </div>
+          </a>
+          <!--Eternals-->
+          <a href="html_sayfalari/eternals.html">
+            <div class="movie-card">
+              <div class="card-head">
+                <img src="images/movies/eternals.webp" class="card-img">
+                <div class="card-overlay">
+                  <div class="rating">
+                    <span>6.8</span>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <h3 class="card-title">Eternals</h3>
+                <div class="card-info">
+                  <span class="genre">Bilim Kurgu</span>
+                </div>
+              </div>
+            </div>
+          </a>
+          <!--Dune-->
+          <a href="html_sayfalari/dune.html">
+            <div class="movie-card">
+              <div class="card-head">
+                <img src="images/movies/dune.webp" class="card-img">
+                <div class="card-overlay">
+                  <div class="rating">
+                    <span>8.2</span>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <h3 class="card-title">Dune</h3>
+                <div class="card-info">
+                  <span class="genre">Bilim Kurgu</span>
+                </div>
+              </div>
+            </div>
+          </a>
+          <!--THE DARK KNİGHT-->
+          <a href="html_sayfalari/thedarknight.html">
+            <div class="movie-card">
+              <div class="card-head">
+                <img src="images/movies/dark-knight.webp" class="card-img">
+                <div class="card-overlay">
+                  <div class="rating">
+                    <span>8.2</span>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <h3 class="card-title">The Dark Knight</h3>
+                <div class="card-info">
+                  <span class="genre">Aksiyon</span>
+                </div>
+              </div>
+            </div>
+          </a>
+          <!--BLACK PANTER-->
+          <a href="html_sayfalari/blackpanther.html">
+            <div class="movie-card">
+              <div class="card-head">
+                <img src="images/movies/panther.webp" class="card-img">
+                <div class="card-overlay">
+                  <div class="rating">
+                    <span>7.3</span>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <h3 class="card-title">Black Panther</h3>
+                <div class="card-info">
+                  <span class="genre">Aksiyon</span>
+                </div>
+              </div>
+            </div>
+          </a>
+          <!--VENOM-->
+          <a href="html_sayfalari/venom.html">
+            <div class="movie-card">
+              <div class="card-head">
+                <img src="images/movies/venom.webp" class="card-img">
+                <div class="card-overlay">
+                  <div class="rating">
+                    <span>7.3</span>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <h3 class="card-title">Venom</h3>
+                <div class="card-info">
+                  <span class="genre">Aksiyon</span>
+                </div>
+              </div>
+            </div>
+          </a>
+          <!--GLADİATOR-->
+          <a href="html_sayfalari/gladiator.html">
+            <div class="movie-card">
+              <div class="card-head">
+                <img src="images/movies/gladiator.webp" class="card-img">
+                <div class="card-overlay">
+                  <div class="rating">
+                    <span>7.5</span>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <h3 class="card-title">Gladiator</h3>
+                <div class="card-info">
+                  <span class="genre">Aksiyon</span>
+                </div>
+              </div>
+            </div>
+          </a>
+          <!--SHANG CHİ-->
+          <a href="html_sayfalari/shaingchi.html">
+            <div class="movie-card">
+              <div class="card-head">
+                <img src="images/movies/shang-chi.webp" class="card-img">
+                <div class="card-overlay">
+                  <div class="rating">
+                    <span>8.1</span>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <h3 class="card-title">Shaing-Chi</S></h3>
+                <div class="card-info">
+                  <span class="genre">Aksiyon</span>
+                </div>
+              </div>
+            </div>
+          </a>
+          <!--LOTR-->
+          <a href="html_sayfalari/lotr.html">
+            <div class="movie-card">
+              <div class="card-head">
+                <img src="images/movies/LOTR.webp" class="card-img">
+                <div class="card-overlay">
+                  <div class="rating">
+                    <span>7.6</span>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <h3 class="card-title">Lord Of The Rings</h3>
+                <div class="card-info">
+                  <span class="genre">Aksiyon</span>
+                </div>
+              </div>
+            </div>
+          </a>
+          <!--CAPTAİN MARVEL -->
+          <a href="html_sayfalari/captainmarvel.html">
+            <div class="movie-card">
+              <div class="card-head">
+                <img src="images/movies/captain-marvel.webp" class="card-img">
+                <div class="card-overlay">
+                  <div class="rating">
+                    <span>7.9</span>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <h3 class="card-title">Captain Marvel</h3>
+                <div class="card-info">
+                  <span class="genre">Aksiyon</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </section>
+      <!--KATEGORİLER-->
+      <section class="category" id="kategoriler">
+        <h2 class="section-heading">Kategoriler</h2>
+        <div class="category-grid">
+          <a href="kategoriler_html_sayfaları/aksiyon.html">
+            <div class="category-card">
+              <img src="images/action.webp" class="card-img">
+              <div class="name">Aksiyon</div>
+              <div class="total">9</div>
+            </div>
+          </a>
+          <a href="kategoriler_html_sayfaları/komedi.html">
+            <div class="category-card">
+              <img src="images/comedy.webp" class="card-img">
+              <div class="name">Komedi</div>
+              <div class="total">0</div>
+            </div>
+          </a>
+          <a href="kategoriler_html_sayfaları/korku.html">
+            <div class="category-card">
+              <img src="images/horror.webp" class="card-img">
+              <div class="name">Korku</div>
+              <div class="total">0</div>
+            </div>
+          </a>
+          <a href="kategoriler_html_sayfaları/bilimkurgu.html">
+            <div class="category-card">
+              <img src="images/sci-fi.webp" class="card-img">
+              <div class="name">Bilim Kurgu</div>
+              <div class="total">3</div>
+            </div>
+          </a>
+        </div>
+      </section>
+    </main>
+    <!--FOOTER-->
+    <footer>
+      <div class="footer-content">
+        <div class="footer-brand">
+          <img src="images/logo.webp" class="footer-logo">
+          <p class="slogan">Web Programlama Dersi Performans Ödevi.</p>
+        </div>
+        <div class="footer-links">
+          <ul>
+            <h4 class="link-heading" id="hakkimda">TeknoFilm</h4>
+            <li class="link-item"><a href="index.html">AnaSayfa</a></li>
+            <li class="link-item"><a href="diger_html/hakkimda.html">Hakkımda</a></li>
+            <li class="link-item"><a href="#kategoriler">Kategoriler</a></li>
+            <li class="link-item"><a href="diger_html/oturumac.html">Oturum Aç</a></li>
+          </ul>
+          <ul>
+            <h4 class="link-heading">Kategoriler</h4>
+            <li class="link-item"><a href="kategoriler_html_sayfaları/aksiyon.html">Aksiyon</a></li>
+            <li class="link-item"><a href="kategoriler_html_sayfaları/komedi.html">Komedi</a></li>
+            <li class="link-item"><a href="kategoriler_html_sayfaları/korku.html">Korku</a></li>
+            <li class="link-item"><a href="kategoriler_html_sayfaları/bilimkurgu.html">Bilim Kurgu</a></li>
+          </ul>
+          <ul>
+            <h4 class="link-heading">Hakkımda</h4>
+            <li class="link-item">Mustafa</li>
+            <li class="link-item">TAŞAL</li>
+            <li class="link-item">11-D</li>
+            <li class="link-item">2 7 0 6</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="copyright">
+          <p>&copy; KonyaMTAL</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <!--JSS BAĞLANTI-->
+  <script src="js/main.js"></script>
+</body>
+
+</html>

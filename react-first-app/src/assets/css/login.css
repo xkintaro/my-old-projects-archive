@@ -1,0 +1,331 @@
+@import url("./app.css");
+
+.user-form-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  max-height: calc(100vh - 60px);
+  margin-top: -40px;
+}
+
+.user-form {
+  display: inline-flex;
+  height: 450px;
+  background-color: var(--darkColor1);
+  justify-content: center;
+  border-radius: 10px;
+  box-shadow:
+    0 10px 15px rgba(0, 0, 0, 0.4),
+    0 4px 6px rgba(0, 0, 0, 0.2),
+    0 -3px 5px rgba(0, 0, 0, 0.1);
+}
+
+.user-form-image-section {
+  width: 300px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.user-form-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.user-form-main {
+  padding-top: 80px !important;
+  padding: 20px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.user-form-component {
+  width: 100%;
+  position: relative;
+}
+
+.user-form-component:last-child {
+  margin-top: 100px;
+}
+
+.user-form-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 5px;
+}
+
+.user-form-header-title {
+  color: var(--darkColor5);
+  text-align: center;
+}
+
+.user-form-header-text {
+  color: #a5a5a5;
+  text-align: center;
+  font-size: 12px;
+  max-width: 90%;
+}
+
+.user-form-system-message {
+  font-size: 12px;
+  color: var(--darkColor4);
+  padding-left: 2px;
+}
+
+.user-form-information-text {
+  font-size: 12px;
+  color: #a5a5a5;
+  padding-left: 2px;
+}
+
+.user-form-directed {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.user-form-directed-text {
+  text-align: center;
+  color: #a5a5a5;
+  font-size: 12px;
+  max-width: 80%;
+}
+
+.user-form-directed-button {
+  width: 30px;
+  height: 30px;
+  color: var(--darkColor4);
+  user-select: none;
+}
+
+.user-form-back-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--darkColor4);
+  border-radius: 20px;
+  padding: 5px 15px;
+  position: absolute;
+  cursor: pointer;
+  top: -80px;
+}
+
+.user-form-back-button-icon {
+  width: 25px;
+  height: 25px;
+  color: var(--darkColor4);
+  user-select: none;
+  display: flex;
+  align-items: center;
+}
+
+.user-form-back-button-text {
+  color: var(--darkColor4);
+}
+
+.user-form-user-profile {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.user-form-user-profile-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  user-select: none;
+  object-fit: cover;
+}
+
+.user-form-user-profile-text {
+  color: var(--darkColor5);
+  font-size: 18px;
+}
+
+/**********kintaro-floating-layout**********/
+
+.kintaro-floating-layout {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  border-radius: 10px;
+  background-color: var(--darkColor2);
+}
+
+/**********kintaro-floating-layout-end**********/
+
+/**********kintaro-floating-icon-textbox**********/
+
+.kintaro-floating-icon-textbox {
+  height: 60px;
+  padding-right: 50px;
+  padding-left: 15px;
+  padding-top: 10px;
+  font-size: 16px;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  border-radius: 10px;
+  resize: vertical;
+  z-index: 2;
+  color: var(--darkColor5);
+  width: 100%;
+}
+
+.kintaro-floating-icon-label {
+  position: absolute;
+  transition: 0.1s ease all;
+  z-index: 1;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  opacity: 50%;
+  user-select: none;
+  color: var(--darkColor5);
+}
+
+.kintaro-floating-icon-image {
+  position: absolute;
+  right: 10px;
+  display: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  z-index: 3;
+  color: var(--darkColor4);
+  cursor: pointer;
+}
+
+.kintaro-floating-icon-textbox:focus {
+  border: 1px solid var(--darkColor4);
+  box-shadow:
+    0 10px 15px rgba(0, 0, 0, 0.2),
+    0 4px 6px rgba(0, 0, 0, 0.1),
+    inset 0 1px 3px rgba(255, 255, 255, 0.1),
+    0 -3px 5px rgba(0, 0, 0, 0.1);
+}
+
+.kintaro-floating-icon-textbox:focus + .kintaro-floating-icon-label {
+  color: var(--darkColor4);
+  top: 15px;
+  font-size: 14px;
+  opacity: 100%;
+}
+
+.kintaro-floating-icon-textbox:not(:placeholder-shown)
+  + .kintaro-floating-icon-label {
+  top: 15px;
+  font-size: 14px;
+}
+
+.kintaro-floating-icon-textbox:not(:placeholder-shown)
+  ~ .kintaro-floating-icon-image {
+  display: block;
+}
+
+/**********kintaro-floating-icon-textbox-end**********/
+
+/**********kintaro-fill-button**********/
+
+.kintaro-fill-button {
+  border: none;
+  background-color: var(--darkColor2);
+  transition: all 0.5s ease;
+  border-radius: 10px;
+  height: 50px;
+  padding: 0 25px;
+  font-size: 16px;
+  color: var(--darkColor5);
+  display: flex;
+  outline: none;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  text-decoration: none;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.kintaro-fill-button:hover {
+  background-color: var(--darkColor4);
+}
+
+/**********kintaro-fill-button-end**********/
+
+.user-redirect-box-section {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9998;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
+}
+
+.user-redirect-box {
+  max-width: 600px;
+  min-width: 350px;
+  z-index: 9999;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--darkColor1);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.user-redirect-box-component {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+}
+
+.user-redirect-box-text {
+  color: var(--darkColor5);
+}
+
+.loading-circle {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid var(--darkColor4);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 0.5s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .user-form-image-section {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .user-redirect-box {
+    min-width: 80%;
+  }
+}

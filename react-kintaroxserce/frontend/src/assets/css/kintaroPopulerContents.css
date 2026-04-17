@@ -1,0 +1,42 @@
+.kintaro-populer-contents {
+    padding: var(--kintaro-spacing-content-md);
+    gap: var(--kintaro-gap-sm);
+    display: flex;
+    flex-direction: column;
+}
+
+.kintaro-populer-contents-head {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.kintaro-populer-contents-navigation {
+    display: flex;
+    gap: 8px;
+}
+
+.kintaro-populer-contents-navigation-button {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--kintaro-color-3);
+    border: 1px solid var(--kintaro-text-color-2);
+    color: var(--kintaro-text-color-1);
+    font-size: var(--kintaro-font-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--kintaro-transition-1);
+    backdrop-filter: blur(5px);
+}
+
+.kintaro-populer-contents-navigation-button:hover {
+    background: var(--kintaro-hover);
+    transform: scale(1.1);
+}
+
+.kintaro-populer-contents-navigation-button:active {
+    transform: scale(0.95);
+}

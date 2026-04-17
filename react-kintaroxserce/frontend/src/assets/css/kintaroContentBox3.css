@@ -1,0 +1,42 @@
+.kintaro-content-box-3-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--kintaro-gap-xs);
+    width: 100%;
+}
+
+.kintaro-content-box-3 {
+    display: flex;
+    gap: var(--kintaro-gap-xs);
+    transition: var(--kintaro-transition-1);
+    width: 100%;
+    overflow: hidden;
+}
+
+.kintaro-content-box-3:hover {
+    transform: scale(0.98);
+}
+
+.kintaro-content-box-3-image {
+    width: 150px;
+    min-width: 100px;
+    aspect-ratio: 16/9;
+    border-radius: var(--kintaro-border-radius-1);
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.kintaro-content-box-3-main {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+}
+
+.kintaro-content-box-3-main .kintaro-title-3,
+.kintaro-content-box-3-main .kintaro-description {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    display: block;
+}

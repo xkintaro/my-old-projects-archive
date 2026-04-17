@@ -1,0 +1,31 @@
+.kintaro-description-text {
+    color: var(--kintaro-text-color-2);
+    font-size: var(--kintaro-font-md);
+    text-shadow: var(--kintaro-text-shadow);
+    display: inline;
+    margin-right: 4px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.kintaro-description-button {
+    display: inline;
+    vertical-align: baseline;
+    border-radius: var(--kintaro-border-radius-1);
+    font-size: var(--kintaro-font-sm);
+    transition: var(--kintaro-transition-1);
+    color: var(--kintaro-text-color-1);
+    text-shadow: var(--kintaro-text-shadow);
+    font-weight: var(--kintaro-font-weight);
+    width: fit-content;
+    background: transparent;
+    user-select: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.kintaro-description-button:hover {
+    color: var(--kintaro-text-color-2);
+}

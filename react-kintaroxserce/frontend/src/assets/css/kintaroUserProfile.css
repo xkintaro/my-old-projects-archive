@@ -1,0 +1,81 @@
+.kintaro-user-profile {
+    display: flex;
+    flex-direction: column;
+    padding: var(--kintaro-spacing-content-md);
+    gap: var(--kintaro-gap-lg);
+    width: 100%;
+}
+
+.kintaro-user-profile-head {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    width: 100%;
+    border-bottom: 1px solid var(--kintaro-color-3);
+    padding-bottom: var(--kintaro-spacing-content-md);
+}
+
+.kintaro-user-profile-head-profile-image {
+    width: 150px;
+    height: 150px;
+    min-width: 150px;
+    min-height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    object-fit: cover;
+}
+
+.kintaro-user-profile-head-main {
+    display: flex;
+    flex-direction: column;
+    gap: var(--kintaro-gap-sm);
+}
+
+.kintaro-user-profile-head-main-buttons {
+    display: flex;
+    gap: var(--kintaro-gap-xs);
+}
+
+.kintaro-user-profile-head-main-followers-following {
+    display: flex;
+    gap: var(--kintaro-gap-sm);
+}
+
+.kintaro-user-profile-head-main-followers-following-item {
+    color: var(--kintaro-text-color-2);
+    font-size: var(--kintaro-font-sm);
+    text-shadow: var(--kintaro-text-shadow);
+}
+
+.kintaro-user-profile-main {
+    display: flex;
+    flex-direction: column;
+    gap: var(--kintaro-gap-sm);
+}
+
+.kintaro-user-profile-main-badges {
+    display: flex;
+    gap: var(--kintaro-gap-xs);
+}
+
+.kintaro-user-profile-main-badges-item {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: var(--kintaro-color-3);
+}
+
+.kintaro-user-profile-main-description {
+    display: flex;
+    flex-direction: column;
+}
+
+@media (max-width: 768px) {
+    .kintaro-user-profile-head {
+        flex-direction: column;
+    }
+
+    .kintaro-user-profile-head-main {
+        align-items: center;
+    }
+}

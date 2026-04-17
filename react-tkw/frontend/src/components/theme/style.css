@@ -1,0 +1,17 @@
+ .radiobtn:checked~.mark {
+     background-color: var(--accent);
+     border-color: var(--accent);
+     animation: kintaro-bounce 0.5s;
+ }
+
+ @keyframes kintaro-bounce {
+
+     0%,
+     100% {
+         transform: scale(1);
+     }
+
+     50% {
+         transform: scale(1.1);
+     }
+ }

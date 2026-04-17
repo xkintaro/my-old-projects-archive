@@ -1,0 +1,156 @@
+.kintaro-txtbox-1-textbox {
+    font-size: var(--kintaro-font-md);
+    color: var(--kintaro-text-color-1);
+    border-radius: var(--kintaro-border-radius-1);
+    background-color: transparent;
+    resize: vertical;
+    outline: none;
+    border: none;
+    z-index: 2;
+    height: 60px;
+    padding: 0px 15px;
+    padding-top: 10px;
+    width: 100%;
+}
+
+.kintaro-txtbox-1-label {
+    color: var(--kintaro-text-color-2);
+    font-size: var(--kintaro-font-md);
+    position: absolute;
+    pointer-events: none;
+    user-select: none;
+    transform: translateY(-50%);
+    top: 50%;
+    left: 15px;
+    z-index: 1;
+    transition: 0.1s ease all;
+}
+
+.kintaro-txtbox-1-textbox:focus+.kintaro-txtbox-1-label {
+    color: var(--kintaro-accent-color-1);
+    font-size: var(--kintaro-font-sm);
+    top: 15px;
+}
+
+.kintaro-txtbox-1-textbox:not(:placeholder-shown)+.kintaro-txtbox-1-label {
+    font-size: var(--kintaro-font-sm);
+    top: 15px;
+}
+
+.kintaro-txtbox-2-textbox {
+    font-size: var(--kintaro-font-md);
+    color: var(--kintaro-text-color-1);
+    border-radius: var(--kintaro-border-radius-1);
+    background-color: transparent;
+    resize: vertical;
+    outline: none;
+    border: none;
+    z-index: 2;
+    height: 60px;
+    padding-left: 15px;
+    padding-top: 10px;
+    flex: 1;
+}
+
+.kintaro-txtbox-2-label {
+    color: var(--kintaro-text-color-2);
+    font-size: var(--kintaro-font-md);
+    position: absolute;
+    pointer-events: none;
+    user-select: none;
+    transform: translateY(-50%);
+    top: 50%;
+    left: 15px;
+    z-index: 1;
+    transition: 0.1s ease all;
+}
+
+.kintaro-txtbox-2-icon {
+    transition: var(--kintaro-transition-1);
+    font-size: var(--kintaro-font-xl);
+    color: var(--kintaro-text-color-1);
+    margin: 15px;
+    display: none;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.kintaro-txtbox-2-icon:hover {
+    color: var(--kintaro-accent-color-1);
+}
+
+.kintaro-txtbox-2-textbox:focus+.kintaro-txtbox-2-label {
+    color: var(--kintaro-accent-color-1);
+    font-size: var(--kintaro-font-sm);
+    top: 15px;
+}
+
+.kintaro-txtbox-2-textbox:not(:placeholder-shown)+.kintaro-txtbox-2-label {
+    font-size: var(--kintaro-font-sm);
+    top: 15px;
+}
+
+.kintaro-txtbox-2-textbox:not(:placeholder-shown)~.kintaro-txtbox-2-icon {
+    display: block;
+}
+
+.kintaro-txtbox-3-textbox {
+    font-size: var(--kintaro-font-md);
+    color: var(--kintaro-text-color-1);
+    border-radius: var(--kintaro-border-radius-1);
+    background-color: transparent;
+    resize: vertical;
+    outline: none;
+    border: none;
+    z-index: 2;
+    height: 60px;
+    padding: 0 15px;
+    padding-top: 10px;
+    flex: 1;
+}
+
+.kintaro-txtbox-3-label {
+    color: var(--kintaro-text-color-2);
+    font-size: var(--kintaro-font-md);
+    position: absolute;
+    pointer-events: none;
+    user-select: none;
+    transform: translateY(-50%);
+    top: 50%;
+    left: 15px;
+    z-index: 1;
+    transition: 0.1s ease all;
+}
+
+.kintaro-txtbox-3-button {
+    border-radius: var(--kintaro-border-radius-1);
+    font-size: var(--kintaro-font-md);
+    transition: var(--kintaro-transition-1);
+    background-color: var(--kintaro-accent-color-1);
+    color: var(--kintaro-text-color-1);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    height: 60px;
+    user-select: none;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+.kintaro-txtbox-3-button:hover {
+    background-color: var(--kintaro-accent-color-1-transparent);
+}
+
+.kintaro-txtbox-3-textbox:focus+.kintaro-txtbox-3-label {
+    color: var(--kintaro-accent-color-1);
+    font-size: var(--kintaro-font-sm);
+    top: 15px;
+}
+
+.kintaro-txtbox-3-textbox:not(:placeholder-shown)+.kintaro-txtbox-3-label {
+    font-size: var(--kintaro-font-sm);
+    top: 15px;
+}

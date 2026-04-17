@@ -1,0 +1,30 @@
+.kintaro-scrolling-banner-container {
+    position: relative;
+    overflow: hidden;
+    width: 300px;
+    height: 400px;
+}
+
+.kintaro-scrolling-banner-container::before {
+    content: '';
+    position: absolute;
+    pointer-events: none;
+    background: linear-gradient(to right, var(--kintaro-color-2), transparent);
+    z-index: 2;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 20px;
+}
+
+.kintaro-scrolling-banner-container::after {
+    content: '';
+    position: absolute;
+    pointer-events: none;
+    background: linear-gradient(to left, var(--kintaro-color-2), transparent);
+    z-index: 2;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 20px;
+}

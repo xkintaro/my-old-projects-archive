@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE DARK NİGHT</title>
+    <!--CSS BAĞLANTI-->
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/media_query.css">
+</head>
+
+<body>
+    <!--MAİN CONTAİNER-->
+    <div class="container">
+        <!--HEADER-->
+        <header>
+            <div class="navbar">
+                <!--NAVBAR MENÜLER TELEFON GÖRÜNÜMÜ-->
+                <button class="navbar-menu-btn">
+                    <span class="one"></span>
+                    <span class="two"></span>
+                    <span class="three"></span>
+                </button>
+                <a href="../index.html" class="navbar-brand">
+                    <img src="../images/logo.webp">
+                </a>
+                <!--NAVBAR MENÜLER-->
+                <nav>
+                    <ul class="navbar-nav">
+                        <li> <a href="../index.html" class="navbar-link">AnaSayfa</a> </li>
+                        <li> <a href="../index.html" class="navbar-link"></a> </li>
+                        <li> <a href="../index.html" class="navbar-link"></a> </li>
+                    </ul>
+                </nav>
+                <!--OTURUM AÇ-->
+                <div class="navbar-actions">
+                    <a href="../diger_html/oturumac.html" class="navbar-signin"><span>Oturum Aç</span></a>
+                </div>
+            </div>
+        </header>
+        <!--MAİN-->
+        <main>
+            <!--FİLM BAŞLIĞI-->
+            <section class="movies">
+                <div class="filter-bar">
+                    <h1>THE DARK NİGHT</h1>
+                </div>
+            </section>
+            <!--FİLM CONTAİNER-->
+            <div class="filmcontainer">
+                <!--FİLM PERDESİ-->
+                <iframe class="filmcercevesi" name="filmperdesi" src="../filmler/spiderman.mp4"></iframe>
+                <div class="bosluk"></div>
+                <!--DİĞER FİLMLER-->
+                <div class="digerfilmler">
+                    <div class="digerfilmlertext">
+                        <h3 class="digerfilmlerimizbaslik">Diğer Filmlerimiz</h3>
+                    </div>
+                    <iframe class="digerfilmleriframeclass" target="" name="digerfilmleriframe"
+                        src="../iframe_icin_filmler.html"></iframe>
+                </div>
+            </div>
+        </main>
+    </div>
+    <!--JSS BAĞLANTI-->
+    <script src="../js/main.js"></script>
+</body>
+
+</html>

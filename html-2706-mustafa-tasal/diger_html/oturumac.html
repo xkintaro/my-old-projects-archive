@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="images/icon.webp" type="image/png">
+    <title>Giriş & Kayıt</title>
+    <!--CSS BAĞLANTI-->
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/media_query.css">
+</head>
+
+<body>
+    <!--MAİN CONTAİNER-->
+    <div class="container">
+        <!--HEADER-->
+        <header>
+            <div class="navbar">
+                <!--NAVBAR MENÜLER TELEFON GÖRÜNÜMÜ-->
+                <button class="navbar-menu-btn">
+                    <span class="one"></span>
+                    <span class="two"></span>
+                    <span class="three"></span>
+                </button>
+                <a href="../index.html" class="navbar-brand">
+                    <img src="../images/logo.webp">
+                </a>
+                <!--NAVBAR MENÜLER-->
+                <nav>
+                    <ul class="navbar-nav">
+                        <li> <a href="../index.html" class="navbar-link">AnaSayfa</a> </li>
+                        <li> <a href="../index.html" class="navbar-link"></a> </li>
+                        <li> <a href="../index.html" class="navbar-link"></a> </li>
+                    </ul>
+                </nav>
+                <!--OTURUM AÇ-->
+                <div class="navbar-actions">
+                    <a href="diger_html/oturumac.html" class="navbar-signin"><span></span></a>
+                </div>
+            </div>
+        </header>
+        <!--MAİN-->
+        <main>
+            <!--DROPDOWN MENÜ-->
+            <section class="movies">
+                <div class="filter-bar">
+                    <h3>Kayıt ol veya Giriş yap</h3>
+                </div>
+            </section>
+            <!--OTURUMMM-->
+            <div class="ana_oturum">
+                <!--giriş-->
+                <div class="oturumcontainer">
+                    <div class="oturum_baslik">
+                        <h2 class="oturumbaslik_h2">Giriş</h2>
+                    </div>
+                    <div class="oturum_input">
+                        <h3 class="oturum_text">Kullanıcı Adı Giriniz</h3><br>
+                        <input type="text" class="oturum_input_class"><br><br><br><br>
+                        <h3 class="oturum_text">Şifrenizi Giriniz</h3><br>
+                        <input type="password" class="oturum_input_class"><br>
+                    </div>
+                    <div class="buttonoturum">
+                        <input type="button" value="Giriş" class="giris_button">
+                    </div>
+                </div>
+                <!--kayıt-->
+                <div class="oturumcontainer">
+                    <div class="oturum_baslik">
+                        <h2 class="oturumbaslik_h2">Kayıt</h2>
+                    </div>
+                    <div class="oturum_input">
+                        <h3 class="oturum_text">Kullanıcı Adı Seçiniz</h3><br>
+                        <input type="text" class="oturum_input_class"><br><br><br><br>
+                        <h3 class="oturum_text">Şifrenizi Belirleyiniz</h3><br>
+                        <input type="password" class="oturum_input_class"><br>
+                    </div>
+                    <div class="buttonoturum">
+                        <input type="button" value="Kayıt" class="giris_button">
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <!--JSS BAĞLANTI-->
+  <script src="../js/main.js"></script>
+</body>
+
+</html>

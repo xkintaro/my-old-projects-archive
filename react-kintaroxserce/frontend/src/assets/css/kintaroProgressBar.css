@@ -1,0 +1,56 @@
+.kintaro-progress-bar-container {
+    width: 100%;
+    margin: 15px 0;
+  }
+  
+  .kintaro-progress-title {
+    font-size: 14px;
+    margin-bottom: 8px;
+    color: var(--kintaro-text-secondary);
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .kintaro-progress-bar {
+    width: 100%;
+    height: 10px;
+    background-color: var(--kintaro-background-tertiary);
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .kintaro-progress-fill {
+    height: 100%;
+    background-color: var(--kintaro-accent);
+    width: 0;
+    transition: width 0.3s ease;
+    border-radius: 5px;
+  }
+  
+  .kintaro-progress-text {
+    font-size: 12px;
+    text-align: right;
+    margin-top: 5px;
+    color: var(--kintaro-text-secondary);
+  }
+  
+  @keyframes progressAnimation {
+    0% { background-position: 0 0; }
+    100% { background-position: 20px 0; }
+  }
+  
+  .kintaro-progress-fill.animated {
+    background-image: linear-gradient(
+      -45deg,
+      rgba(255, 255, 255, 0.2) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.2) 50%,
+      rgba(255, 255, 255, 0.2) 75%,
+      transparent 75%,
+      transparent
+    );
+    background-size: 20px 20px;
+    animation: progressAnimation 1s linear infinite;
+  }

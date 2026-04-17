@@ -1,0 +1,19 @@
+.kintaro-rating {
+    display: flex;
+    align-items: center;
+    gap: var(--kintaro-spacing-content-xs);
+}
+
+.kintaro-rating-icon {
+    font-size: var(--kintaro-font-md);
+    color: yellow;
+    user-select: none;
+}
+
+.kintaro-rating-text {
+    font-size: var(--kintaro-font-md);
+    font-weight: var(--kintaro-font-weight);
+    text-shadow: var(--kintaro-text-shadow);
+    color: yellow;
+    user-select: none;
+}

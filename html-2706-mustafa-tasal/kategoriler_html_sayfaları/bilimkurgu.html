@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bilim Kurgu Filmleri</title>
+    <!--CSS BAĞLANTI-->
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/media_query.css">
+</head>
+
+<body>
+    <!--MAİN CONTAİNER-->
+    <div class="container">
+        <!--HEADER-->
+        <header>
+            <div class="navbar">
+                <!--NAVBAR MENÜLER TELEFON GÖRÜNÜMÜ-->
+                <button class="navbar-menu-btn">
+                    <span class="one"></span>
+                    <span class="two"></span>
+                    <span class="three"></span>
+                </button>
+                <a href="#" class="navbar-brand">
+                    <img src="../images/logo.webp">
+                </a>
+                <!--NAVBAR MENÜLER-->
+                <nav>
+                    <ul class="navbar-nav">
+                        <li> <a href="../index.html" class="navbar-link">AnaSayfa</a> </li>
+                        <li> <a href="../diger_html/hakkimda.html" class="navbar-link"></a> </li>
+                        <li> <a href="#kategoriler" class="navbar-link"></a> </li>
+                    </ul>
+                </nav>
+                <!--OTURUM AÇ-->
+                <div class="navbar-actions">
+                    <a href="../diger_html/oturumac.html" class="navbar-signin"><span>Oturum Aç</span></a>
+                </div>
+            </div>
+        </header>
+        <!--MAİN-->
+        <main>
+            <!--DROPDOWN MENÜ-->
+            <section class="movies">
+                <div class="filter-bar">
+                    <div class="filter-dropdowns">
+                        <h3>BİLİM KURGU FİLMLERİ</h3>
+                    </div>
+                </div>
+                <!--FİLMLER-->
+                <!--Matrix-->
+                <div class="movies-grid">
+                    <a href="../html_sayfalari/matrix.html">
+                        <div class="movie-card">
+                            <div class="card-head">
+                                <img src="../images/movies/matrix.webp" class="card-img">
+                                <div class="card-overlay">
+                                    <div class="rating">
+                                        <span>8.1</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title">The Matrix Resurrections</h3>
+                                <div class="card-info">
+                                    <span class="genre">Bilim Kurgu</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <!--Eternals-->
+                    <a href="../html_sayfalari/eternals.html">
+                        <div class="movie-card">
+                            <div class="card-head">
+                                <img src="../images/movies/eternals.webp" class="card-img">
+                                <div class="card-overlay">
+                                    <div class="rating">
+                                        <span>6.8</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title">Eternals</h3>
+                                <div class="card-info">
+                                    <span class="genre">Bilim Kurgu</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <!--Dune-->
+                    <a href="../html_sayfalari/dune.html">
+                        <div class="movie-card">
+                            <div class="card-head">
+                                <img src="../images/movies/dune.webp" class="card-img">
+                                <div class="card-overlay">
+                                    <div class="rating">
+                                        <span>8.2</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title">Dune</h3>
+                                <div class="card-info">
+                                    <span class="genre">Bilim Kurgu</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+<script src="../js/main.js"></script>
+
+</html>
