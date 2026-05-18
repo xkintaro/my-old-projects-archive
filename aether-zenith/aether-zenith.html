@@ -1,0 +1,2263 @@
+<!DOCTYPE html>
+<html lang="tr" class="antialiased">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AetherUI</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap"
+    rel="stylesheet" />
+
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ["Inter", "sans-serif"],
+            display: ['"Plus Jakarta Sans"', "sans-serif"],
+          },
+          colors: {
+            dark: "#09090b",
+            surface: "#18181b",
+            border: "#27272a",
+            primary: "#3b82f6",
+          },
+          transitionTimingFunction: {
+            "out-expo": "cubic-bezier(0.16, 1, 0.3, 1)",
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    .transition-base {
+      transition-property: all;
+      transition-duration: 300ms;
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-50 dark:bg-dark text-zinc-900 dark:text-zinc-200 min-h-screen">
+  <header
+    class="fixed top-0 w-full z-50 border-b border-zinc-200 dark:border-border bg-white/80 dark:bg-dark/80 backdrop-blur-xl">
+    <div class="max-w-[1600px] mx-auto px-4 lg:px-6 h-16 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-2.5 group">
+        <div
+          class="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white shadow-lg shadow-blue-500/30 transition-transform group-hover:scale-105">
+          <i class="ph-bold ph-diamond text-lg"></i>
+        </div>
+        <span class="font-display font-bold text-lg tracking-tight text-zinc-900 dark:text-white">
+          Aether<span class="text-blue-600">UI</span>
+        </span>
+      </a>
+
+      <nav class="hidden xl:flex items-center gap-1">
+        <a href="#"
+          class="px-3 py-2 text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+          Dashboard
+        </a>
+
+        <div class="relative">
+          <button data-trigger="ui-control" data-target="dd-solutions"
+            class="flex items-center gap-1 px-3 py-2 text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors group">
+            Çözümler
+            <i class="ph-bold ph-caret-down text-xs transition-transform group-aria-expanded:rotate-180"></i>
+          </button>
+
+          <div id="dd-solutions" data-click-outside
+            class="hidden absolute top-full left-0 mt-2 w-72 p-2 bg-white dark:bg-surface border border-zinc-200 dark:border-border rounded-xl shadow-xl origin-top-left z-50 transition-base opacity-0 scale-95 transform"
+            data-active-class="opacity-100 scale-100" data-inactive-class="opacity-0 scale-95">
+            <div class="px-2 py-1.5 mb-1 text-[10px] font-bold text-zinc-400 uppercase tracking-wider">
+              Sektörel
+            </div>
+
+            <a href="#"
+              class="flex items-start gap-3 px-2 py-2 rounded-lg hover:bg-zinc-50 dark:hover:bg-white/5 group transition-colors">
+              <div class="mt-0.5 text-blue-500">
+                <i class="ph-duotone ph-bank text-lg"></i>
+              </div>
+              <div>
+                <div class="text-sm font-medium text-zinc-700 dark:text-zinc-200 group-hover:text-blue-600">
+                  Finansal Servisler
+                </div>
+                <div class="text-xs text-zinc-500 dark:text-zinc-500">
+                  Güvenli ödeme altyapıları.
+                </div>
+              </div>
+            </a>
+            <a href="#"
+              class="flex items-start gap-3 px-2 py-2 rounded-lg hover:bg-zinc-50 dark:hover:bg-white/5 group transition-colors">
+              <div class="mt-0.5 text-emerald-500">
+                <i class="ph-duotone ph-shopping-cart text-lg"></i>
+              </div>
+              <div>
+                <div class="text-sm font-medium text-zinc-700 dark:text-zinc-200 group-hover:text-emerald-600">
+                  E-Ticaret
+                </div>
+                <div class="text-xs text-zinc-500 dark:text-zinc-500">
+                  Ölçeklenebilir mağaza yönetimi.
+                </div>
+              </div>
+            </a>
+            <a href="#"
+              class="flex items-start gap-3 px-2 py-2 rounded-lg hover:bg-zinc-50 dark:hover:bg-white/5 group transition-colors">
+              <div class="mt-0.5 text-purple-500">
+                <i class="ph-duotone ph-graduation-cap text-lg"></i>
+              </div>
+              <div>
+                <div class="text-sm font-medium text-zinc-700 dark:text-zinc-200 group-hover:text-purple-600">
+                  Eğitim Kurumları
+                </div>
+                <div class="text-xs text-zinc-500 dark:text-zinc-500">
+                  LMS ve öğrenci sistemleri.
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="relative">
+          <button data-trigger="ui-control" data-target="dd-mega"
+            class="flex items-center gap-1 px-3 py-2 text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors group">
+            Ürünler
+            <i class="ph-bold ph-caret-down text-xs transition-transform group-aria-expanded:rotate-180"></i>
+          </button>
+
+          <div id="dd-mega" data-click-outside
+            class="hidden absolute top-full left-1/2 -translate-x-1/2 mt-4 w-[900px] bg-white dark:bg-surface border border-zinc-200 dark:border-border rounded-2xl shadow-2xl z-50 p-1 transition-base opacity-0 translate-y-2 transform"
+            data-active-class="opacity-100 translate-y-0" data-inactive-class="opacity-0 translate-y-2">
+            <div class="grid grid-cols-12">
+              <div class="col-span-4 p-6 border-r border-zinc-100 dark:border-white/5">
+                <h4 class="text-xs font-bold text-zinc-400 uppercase tracking-wider mb-4 flex items-center gap-2">
+                  <i class="ph-duotone ph-cube"></i> Temel Bileşenler
+                </h4>
+                <ul class="space-y-3">
+                  <li>
+                    <a href="#"
+                      class="flex items-center gap-2 text-sm text-zinc-600 dark:text-zinc-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                      <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+                      Veritabanı Yönetimi
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#"
+                      class="flex items-center gap-2 text-sm text-zinc-600 dark:text-zinc-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                      <span class="w-1.5 h-1.5 rounded-full bg-purple-500"></span>
+                      Kimlik Doğrulama (Auth)
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#"
+                      class="flex items-center gap-2 text-sm text-zinc-600 dark:text-zinc-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                      <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                      Edge Fonksiyonlar
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#"
+                      class="flex items-center gap-2 text-sm text-zinc-600 dark:text-zinc-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                      <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                      Obje Depolama
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="col-span-4 p-6">
+                <h4 class="text-xs font-bold text-zinc-400 uppercase tracking-wider mb-4 flex items-center gap-2">
+                  <i class="ph-duotone ph-plugs-connected"></i> Entegrasyonlar
+                </h4>
+                <div class="grid grid-cols-2 gap-3">
+                  <a href="#"
+                    class="flex items-center gap-2 p-2 rounded-lg bg-zinc-50 dark:bg-white/5 hover:bg-zinc-100 dark:hover:bg-white/10 transition-colors border border-zinc-100 dark:border-white/5">
+                    <i class="ph-bold ph-file-jsx text-blue-500"></i>
+                    <span class="text-xs font-medium text-zinc-700 dark:text-zinc-200">React</span>
+                  </a>
+                  <a href="#"
+                    class="flex items-center gap-2 p-2 rounded-lg bg-zinc-50 dark:bg-white/5 hover:bg-zinc-100 dark:hover:bg-white/10 transition-colors border border-zinc-100 dark:border-white/5">
+                    <i class="ph-bold ph-file-vue text-emerald-500"></i>
+                    <span class="text-xs font-medium text-zinc-700 dark:text-zinc-200">Vue.js</span>
+                  </a>
+                  <a href="#"
+                    class="flex items-center gap-2 p-2 rounded-lg bg-zinc-50 dark:bg-white/5 hover:bg-zinc-100 dark:hover:bg-white/10 transition-colors border border-zinc-100 dark:border-white/5">
+                    <i class="ph-bold ph-file-ts text-blue-400"></i>
+                    <span class="text-xs font-medium text-zinc-700 dark:text-zinc-200">Next.js</span>
+                  </a>
+                  <a href="#"
+                    class="flex items-center gap-2 p-2 rounded-lg bg-zinc-50 dark:bg-white/5 hover:bg-zinc-100 dark:hover:bg-white/10 transition-colors border border-zinc-100 dark:border-white/5">
+                    <i class="ph-bold ph-file-html text-orange-500"></i>
+                    <span class="text-xs font-medium text-zinc-700 dark:text-zinc-200">Svelte</span>
+                  </a>
+                </div>
+              </div>
+
+              <div
+                class="col-span-4 bg-zinc-50 dark:bg-white/5 rounded-r-xl p-6 border-l border-zinc-100 dark:border-border flex flex-col justify-between">
+                <div>
+                  <div class="flex items-center gap-2 mb-2">
+                    <span
+                      class="px-2 py-0.5 rounded text-[10px] font-bold bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 uppercase">Enterprise</span>
+                  </div>
+                  <div class="text-lg font-bold text-zinc-900 dark:text-white mb-1">
+                    Aether Enterprise
+                  </div>
+                  <p class="text-xs text-zinc-500 dark:text-zinc-400 mb-4">
+                    Özel SLA, SSO desteği ve 7/24 öncelikli destek ile işinizi
+                    büyütün.
+                  </p>
+                </div>
+                <div
+                  class="relative h-24 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg shadow-lg mb-3 overflow-hidden flex items-center justify-center">
+                  <i class="ph-duotone ph-buildings text-4xl text-white/80"></i>
+                </div>
+                <a href="#"
+                  class="text-xs font-bold text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1">
+                  Satış ile görüşün <i class="ph-bold ph-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="relative">
+          <button data-trigger="ui-control" data-target="dd-dev"
+            class="flex items-center gap-1 px-3 py-2 text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors group">
+            Geliştirici
+            <i class="ph-bold ph-caret-down text-xs transition-transform group-aria-expanded:rotate-180"></i>
+          </button>
+
+          <div id="dd-dev" data-click-outside
+            class="hidden absolute top-full left-0 mt-2 w-64 p-1.5 bg-white dark:bg-surface border border-zinc-200 dark:border-border rounded-xl shadow-xl origin-top-left z-50 transition-base opacity-0 scale-95 transform"
+            data-active-class="opacity-100 scale-100" data-inactive-class="opacity-0 scale-95">
+            <div class="px-2 py-1.5 text-[10px] font-bold text-zinc-400 uppercase tracking-wider">
+              Kaynaklar
+            </div>
+
+            <a href="#"
+              class="flex items-center gap-2 px-2 py-2 text-sm rounded-lg hover:bg-zinc-50 dark:hover:bg-white/5 text-zinc-700 dark:text-zinc-300">
+              <i class="ph-duotone ph-book-open text-zinc-400"></i>
+              Dokümantasyon
+            </a>
+            <a href="#"
+              class="flex items-center gap-2 px-2 py-2 text-sm rounded-lg hover:bg-zinc-50 dark:hover:bg-white/5 text-zinc-700 dark:text-zinc-300">
+              <i class="ph-duotone ph-code text-zinc-400"></i>
+              API Referansları
+            </a>
+            <a href="#"
+              class="flex items-center gap-2 px-2 py-2 text-sm rounded-lg hover:bg-zinc-50 dark:hover:bg-white/5 text-zinc-700 dark:text-zinc-300">
+              <i class="ph-duotone ph-activity text-green-500"></i>
+              Sistem Durumu
+            </a>
+
+            <div class="h-px bg-zinc-100 dark:bg-white/5 my-1 mx-2"></div>
+
+            <div class="relative w-full group/nest">
+              <button data-trigger="ui-control" data-target="dd-dev-sdks"
+                class="w-full flex items-center justify-between px-2 py-2 text-sm rounded-lg hover:bg-zinc-50 dark:hover:bg-white/5 text-zinc-700 dark:text-zinc-300">
+                <div class="flex items-center gap-2">
+                  <i class="ph-duotone ph-package text-zinc-400"></i>
+                  <span>SDKs & Kütüphaneler</span>
+                </div>
+                <i
+                  class="ph-bold ph-caret-right text-xs text-zinc-400 group-aria-expanded:rotate-90 transition-transform"></i>
+              </button>
+
+              <div id="dd-dev-sdks"
+                class="hidden absolute top-0 left-full ml-2 w-48 p-1.5 bg-white dark:bg-surface border border-zinc-200 dark:border-border rounded-xl shadow-xl transition-base opacity-0 translate-x-[-10px] transform"
+                data-active-class="opacity-100 translate-x-0" data-inactive-class="opacity-0 translate-x-[-10px]"
+                data-click-outside>
+                <a href="#"
+                  class="flex items-center gap-2 px-2 py-2 text-sm rounded-lg hover:bg-zinc-50 dark:hover:bg-white/5 text-zinc-700 dark:text-zinc-300">
+                  <i class="ph-bold ph-file-js text-yellow-500"></i> Node.js
+                </a>
+                <a href="#"
+                  class="flex items-center gap-2 px-2 py-2 text-sm rounded-lg hover:bg-zinc-50 dark:hover:bg-white/5 text-zinc-700 dark:text-zinc-300">
+                  <i class="ph-bold ph-file-py text-blue-500"></i> Python
+                </a>
+                <a href="#"
+                  class="flex items-center gap-2 px-2 py-2 text-sm rounded-lg hover:bg-zinc-50 dark:hover:bg-white/5 text-zinc-700 dark:text-zinc-300">
+                  <i class="ph-bold ph-file-go text-cyan-500"></i> Go Lang
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <div class="flex items-center gap-2 md:gap-4">
+        <button data-trigger="ui-control" data-target="modal-search"
+          class="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full border border-zinc-200 dark:border-border bg-zinc-50 dark:bg-white/5 text-zinc-500 hover:border-blue-500 hover:text-zinc-700 dark:hover:text-zinc-300 transition-colors text-sm">
+          <i class="ph ph-magnifying-glass"></i>
+          <span class="mr-2">Ara...</span>
+          <kbd
+            class="hidden lg:inline-flex h-5 items-center gap-1 px-1.5 text-[10px] font-bold text-zinc-400 bg-white dark:bg-black border border-zinc-200 dark:border-border rounded">⌘K</kbd>
+        </button>
+
+        <div class="relative">
+          <button data-trigger="ui-control" data-target="dd-theme"
+            class="w-9 h-9 flex items-center justify-center rounded-full hover:bg-zinc-100 dark:hover:bg-white/10 text-zinc-600 dark:text-zinc-400 transition-colors">
+            <i class="ph-fill ph-sun dark:hidden"></i>
+            <i class="ph-fill ph-moon hidden dark:inline-flex"></i>
+          </button>
+          <div id="dd-theme" data-click-outside
+            class="hidden absolute top-full right-0 mt-2 w-32 p-1 bg-white dark:bg-surface border border-zinc-200 dark:border-border rounded-xl shadow-xl z-50 transition-base opacity-0 scale-95 transform"
+            data-active-class="opacity-100 scale-100" data-inactive-class="opacity-0 scale-95">
+            <button data-theme="light"
+              class="w-full flex items-center gap-2 px-2 py-2 text-sm rounded-lg hover:bg-zinc-100 dark:hover:bg-white/5 text-zinc-700 dark:text-zinc-300">
+              Açık
+            </button>
+            <button data-theme="dark"
+              class="w-full flex items-center gap-2 px-2 py-2 text-sm rounded-lg hover:bg-zinc-100 dark:hover:bg-white/5 text-zinc-700 dark:text-zinc-300">
+              Koyu
+            </button>
+            <button data-theme="system"
+              class="w-full flex items-center gap-2 px-2 py-2 text-sm rounded-lg hover:bg-zinc-100 dark:hover:bg-white/5 text-zinc-700 dark:text-zinc-300">
+              Sistem
+            </button>
+          </div>
+        </div>
+
+        <button data-trigger="ui-control" data-target="offcanvas-main"
+          class="w-9 h-9 flex items-center justify-center rounded-full hover:bg-zinc-100 dark:hover:bg-white/10 text-zinc-900 dark:text-white transition-colors">
+          <i class="ph-bold ph-list text-xl"></i>
+        </button>
+
+        <a href="#"
+          class="hidden md:inline-flex items-center justify-center px-4 py-2 rounded-full bg-zinc-900 dark:bg-white text-white dark:text-black text-sm font-bold hover:opacity-90 transition-opacity">
+          Giriş Yap
+        </a>
+      </div>
+    </div>
+  </header>
+  <div id="modal-search" data-scroll-lock data-click-outside
+    class="hidden fixed inset-0 z-[100] bg-zinc-900/20 dark:bg-black/80 backdrop-blur-sm flex items-start justify-center pt-[12vh] px-4 transition-base opacity-0"
+    data-active-class="opacity-100" data-inactive-class="opacity-0">
+    <div
+      class="w-full max-w-xl bg-white dark:bg-[#121212] border border-zinc-200 dark:border-border rounded-2xl shadow-2xl overflow-hidden transition-all duration-300 ease-out-expo transform scale-95 opacity-0"
+      data-active-class="scale-100 opacity-100" data-inactive-class="scale-95 opacity-0">
+      <div class="flex items-center px-4 py-4 border-b border-zinc-100 dark:border-border">
+        <i class="ph ph-magnifying-glass text-xl text-zinc-400 mr-3"></i>
+        <input type="text" placeholder="Arama yapın..."
+          class="flex-1 bg-transparent border-none outline-none text-zinc-900 dark:text-white placeholder-zinc-400 h-7"
+          autofocus />
+        <kbd class="text-[10px] bg-zinc-100 dark:bg-white/10 px-2 py-1 rounded text-zinc-500">ESC</kbd>
+      </div>
+
+      <div class="p-2 max-h-64 overflow-y-auto">
+        <div class="text-[10px] font-bold text-zinc-400 px-3 py-2 uppercase tracking-wider">
+          Sonuçlar
+        </div>
+        <a href="#"
+          class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-zinc-50 dark:hover:bg-white/5 group transition-colors">
+          <i class="ph-duotone ph-file-text text-xl text-zinc-400 group-hover:text-blue-500"></i>
+          <div>
+            <div class="text-sm font-medium text-zinc-900 dark:text-zinc-100">
+              API Dokümantasyonu
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div id="offcanvas-main" data-scroll-lock data-click-outside
+    class="hidden fixed inset-0 z-[100] bg-zinc-900/20 dark:bg-black/60 backdrop-blur-sm flex justify-end transition-base opacity-0"
+    data-active-class="opacity-100" data-inactive-class="opacity-0">
+    <div
+      class="w-full max-w-[400px] h-full bg-white dark:bg-surface border-l border-zinc-200 dark:border-border shadow-2xl flex flex-col transition-transform duration-300 ease-out-expo translate-x-full"
+      data-active-class="translate-x-0" data-inactive-class="translate-x-full">
+      <div
+        class="p-5 border-b border-zinc-100 dark:border-border bg-zinc-50/50 dark:bg-white/5 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="relative">
+            <img src="https://i.pravatar.cc/150?u=aetherui" alt="User"
+              class="w-10 h-10 rounded-full border-2 border-white dark:border-zinc-700 shadow-sm" />
+            <div
+              class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white dark:border-surface rounded-full">
+            </div>
+          </div>
+          <div>
+            <div class="text-sm font-bold text-zinc-900 dark:text-white leading-none">
+              Burak Yılmaz
+            </div>
+            <div class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
+              Free Plan •
+              <a href="#" class="text-blue-600 hover:underline">Yükselt</a>
+            </div>
+          </div>
+        </div>
+        <button data-trigger="ui-control" data-target="offcanvas-main"
+          class="w-8 h-8 flex items-center justify-center hover:bg-zinc-200 dark:hover:bg-white/10 rounded-lg text-zinc-500 transition-colors">
+          <i class="ph-bold ph-x text-lg"></i>
+        </button>
+      </div>
+
+      <div class="flex-1 overflow-y-auto p-5 space-y-6 no-scrollbar">
+        <div class="grid grid-cols-2 gap-3">
+          <a href="#"
+            class="flex flex-col items-center justify-center p-3 bg-zinc-50 dark:bg-white/5 rounded-xl border border-zinc-100 dark:border-white/5 hover:border-blue-500/30 hover:bg-blue-50/50 dark:hover:bg-blue-900/10 transition-all group">
+            <i class="ph-duotone ph-squares-four text-2xl text-zinc-400 group-hover:text-blue-500 mb-1"></i>
+            <span class="text-xs font-medium text-zinc-600 dark:text-zinc-300">Dashboard</span>
+          </a>
+          <a href="#"
+            class="flex flex-col items-center justify-center p-3 bg-zinc-50 dark:bg-white/5 rounded-xl border border-zinc-100 dark:border-white/5 hover:border-purple-500/30 hover:bg-purple-50/50 dark:hover:bg-purple-900/10 transition-all group">
+            <i class="ph-duotone ph-chart-pie-slice text-2xl text-zinc-400 group-hover:text-purple-500 mb-1"></i>
+            <span class="text-xs font-medium text-zinc-600 dark:text-zinc-300">Analizler</span>
+          </a>
+        </div>
+
+        <div class="space-y-1">
+          <div class="text-[10px] font-bold text-zinc-400 uppercase tracking-wider px-2 mb-2">
+            Navigasyon
+          </div>
+
+          <a href="#"
+            class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-zinc-50 dark:hover:bg-white/5 text-zinc-600 dark:text-zinc-300 transition-colors">
+            <i class="ph-duotone ph-house text-lg"></i>
+            <span class="text-sm font-medium">Ana Sayfa</span>
+          </a>
+
+          <div data-ui="accordion-group">
+            <button data-trigger="accordion" data-target="acc-platform"
+              class="w-full flex items-center justify-between px-3 py-2.5 rounded-lg hover:bg-zinc-50 dark:hover:bg-white/5 text-zinc-600 dark:text-zinc-300 group transition-colors">
+              <div class="flex items-center gap-3">
+                <i class="ph-duotone ph-stack text-lg"></i>
+                <span class="text-sm font-medium">Platform</span>
+              </div>
+              <i
+                class="ph-bold ph-caret-down text-xs text-zinc-400 group-aria-expanded:rotate-180 transition-transform"></i>
+            </button>
+            <div id="acc-platform" data-ui="accordion-panel"
+              class="hidden overflow-hidden transition-all duration-300 ease-out-expo max-h-0 opacity-0"
+              data-active-class="max-h-48 opacity-100" data-inactive-class="max-h-0 opacity-0">
+              <div class="pl-10 pr-2 py-1 space-y-1 border-l border-zinc-100 dark:border-white/5 ml-5">
+                <a href="#"
+                  class="block py-1.5 text-sm text-zinc-500 dark:text-zinc-400 hover:text-blue-600 dark:hover:text-blue-400">Veritabanı</a>
+                <a href="#"
+                  class="block py-1.5 text-sm text-zinc-500 dark:text-zinc-400 hover:text-blue-600 dark:hover:text-blue-400">Depolama</a>
+                <a href="#"
+                  class="block py-1.5 text-sm text-zinc-500 dark:text-zinc-400 hover:text-blue-600 dark:hover:text-blue-400">Fonksiyonlar</a>
+              </div>
+            </div>
+          </div>
+          <div data-ui="accordion-group">
+            <button data-trigger="accordion" data-target="acc-community"
+              class="w-full flex items-center justify-between px-3 py-2.5 rounded-lg hover:bg-zinc-50 dark:hover:bg-white/5 text-zinc-600 dark:text-zinc-300 group transition-colors">
+              <div class="flex items-center gap-3">
+                <i class="ph-duotone ph-users-three text-lg"></i>
+                <span class="text-sm font-medium">Topluluk</span>
+              </div>
+              <i
+                class="ph-bold ph-caret-down text-xs text-zinc-400 group-aria-expanded:rotate-180 transition-transform"></i>
+            </button>
+            <div id="acc-community" data-ui="accordion-panel"
+              class="hidden overflow-hidden transition-all duration-300 ease-out-expo max-h-0 opacity-0"
+              data-active-class="max-h-48 opacity-100" data-inactive-class="max-h-0 opacity-0">
+              <div class="pl-10 pr-2 py-1 space-y-1 border-l border-zinc-100 dark:border-white/5 ml-5">
+                <a href="#"
+                  class="block py-1.5 text-sm text-zinc-500 dark:text-zinc-400 hover:text-blue-600 dark:hover:text-blue-400">Discord
+                  Sunucusu</a>
+                <a href="#"
+                  class="block py-1.5 text-sm text-zinc-500 dark:text-zinc-400 hover:text-blue-600 dark:hover:text-blue-400">Forumlar</a>
+                <a href="#"
+                  class="block py-1.5 text-sm text-zinc-500 dark:text-zinc-400 hover:text-blue-600 dark:hover:text-blue-400">Etkinlikler</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="p-4 rounded-xl bg-zinc-50 dark:bg-white/5 border border-zinc-100 dark:border-white/5">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-bold text-zinc-500 dark:text-zinc-400">Depolama Alanı</span>
+            <span class="text-xs font-medium text-blue-600 dark:text-blue-400">75%</span>
+          </div>
+          <div class="w-full h-2 bg-zinc-200 dark:bg-white/10 rounded-full overflow-hidden">
+            <div class="h-full bg-blue-600 rounded-full w-3/4"></div>
+          </div>
+          <div class="mt-2 text-[10px] text-zinc-400">
+            7.5GB / 10GB Kullanılıyor
+          </div>
+        </div>
+      </div>
+      <div class="p-5 border-t border-zinc-100 dark:border-border bg-white dark:bg-surface space-y-4">
+        <button
+          class="w-full flex items-center justify-between px-3 py-2 rounded-lg border border-zinc-200 dark:border-white/10 hover:border-zinc-300 dark:hover:border-white/20 bg-transparent text-sm text-zinc-700 dark:text-zinc-300 transition-colors">
+          <div class="flex items-center gap-2">
+            <i class="ph-duotone ph-globe text-zinc-400"></i>
+            <span>Türkçe (TR)</span>
+          </div>
+          <i class="ph-bold ph-caret-down text-xs text-zinc-400"></i>
+        </button>
+        <div class="grid grid-cols-3 gap-2 p-1 bg-zinc-100 dark:bg-white/5 rounded-lg">
+          <button data-theme="light"
+            class="flex items-center justify-center py-1.5 rounded-md text-zinc-500 hover:bg-white dark:hover:bg-white/10 hover:text-zinc-900 dark:hover:text-white hover:shadow-sm transition-all">
+            <i class="ph-fill ph-sun"></i>
+          </button>
+          <button data-theme="dark"
+            class="flex items-center justify-center py-1.5 rounded-md text-zinc-500 hover:bg-white dark:hover:bg-white/10 hover:text-zinc-900 dark:hover:text-white hover:shadow-sm transition-all">
+            <i class="ph-fill ph-moon"></i>
+          </button>
+          <button data-theme="system"
+            class="flex items-center justify-center py-1.5 rounded-md text-zinc-500 hover:bg-white dark:hover:bg-white/10 hover:text-zinc-900 dark:hover:text-white hover:shadow-sm transition-all">
+            <i class="ph-fill ph-desktop"></i>
+          </button>
+        </div>
+        <a href="#"
+          class="flex items-center justify-center gap-2 w-full py-2.5 text-sm font-bold text-red-600 hover:bg-red-50 dark:hover:bg-red-900/10 rounded-xl transition-colors">
+          <i class="ph-bold ph-sign-out"></i> Çıkış Yap
+        </a>
+      </div>
+    </div>
+  </div>
+  <section class="relative overflow-hidden bg-white dark:bg-dark pt-32 pb-24 lg:pt-40 lg:pb-40">
+    <div class="absolute inset-0 pointer-events-none">
+      <div
+        class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-soft-light">
+      </div>
+      <div
+        class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]">
+      </div>
+
+      <div
+        class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-blue-500/20 dark:bg-blue-500/10 blur-[120px] rounded-full">
+      </div>
+      <div
+        class="absolute bottom-0 right-0 w-[600px] h-[600px] bg-purple-500/20 dark:bg-purple-500/10 blur-[100px] rounded-full">
+      </div>
+    </div>
+    <div class="relative z-10 max-w-[1600px] mx-auto px-4 lg:px-6">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div class="text-center lg:text-left space-y-8">
+          <div
+            class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-100 dark:bg-white/5 border border-zinc-200 dark:border-white/10 text-zinc-600 dark:text-zinc-300 text-xs font-medium">
+            <span class="relative flex h-2 w-2">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+            </span>
+            v1.0.0 Stabil Sürüm Yayında
+          </div>
+
+          <h1
+            class="text-5xl lg:text-7xl font-display font-bold tracking-tight text-zinc-900 dark:text-white leading-[1.1]">
+            Arayüzlerinizi <br />
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-600">Işık
+              Hızında</span>
+            Tasarlayın.
+          </h1>
+
+          <p class="text-lg lg:text-xl text-zinc-500 dark:text-zinc-400 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+            AetherUI, modern web uygulamaları için geliştirilmiş, DOM
+            manipülasyonunu minimize eden, utility-first bir JavaScript
+            kontrolcüsüdür. Karmaşık state yönetimine son.
+          </p>
+
+          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+            <a href="#"
+              class="w-full sm:w-auto px-8 py-4 rounded-full bg-zinc-900 dark:bg-white text-white dark:text-black font-bold text-sm hover:scale-105 active:scale-95 transition-transform flex items-center justify-center gap-2 shadow-xl shadow-zinc-500/20">
+              Hemen Başla
+              <i class="ph-bold ph-arrow-right"></i>
+            </a>
+            <button
+              class="w-full sm:w-auto px-8 py-4 rounded-full bg-white dark:bg-white/5 border border-zinc-200 dark:border-white/10 text-zinc-700 dark:text-zinc-200 font-bold text-sm hover:bg-zinc-50 dark:hover:bg-white/10 transition-colors flex items-center justify-center gap-2">
+              <i class="ph-bold ph-play-circle text-xl text-blue-600"></i>
+              Demoyu İzle
+            </button>
+          </div>
+
+          <div class="pt-8 border-t border-zinc-200 dark:border-white/5">
+            <p class="text-xs font-bold text-zinc-400 uppercase tracking-wider mb-4">
+              1000+ Geliştirici Tarafından Kullanılıyor
+            </p>
+            <div
+              class="flex items-center justify-center lg:justify-start gap-6 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
+              <div class="flex items-center gap-1 font-bold text-zinc-900 dark:text-white">
+                <i class="ph-fill ph-google-logo text-xl"></i> Google
+              </div>
+              <div class="flex items-center gap-1 font-bold text-zinc-900 dark:text-white">
+                <i class="ph-fill ph-microsoft-logo text-xl"></i> Microsoft
+              </div>
+              <div class="flex items-center gap-1 font-bold text-zinc-900 dark:text-white">
+                <i class="ph-fill ph-spotify-logo text-xl"></i> Spotify
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="relative hidden lg:block group">
+          <div
+            class="absolute -inset-4 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-[40px] blur-2xl -z-10 transition-opacity duration-500 group-hover:opacity-75">
+          </div>
+
+          <div class="relative bg-[#0F1117] rounded-2xl border border-white/10 shadow-2xl overflow-hidden">
+            <div class="flex items-center justify-between px-4 py-3 bg-[#18181B] border-b border-white/5">
+              <div class="flex items-center gap-2">
+                <div class="w-3 h-3 rounded-full bg-[#FF5F56]"></div>
+                <div class="w-3 h-3 rounded-full bg-[#FFBD2E]"></div>
+                <div class="w-3 h-3 rounded-full bg-[#27C93F]"></div>
+              </div>
+              <div class="text-xs text-zinc-500 font-mono">index.html</div>
+            </div>
+
+            <div class="p-6 overflow-hidden">
+              <pre class="font-mono text-[13px] leading-7 text-zinc-300">
+<span class="text-zinc-500">&lt;!-- 1. Dropdown Trigger --&gt;</span>
+<span class="text-blue-400">&lt;button</span>
+  <span class="text-purple-400">data-trigger</span>=<span class="text-green-400">"ui-control"</span>
+  <span class="text-purple-400">data-target</span>=<span class="text-green-400">"settings-menu"</span>
+  <span class="text-purple-400">class</span>=<span class="text-green-400">"btn btn-primary"</span>
+<span class="text-blue-400">&gt;</span>
+  Ayarlar
+<span class="text-blue-400">&lt;/button&gt;</span>
+
+<span class="text-zinc-500">&lt;!-- 2. Target Element (Auto-Managed) --&gt;</span>
+<span class="text-blue-400">&lt;div</span>
+  <span class="text-purple-400">id</span>=<span class="text-green-400">"settings-menu"</span>
+  <span class="text-purple-400">data-click-outside</span>
+  <span class="text-purple-400">class</span>=<span class="text-green-400">"hidden absolute mt-2..."</span>
+<span class="text-blue-400">&gt;</span>
+  <span class="text-blue-400">&lt;a</span> <span class="text-purple-400">href</span>=<span class="text-green-400">"#"</span><span class="text-blue-400">&gt;</span>Profil Düzenle<span class="text-blue-400">&lt;/a&gt;</span>
+  <span class="text-blue-400">&lt;a</span> <span class="text-purple-400">href</span>=<span class="text-green-400">"#"</span><span class="text-blue-400">&gt;</span>Güvenlik<span class="text-blue-400">&lt;/a&gt;</span>
+<span class="text-blue-400">&lt;/div&gt;</span>
+</pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="announcement-bar" class="fixed bottom-0 left-0 right-0 z-[60] animate-[slideInUp_0.5s_ease-out]">
+    <div class="relative bg-indigo-600 text-white overflow-hidden shadow-2xl">
+      <div
+        class="absolute top-0 left-0 w-full h-full opacity-10 bg-[url('https://grainy-gradients.vercel.app/noise.svg')]">
+      </div>
+
+      <div class="max-w-[1600px] mx-auto px-4 lg:px-6 py-3 flex items-center justify-between relative z-10">
+        <div class="flex items-center gap-3 text-sm font-medium">
+          <span
+            class="flex items-center justify-center px-2 py-0.5 rounded bg-white/20 backdrop-blur-md text-xs font-bold uppercase tracking-wide border border-white/10">
+            Yeni
+          </span>
+          <p>
+            <span class="hidden sm:inline">AetherUI v1.0.0 yayınlandı!</span>
+            <span class="opacity-80">Render performansı %40 artırıldı.</span>
+            <a href="#" class="underline decoration-white/40 hover:decoration-white ml-1 transition-all">Değişiklikleri
+              gör &rarr;</a>
+          </p>
+        </div>
+
+        <button data-trigger="ui-control" data-target="announcement-bar" data-action="remove"
+          class="p-1 rounded-md hover:bg-white/20 transition-colors text-white/80 hover:text-white"
+          aria-label="Duyuruyu Kapat">
+          <i class="ph-bold ph-x"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <section
+    class="py-32 bg-zinc-50 dark:bg-[#0B0C0E] border-t border-zinc-200 dark:border-white/5 relative overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none">
+      <div
+        class="absolute right-0 top-1/4 w-[600px] h-[600px] bg-indigo-500/10 dark:bg-indigo-500/5 blur-[100px] rounded-full mix-blend-multiply dark:mix-blend-soft-light">
+      </div>
+      <div
+        class="absolute left-0 bottom-0 w-[500px] h-[500px] bg-blue-500/10 dark:bg-blue-500/5 blur-[100px] rounded-full mix-blend-multiply dark:mix-blend-soft-light">
+      </div>
+    </div>
+    <div class="max-w-[1600px] mx-auto px-4 lg:px-6 relative z-10">
+      <div class="grid lg:grid-cols-2 gap-20 items-start">
+        <div class="space-y-10 lg:sticky lg:top-32">
+          <div>
+            <h2 class="text-4xl md:text-5xl font-display font-bold text-zinc-900 dark:text-white leading-[1.1]">
+              Kod Karmaşasına <br />
+              <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-blue-600">Son Verin.</span>
+            </h2>
+            <p class="mt-6 text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed">
+              İç içe geçmiş bileşenler genellikle "Z-Index savaşlarına" ve
+              "Event Bubbling" sorunlarına yol açar. AetherUI, DOM
+              hiyerarşisini izole ederek bu sorunları kökten çözer.
+            </p>
+          </div>
+
+          <div class="space-y-6">
+            <div class="flex gap-5 group">
+              <div
+                class="w-12 h-12 shrink-0 rounded-2xl bg-white dark:bg-white/5 border border-zinc-200 dark:border-white/10 flex items-center justify-center text-indigo-600 dark:text-indigo-400 shadow-lg shadow-indigo-500/10 group-hover:scale-110 transition-transform duration-300">
+                <i class="ph-duotone ph-tree-structure text-2xl"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-zinc-900 dark:text-white text-lg">
+                  Scope İzolasyonu
+                </h3>
+                <p class="text-sm text-zinc-500 dark:text-zinc-400 mt-2">
+                  Bir tab içerisindeki olaylar, üst katmandaki tabları
+                  etkilemez. Her bileşen kendi dünyasında yaşar.
+                </p>
+              </div>
+            </div>
+            <div class="flex gap-5 group">
+              <div
+                class="w-12 h-12 shrink-0 rounded-2xl bg-white dark:bg-white/5 border border-zinc-200 dark:border-white/10 flex items-center justify-center text-blue-600 dark:text-blue-400 shadow-lg shadow-blue-500/10 group-hover:scale-110 transition-transform duration-300">
+                <i class="ph-duotone ph-code-block text-2xl"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-zinc-900 dark:text-white text-lg">
+                  Sıfır JS Config
+                </h3>
+                <p class="text-sm text-zinc-500 dark:text-zinc-400 mt-2">
+                  JavaScript dosyanızda `new Tab()` tanımlamanıza gerek yok.
+                  HTML attribute'ları yeterli.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="relative">
+          <div
+            class="bg-white dark:bg-[#18181B] rounded-3xl border border-zinc-200 dark:border-white/10 shadow-2xl overflow-hidden ring-4 ring-zinc-50 dark:ring-white/5">
+            <div data-ui="tab-group" data-default-tab="view-ui">
+              <div
+                class="flex items-center justify-between px-6 py-4 border-b border-zinc-100 dark:border-white/5 bg-zinc-50/50 dark:bg-white/5">
+                <div class="flex space-x-2">
+                  <div class="w-3 h-3 rounded-full bg-red-400/80"></div>
+                  <div class="w-3 h-3 rounded-full bg-amber-400/80"></div>
+                  <div class="w-3 h-3 rounded-full bg-green-400/80"></div>
+                </div>
+
+                <div class="flex p-1 bg-zinc-200/50 dark:bg-black/20 rounded-lg">
+                  <button data-trigger="tab" data-target="view-ui"
+                    class="px-4 py-1.5 text-xs font-bold rounded-md transition-all shadow-sm"
+                    data-active-class="bg-white dark:bg-zinc-700 text-zinc-900 dark:text-white"
+                    data-inactive-class="text-zinc-500 hover:text-zinc-700 dark:text-zinc-400">
+                    Arayüz
+                  </button>
+                  <button data-trigger="tab" data-target="view-code"
+                    class="px-4 py-1.5 text-xs font-bold rounded-md transition-all shadow-sm"
+                    data-active-class="bg-white dark:bg-zinc-700 text-zinc-900 dark:text-white"
+                    data-inactive-class="text-zinc-500 hover:text-zinc-700 dark:text-zinc-400">
+                    Kod
+                  </button>
+                </div>
+              </div>
+
+              <div class="relative min-h-[500px]">
+                <div id="view-ui" data-ui="tab-panel" class="absolute inset-0 bg-white dark:bg-[#18181B]">
+                  <div class="h-full flex flex-col">
+                    <div class="flex flex-1 h-full" data-ui="tab-group" data-default-tab="p-settings">
+                      <div
+                        class="w-64 bg-zinc-50 dark:bg-black/20 border-r border-zinc-100 dark:border-white/5 p-4 flex flex-col gap-1">
+                        <div class="px-3 py-4 mb-2">
+                          <h4 class="text-xs font-bold text-zinc-400 uppercase tracking-wider">
+                            Hesap
+                          </h4>
+                        </div>
+
+                        <button data-trigger="tab" data-target="p-profile"
+                          class="flex items-center gap-3 px-3 py-2.5 text-sm font-medium rounded-xl text-left transition-all"
+                          data-active-class="bg-white dark:bg-white/10 text-zinc-900 dark:text-white shadow-sm"
+                          data-inactive-class="text-zinc-500 hover:text-zinc-700 hover:bg-zinc-200/50 dark:hover:bg-white/5">
+                          <i class="ph-bold ph-user"></i> Profil
+                        </button>
+
+                        <button data-trigger="tab" data-target="p-settings"
+                          class="flex items-center gap-3 px-3 py-2.5 text-sm font-medium rounded-xl text-left transition-all"
+                          data-active-class="bg-white dark:bg-white/10 text-zinc-900 dark:text-white shadow-sm"
+                          data-inactive-class="text-zinc-500 hover:text-zinc-700 hover:bg-zinc-200/50 dark:hover:bg-white/5">
+                          <i class="ph-bold ph-gear"></i> Ayarlar
+                        </button>
+
+                        <button data-trigger="tab" data-target="p-billing"
+                          class="flex items-center gap-3 px-3 py-2.5 text-sm font-medium rounded-xl text-left transition-all"
+                          data-active-class="bg-white dark:bg-white/10 text-zinc-900 dark:text-white shadow-sm"
+                          data-inactive-class="text-zinc-500 hover:text-zinc-700 hover:bg-zinc-200/50 dark:hover:bg-white/5">
+                          <i class="ph-bold ph-credit-card"></i> Ödemeler
+                        </button>
+                      </div>
+
+                      <div class="flex-1 p-8 overflow-y-auto">
+                        <div id="p-profile" data-ui="tab-panel" class="hidden animate-[fadeIn_0.2s_ease-out]">
+                          <h3 class="text-xl font-bold text-zinc-900 dark:text-white mb-4">
+                            Profil
+                          </h3>
+                          <div
+                            class="h-32 rounded-xl bg-zinc-100 dark:bg-white/5 border border-zinc-200 dark:border-white/5 flex items-center justify-center text-zinc-400">
+                            Profil İçeriği
+                          </div>
+                        </div>
+
+                        <div id="p-settings" data-ui="tab-panel" class="hidden animate-[fadeIn_0.2s_ease-out]">
+                          <div class="mb-6">
+                            <h3 class="text-xl font-bold text-zinc-900 dark:text-white">
+                              Ayarlar
+                            </h3>
+                            <p class="text-sm text-zinc-500">
+                              Uygulama tercihlerinizi yapılandırın.
+                            </p>
+                          </div>
+
+                          <div data-ui="tab-group" data-default-tab="sub-notif">
+                            <div class="flex gap-6 border-b border-zinc-200 dark:border-white/10 mb-6">
+                              <button data-trigger="tab" data-target="sub-general"
+                                class="pb-3 text-sm font-medium border-b-2 transition-colors"
+                                data-active-class="text-indigo-600 dark:text-indigo-400 border-indigo-600 dark:border-indigo-400"
+                                data-inactive-class="text-zinc-500 border-transparent hover:text-zinc-800">
+                                Genel
+                              </button>
+                              <button data-trigger="tab" data-target="sub-notif"
+                                class="pb-3 text-sm font-medium border-b-2 transition-colors"
+                                data-active-class="text-indigo-600 dark:text-indigo-400 border-indigo-600 dark:border-indigo-400"
+                                data-inactive-class="text-zinc-500 border-transparent hover:text-zinc-800">
+                                Bildirimler
+                              </button>
+                            </div>
+
+                            <div id="sub-notif" data-ui="tab-panel" class="hidden animate-[fadeIn_0.2s_ease-out]">
+                              <div class="space-y-4">
+                                <div
+                                  class="flex items-center justify-between p-4 rounded-xl border border-zinc-200 dark:border-white/10">
+                                  <div>
+                                    <div class="font-bold text-sm text-zinc-900 dark:text-white">
+                                      E-posta Bildirimleri
+                                    </div>
+                                    <div class="text-xs text-zinc-500">
+                                      Haftalık özet bültenleri al.
+                                    </div>
+                                  </div>
+                                  <div class="w-10 h-6 bg-green-500 rounded-full relative">
+                                    <div class="absolute right-1 top-1 w-4 h-4 bg-white rounded-full"></div>
+                                  </div>
+                                </div>
+                                <div
+                                  class="flex items-center justify-between p-4 rounded-xl border border-zinc-200 dark:border-white/10">
+                                  <div>
+                                    <div class="font-bold text-sm text-zinc-900 dark:text-white">
+                                      Push Bildirimleri
+                                    </div>
+                                    <div class="text-xs text-zinc-500">
+                                      Tarayıcı bildirimleri.
+                                    </div>
+                                  </div>
+                                  <div class="w-10 h-6 bg-zinc-300 dark:bg-white/20 rounded-full relative">
+                                    <div class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full"></div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div id="sub-general" data-ui="tab-panel" class="hidden animate-[fadeIn_0.2s_ease-out]">
+                              <div class="p-4 bg-zinc-100 dark:bg-white/5 rounded-xl text-sm text-zinc-500 text-center">
+                                Genel Ayarlar Paneli
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div id="p-billing" data-ui="tab-panel" class="hidden animate-[fadeIn_0.2s_ease-out]">
+                          <h3 class="text-xl font-bold text-zinc-900 dark:text-white mb-4">
+                            Ödemeler
+                          </h3>
+                          <div
+                            class="h-32 rounded-xl bg-zinc-100 dark:bg-white/5 border border-zinc-200 dark:border-white/5 flex items-center justify-center text-zinc-400">
+                            Fatura Geçmişi
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div id="view-code" data-ui="tab-panel"
+                  class="hidden absolute inset-0 bg-[#1e1e1e] p-6 overflow-auto custom-scrollbar">
+                  <pre class="font-mono text-[13px] leading-6 text-zinc-400">
+<span class="text-zinc-500">&lt;!-- 1. Parent Tab System (Sidebar) --&gt;</span>
+<span class="text-blue-400">&lt;div</span> <span class="text-purple-400">data-ui</span>=<span class="text-green-400">"tab-group"</span> <span class="text-purple-400">data-default-tab</span>=<span class="text-green-400">"p-settings"</span><span class="text-blue-400">&gt;</span>
+  
+  <span class="text-zinc-500">&lt;!-- Sidebar Triggers --&gt;</span>
+  <span class="text-blue-400">&lt;button</span> <span class="text-purple-400">data-trigger</span>=<span class="text-green-400">"tab"</span> <span class="text-purple-400">data-target</span>=<span class="text-green-400">"p-profile"</span><span class="text-blue-400">&gt;</span>Profil<span class="text-blue-400">&lt;/button&gt;</span>
+  <span class="text-blue-400">&lt;button</span> <span class="text-purple-400">data-trigger</span>=<span class="text-green-400">"tab"</span> <span class="text-purple-400">data-target</span>=<span class="text-green-400">"p-settings"</span><span class="text-blue-400">&gt;</span>Ayarlar<span class="text-blue-400">&lt;/button&gt;</span>
+
+  <span class="text-zinc-500">&lt;!-- Settings Panel --&gt;</span>
+  <span class="text-blue-400">&lt;div</span> <span class="text-purple-400">id</span>=<span class="text-green-400">"p-settings"</span> <span class="text-purple-400">data-ui</span>=<span class="text-green-400">"tab-panel"</span><span class="text-blue-400">&gt;</span>
+    
+    <span class="text-zinc-500">&lt;!-- 2. Nested Tab System (Horizontal) --&gt;</span>
+    <span class="text-zinc-500">&lt;!-- AetherUI automatically scopes this --&gt;</span>
+    <span class="text-blue-400">&lt;div</span> <span class="text-purple-400">data-ui</span>=<span class="text-green-400">"tab-group"</span><span class="text-blue-400">&gt;</span>
+       
+       <span class="text-blue-400">&lt;button</span> <span class="text-purple-400">data-trigger</span>=<span class="text-green-400">"tab"</span> <span class="text-purple-400">data-target</span>=<span class="text-green-400">"sub-notif"</span><span class="text-blue-400">&gt;</span>
+         Bildirimler
+       <span class="text-blue-400">&lt;/button&gt;</span>
+
+       <span class="text-blue-400">&lt;div</span> <span class="text-purple-400">id</span>=<span class="text-green-400">"sub-notif"</span> <span class="text-purple-400">data-ui</span>=<span class="text-green-400">"tab-panel"</span><span class="text-blue-400">&gt;</span>
+         ...İçerik...
+       <span class="text-blue-400">&lt;/div&gt;</span>
+
+    <span class="text-blue-400">&lt;/div&gt;</span>
+     <span class="text-zinc-500">&lt;!-- End Nested Group --&gt;</span>
+
+  <span class="text-blue-400">&lt;/div&gt;</span>
+<span class="text-blue-400">&lt;/div&gt;</span>
+</pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-32 bg-white dark:bg-dark border-t border-zinc-200 dark:border-white/5">
+    <div class="max-w-[1600px] mx-auto px-4 lg:px-6">
+      <div class="max-w-3xl mb-20">
+        <h2 class="text-4xl md:text-5xl font-display font-bold text-zinc-900 dark:text-white mb-6">
+          Sadece HTML Değil. <br />
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-blue-500">Tam JavaScript
+            Kontrolü.</span>
+        </h2>
+        <p class="text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed">
+          Gelişmiş senaryolar için AetherUI global nesnesini kullanın. Event
+          dinleyin, state'i manuel yönetin veya dışarıdan tetikleyin.
+        </p>
+      </div>
+      <div class="grid lg:grid-cols-2 gap-8">
+        <div
+          class="group relative rounded-3xl overflow-hidden bg-[#0D0D0D] border border-zinc-800 shadow-2xl ring-1 ring-white/5">
+          <div class="flex items-center justify-between px-5 py-4 border-b border-zinc-800 bg-[#121212]">
+            <div class="flex gap-2">
+              <div class="w-3 h-3 rounded-full bg-zinc-600/50"></div>
+              <div class="w-3 h-3 rounded-full bg-zinc-600/50"></div>
+              <div class="w-3 h-3 rounded-full bg-zinc-600/50"></div>
+            </div>
+            <div class="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">
+              Console
+            </div>
+          </div>
+
+          <div class="p-6 font-mono text-sm leading-relaxed overflow-x-auto">
+            <div class="mb-6">
+              <div class="flex items-center gap-2 text-zinc-500 mb-1">
+                <span>// 1. Modalı manuel aç</span>
+              </div>
+              <div class="text-blue-400">
+                <span class="text-purple-400">AetherUI</span>.toggle(<span class="text-green-400">'login-modal'</span>,
+                <span class="text-green-400">'show'</span>);
+              </div>
+              <div class="mt-2 pl-4 border-l-2 border-zinc-800 text-zinc-400 text-xs">
+                <span class="text-emerald-500">➜</span> Event dispatched:
+                'aether:open' <br />
+                <span class="text-emerald-500">➜</span> Scroll locked
+                automatically.
+              </div>
+            </div>
+
+            <div class="mb-6">
+              <div class="flex items-center gap-2 text-zinc-500 mb-1">
+                <span>// 2. Event Dinleyicisi (Hooks)</span>
+              </div>
+              <div class="text-blue-400">
+                document.addEventListener(<span class="text-green-400">'aether:tab-change'</span>, (<span
+                  class="text-orange-400">e</span>) => {<br />
+                &nbsp;&nbsp;<span class="text-purple-400">console</span>.log(<span class="text-green-400">"Yeni
+                  Tab:"</span>,
+                e.detail.id);<br />
+                });
+              </div>
+            </div>
+
+            <div>
+              <div class="flex items-center gap-2 text-zinc-500 mb-1">
+                <span>// 3. Tema Değiştir</span>
+              </div>
+              <div class="text-blue-400">
+                <span class="text-purple-400">AetherUI</span>.setTheme(<span class="text-green-400">'dark'</span>);
+              </div>
+            </div>
+
+            <div class="mt-6 flex items-center gap-2">
+              <span class="text-emerald-500">❯</span>
+              <span class="w-2.5 h-5 bg-zinc-500/50 animate-pulse"></span>
+            </div>
+          </div>
+        </div>
+        <div class="grid gap-8">
+          <div
+            class="p-8 rounded-3xl bg-zinc-50 dark:bg-white/5 border border-zinc-200 dark:border-white/5 hover:border-emerald-500/30 transition-all group">
+            <div class="flex items-start justify-between mb-6">
+              <div>
+                <h3 class="text-zinc-500 dark:text-zinc-400 font-medium mb-1">
+                  Paket Boyutu (Gzipped)
+                </h3>
+                <p class="text-4xl font-display font-bold text-zinc-900 dark:text-white">
+                  4.2<span class="text-xl text-zinc-400">kb</span>
+                </p>
+              </div>
+              <div
+                class="w-12 h-12 rounded-2xl bg-emerald-100 dark:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
+                <i class="ph-fill ph-package text-2xl"></i>
+              </div>
+            </div>
+            <div class="w-full bg-zinc-200 dark:bg-white/10 rounded-full h-2 mb-2 overflow-hidden">
+              <div class="bg-emerald-500 h-2 rounded-full w-[15%]"></div>
+            </div>
+            <p class="text-xs text-zinc-400">
+              Alternatiflere göre %90 daha hafif.
+            </p>
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div
+              class="p-6 rounded-3xl bg-zinc-50 dark:bg-white/5 border border-zinc-200 dark:border-white/5 hover:border-blue-500/30 transition-all">
+              <div class="mb-4 text-blue-500 dark:text-blue-400">
+                <i class="ph-fill ph-lightning text-3xl"></i>
+              </div>
+              <div class="text-2xl font-bold text-zinc-900 dark:text-white mb-1">
+                0ms
+              </div>
+              <div class="text-sm text-zinc-500 dark:text-zinc-400">
+                Runtime Gecikmesi
+              </div>
+            </div>
+
+            <div
+              class="p-6 rounded-3xl bg-zinc-50 dark:bg-white/5 border border-zinc-200 dark:border-white/5 hover:border-purple-500/30 transition-all">
+              <div class="mb-4 text-purple-500 dark:text-purple-400">
+                <i class="ph-fill ph-paint-bucket text-3xl"></i>
+              </div>
+              <div class="text-2xl font-bold text-zinc-900 dark:text-white mb-1">
+                60fps
+              </div>
+              <div class="text-sm text-zinc-500 dark:text-zinc-400">
+                Animasyon Akıcılığı
+              </div>
+            </div>
+          </div>
+
+          <a href="#"
+            class="flex items-center justify-between p-8 rounded-3xl bg-zinc-900 dark:bg-white text-white dark:text-black hover:scale-[1.02] transition-transform shadow-xl">
+            <div>
+              <h3 class="font-bold text-xl mb-1">API Dokümantasyonu</h3>
+              <p class="text-sm opacity-70">
+                Tüm metotları ve eventleri inceleyin.
+              </p>
+            </div>
+            <div class="w-10 h-10 rounded-full bg-white/20 dark:bg-black/10 flex items-center justify-center">
+              <i class="ph-bold ph-arrow-right"></i>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-32 bg-zinc-50 dark:bg-[#0B0C0E] border-t border-zinc-200 dark:border-white/5">
+    <div class="max-w-[1600px] mx-auto px-4 lg:px-6">
+      <div class="max-w-3xl mb-20">
+        <div
+          class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-300 text-xs font-bold uppercase tracking-wide mb-6">
+          <i class="ph-bold ph-tree-structure"></i>
+          Modül 01: Menü Mimarisi
+        </div>
+        <h2 class="text-4xl md:text-5xl font-display font-bold text-zinc-900 dark:text-white mb-6">
+          Derinlik Sınırı Yok. <br />
+          <span class="text-zinc-400">Sadece Mantık Var.</span>
+        </h2>
+        <p class="text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed">
+          AetherUI, dropdown menüleri sadece "açılıp kapanan kutular" olarak
+          görmez. Onları birer <strong>State Katmanı</strong> olarak yönetir.
+          İç içe sonsuz kırılım, DOM izolasyonu ve otomatik odak yönetimi
+          standarttır.
+        </p>
+      </div>
+      <div class="grid lg:grid-cols-12 gap-8">
+        <div
+          class="lg:col-span-7 flex flex-col bg-white dark:bg-[#121214] rounded-3xl border border-zinc-200 dark:border-white/10 shadow-xl overflow-hidden">
+          <div
+            class="flex-1 p-12 bg-zinc-100/50 dark:bg-[#0F1012] relative flex items-center justify-center min-h-[450px]">
+            <div
+              class="absolute inset-0 bg-gradient-to-br from-indigo-500/5 via-transparent to-purple-500/5 pointer-events-none">
+            </div>
+
+            <div class="relative z-10">
+              <button data-trigger="ui-control" data-target="demo-nested-root"
+                class="px-6 py-3 bg-zinc-900 dark:bg-white text-white dark:text-black font-bold rounded-xl shadow-2xl shadow-zinc-500/20 hover:scale-105 transition-transform flex items-center gap-3 border border-zinc-800 dark:border-white">
+                <i class="ph-bold ph-list-dashes"></i>
+                Hiyerarşik Menü
+              </button>
+
+              <div id="demo-nested-root" data-click-outside
+                class="hidden absolute top-full left-0 mt-4 w-64 bg-white dark:bg-[#18181b] border border-zinc-200 dark:border-white/10 rounded-2xl shadow-2xl p-2 animate-[enter-dropdown_0.2s_ease-out]">
+                <div
+                  class="px-3 py-2 text-[10px] font-bold text-zinc-400 uppercase tracking-wider flex justify-between">
+                  <span>Ana Menü</span>
+                  <span class="text-zinc-600 dark:text-zinc-500">L1</span>
+                </div>
+
+                <a href="#"
+                  class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-zinc-50 dark:hover:bg-white/5 transition-colors text-sm text-zinc-700 dark:text-zinc-200">
+                  <i class="ph-duotone ph-user"></i>
+                  <span>Hesap</span>
+                </a>
+
+                <div class="relative w-full group/lvl1">
+                  <button data-trigger="ui-control" data-target="demo-nested-L2"
+                    class="w-full flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-zinc-50 dark:hover:bg-white/5 transition-colors text-sm text-zinc-700 dark:text-zinc-200 group-aria-expanded:bg-indigo-50 dark:group-aria-expanded:bg-indigo-500/10 group-aria-expanded:text-indigo-600 dark:group-aria-expanded:text-indigo-300">
+                    <div class="flex items-center gap-3">
+                      <i class="ph-duotone ph-gear"></i>
+                      <span>Ayarlar</span>
+                    </div>
+                    <i class="ph-bold ph-caret-right text-xs"></i>
+                  </button>
+
+                  <div id="demo-nested-L2" data-click-outside
+                    class="hidden absolute top-0 left-full ml-3 w-60 bg-white dark:bg-[#18181b] border border-zinc-200 dark:border-white/10 rounded-2xl shadow-2xl p-2 animate-[enter-dropdown_0.2s_ease-out]">
+                    <div
+                      class="px-3 py-2 text-[10px] font-bold text-zinc-400 uppercase tracking-wider flex justify-between">
+                      <span>Alt Menü</span>
+                      <span class="text-zinc-600 dark:text-zinc-500">L2</span>
+                    </div>
+                    <a href="#"
+                      class="flex items-center gap-2 px-3 py-2.5 rounded-xl hover:bg-zinc-50 dark:hover:bg-white/5 text-sm text-zinc-700 dark:text-zinc-200">
+                      <i class="ph-bold ph-lock-key text-zinc-400"></i>
+                      Gizlilik
+                    </a>
+
+                    <div class="relative w-full group/lvl2">
+                      <button data-trigger="ui-control" data-target="demo-nested-L3"
+                        class="w-full flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-zinc-50 dark:hover:bg-white/5 transition-colors text-sm text-zinc-700 dark:text-zinc-200 group-aria-expanded:bg-indigo-50 dark:group-aria-expanded:bg-indigo-500/10 group-aria-expanded:text-indigo-600 dark:group-aria-expanded:text-indigo-300">
+                        <div class="flex items-center gap-2">
+                          <i class="ph-bold ph-paint-brush text-zinc-400"></i>
+                          Tema
+                        </div>
+                        <i class="ph-bold ph-caret-right text-xs"></i>
+                      </button>
+
+                      <div id="demo-nested-L3" data-click-outside
+                        class="hidden absolute top-0 left-full ml-3 w-48 bg-white dark:bg-[#18181b] border border-zinc-200 dark:border-white/10 rounded-2xl shadow-2xl p-2 animate-[enter-dropdown_0.2s_ease-out]">
+                        <div class="px-3 py-2 text-[10px] font-bold text-zinc-400 uppercase tracking-wider text-right">
+                          L3
+                        </div>
+                        <a href="#"
+                          class="block px-3 py-2 rounded-xl hover:bg-zinc-50 dark:hover:bg-white/5 text-sm text-zinc-700 dark:text-zinc-200">Sistem</a>
+                        <a href="#"
+                          class="block px-3 py-2 rounded-xl bg-indigo-50 dark:bg-indigo-500/20 text-indigo-700 dark:text-indigo-300 text-sm font-medium">Koyu
+                          Mod</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-[#1E1E20] border-t border-white/5">
+            <div class="flex items-center justify-between px-4 py-3 bg-[#252526] border-b border-black/20">
+              <div class="flex gap-1.5">
+                <div class="w-2.5 h-2.5 rounded-full bg-[#FF5F56]"></div>
+                <div class="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]"></div>
+                <div class="w-2.5 h-2.5 rounded-full bg-[#27C93F]"></div>
+              </div>
+              <span class="text-[10px] text-zinc-500 font-mono tracking-wide">nested-menu.html</span>
+            </div>
+
+            <div class="p-6">
+              <pre class="font-mono text-[12px] leading-6 text-zinc-400 overflow-x-auto custom-scrollbar">
+<span class="text-zinc-600">&lt;!-- AetherUI automatically manages parent/child relationships --&gt;</span>
+<span class="text-blue-400">&lt;div</span> <span class="text-purple-400">id</span>=<span class="text-green-400">"parent-menu"</span> <span class="text-purple-400">data-click-outside</span><span class="text-blue-400">&gt;</span>
+  <span class="text-zinc-500">...Items...</span>
+  
+  <span class="text-zinc-600">&lt;!-- Nested Trigger --&gt;</span>
+  <span class="text-blue-400">&lt;button</span> <span class="text-purple-400">data-trigger</span>=<span class="text-green-400">"ui-control"</span> <span class="text-purple-400">data-target</span>=<span class="text-green-400">"child-menu"</span><span class="text-blue-400">&gt;</span>
+     Ayarlar <span class="text-blue-400">&lt;i</span> <span class="text-purple-400">class</span>=<span class="text-green-400">"icon-right"</span><span class="text-blue-400">&gt;&lt;/i&gt;</span>
+  <span class="text-blue-400">&lt;/button&gt;</span>
+  
+  <span class="text-zinc-600">&lt;!-- Nested Dropdown (Lives inside parent in DOM) --&gt;</span>
+  <span class="text-blue-400">&lt;div</span> <span class="text-purple-400">id</span>=<span class="text-green-400">"child-menu"</span> <span class="text-purple-400">class</span>=<span class="text-green-400">"hidden absolute left-full..."</span><span class="text-blue-400">&gt;</span>
+     <span class="text-blue-400">&lt;a&gt;</span>Gizlilik<span class="text-blue-400">&lt;/a&gt;</span>
+  <span class="text-blue-400">&lt;/div&gt;</span>
+<span class="text-blue-400">&lt;/div&gt;</span>
+                            </pre>
+            </div>
+          </div>
+        </div>
+        <div class="lg:col-span-5 grid gap-8">
+          <div
+            class="bg-white dark:bg-[#121214] rounded-3xl border border-zinc-200 dark:border-white/10 shadow-lg flex flex-col h-full">
+            <div class="p-6 border-b border-zinc-100 dark:border-white/5">
+              <h3 class="font-bold text-zinc-900 dark:text-white flex items-center gap-2">
+                <i class="ph-fill ph-user-circle text-purple-500"></i>
+                Kullanıcı Menüsü
+              </h3>
+              <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
+                Dropdownlar sadece link içermez. Avatar, switch butonları ve
+                bilgi kartları gibi kompleks UI öğelerini barındırabilir.
+              </p>
+            </div>
+            <div class="flex-1 p-8 bg-zinc-50/50 dark:bg-[#0F1012] flex items-center justify-center">
+              <div class="relative">
+                <button data-trigger="ui-control" data-target="demo-user-dd"
+                  class="flex items-center gap-3 pl-2 pr-4 py-2 bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-white/10 rounded-full shadow-sm hover:border-purple-500 transition-colors group">
+                  <img src="https://i.pravatar.cc/150?u=aether_user"
+                    class="w-8 h-8 rounded-full border border-zinc-200 dark:border-zinc-700" alt="Avatar" />
+                  <span
+                    class="text-sm font-bold text-zinc-700 dark:text-zinc-200 group-hover:text-zinc-900 dark:group-hover:text-white">Mert
+                    K.</span>
+                  <i
+                    class="ph-bold ph-caret-down text-xs text-zinc-400 group-aria-expanded:rotate-180 transition-transform"></i>
+                </button>
+
+                <div id="demo-user-dd" data-click-outside
+                  class="hidden absolute top-full right-0 mt-3 w-72 bg-white dark:bg-[#18181b] border border-zinc-200 dark:border-white/10 rounded-2xl shadow-2xl p-2 z-20 animate-[enter-dropdown_0.2s_ease-out]">
+                  <div class="p-3 bg-zinc-50 dark:bg-white/5 rounded-xl mb-2 flex items-center gap-3">
+                    <div
+                      class="w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-500/20 flex items-center justify-center text-purple-600 dark:text-purple-400 font-bold">
+                      MK
+                    </div>
+                    <div>
+                      <div class="text-sm font-bold text-zinc-900 dark:text-white">
+                        Mert Kaya
+                      </div>
+                      <div class="text-xs text-zinc-500">mert@aether.com</div>
+                    </div>
+                  </div>
+
+                  <div
+                    class="px-3 py-2 flex items-center justify-between hover:bg-zinc-50 dark:hover:bg-white/5 rounded-xl cursor-pointer transition-colors mb-2">
+                    <div class="flex items-center gap-2">
+                      <div class="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]"></div>
+                      <span class="text-sm font-medium text-zinc-700 dark:text-zinc-200">Çevrimiçi</span>
+                    </div>
+                    <div class="w-8 h-5 bg-zinc-200 dark:bg-white/20 rounded-full relative">
+                      <div class="w-3 h-3 bg-white rounded-full absolute top-1 left-1 shadow-sm"></div>
+                    </div>
+                  </div>
+
+                  <div class="h-px bg-zinc-100 dark:bg-white/10 my-1 mx-2"></div>
+
+                  <div class="space-y-1 mt-1">
+                    <a href="#"
+                      class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-zinc-50 dark:hover:bg-white/5 text-sm text-zinc-600 dark:text-zinc-300 transition-colors">
+                      <i class="ph-bold ph-user"></i> Profilim
+                    </a>
+                    <a href="#"
+                      class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-zinc-50 dark:hover:bg-white/5 text-sm text-zinc-600 dark:text-zinc-300 transition-colors">
+                      <i class="ph-bold ph-credit-card"></i> Faturalar
+                    </a>
+                    <a href="#"
+                      class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-red-50 dark:hover:bg-red-900/20 text-sm text-red-600 dark:text-red-400 transition-colors">
+                      <i class="ph-bold ph-sign-out"></i> Çıkış Yap
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="relative bg-gradient-to-br from-zinc-900 to-black dark:from-white dark:to-zinc-200 rounded-3xl shadow-lg overflow-hidden flex flex-col h-full text-white dark:text-black border border-zinc-800 dark:border-white/50">
+            <div
+              class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 mix-blend-overlay">
+            </div>
+
+            <div class="relative p-8 flex-1 flex flex-col justify-center z-10">
+              <div class="flex items-center gap-3 mb-4">
+                <div
+                  class="w-10 h-10 rounded-full bg-white/10 dark:bg-black/10 flex items-center justify-center border border-white/10 dark:border-black/5">
+                  <i class="ph-bold ph-mouse-simple text-xl"></i>
+                </div>
+                <h3 class="font-bold text-xl">Akıllı Kapanış</h3>
+              </div>
+              <p class="text-sm opacity-80 leading-relaxed mb-6 font-medium">
+                AetherUI, bir menü açıldığında aynı seviyedeki diğer menüleri
+                otomatik olarak kapatır. İç içe (nested) menüler ise açık
+                kalır. Ekstra kod yazmanıza gerek yok.
+              </p>
+              <div
+                class="p-3 bg-white/10 dark:bg-black/5 rounded-lg border border-white/10 dark:border-black/10 flex items-center gap-3 backdrop-blur-sm">
+                <code
+                  class="font-mono text-xs text-emerald-400 dark:text-emerald-600 font-bold">data-click-outside</code>
+                <span class="text-xs opacity-80">→ Otomatik Algılama</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-32 bg-white dark:bg-dark border-t border-zinc-200 dark:border-white/5 relative">
+    <div
+      class="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none">
+    </div>
+
+    <div class="max-w-[1600px] mx-auto px-4 lg:px-6 relative z-10">
+      <div class="grid lg:grid-cols-2 gap-12 mb-20 items-end">
+        <div>
+          <div
+            class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-50 dark:bg-purple-500/10 text-purple-600 dark:text-purple-300 text-xs font-bold uppercase tracking-wide mb-6">
+            <i class="ph-bold ph-stack-simple"></i>
+            Modül 02: Modal Motoru
+          </div>
+          <h2 class="text-4xl md:text-5xl font-display font-bold text-zinc-900 dark:text-white mb-4">
+            Z-Index Savaşlarına <br />
+            <span class="text-zinc-400">Barış Getirdik.</span>
+          </h2>
+          <p class="text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-xl">
+            Modal üstüne modal açtığınızda ne olur? Genellikle kaos. AetherUI
+            ile ise huzur. Otomatik
+            <strong>LIFO (Last-In-First-Out)</strong> yığın yönetimi, odak
+            hapsi (focus trap) ve akıllı scroll kilidi dahili olarak gelir.
+          </p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-6 lg:justify-end">
+          <div
+            class="flex items-center gap-4 p-4 rounded-2xl bg-zinc-50 dark:bg-white/5 border border-zinc-100 dark:border-white/5">
+            <div
+              class="w-10 h-10 rounded-full bg-emerald-100 dark:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
+              <i class="ph-fill ph-lock-key text-xl"></i>
+            </div>
+            <div>
+              <h4 class="font-bold text-zinc-900 dark:text-white text-sm">
+                Scroll Lock
+              </h4>
+              <p class="text-xs text-zinc-500 dark:text-zinc-400">
+                Body kaydırmayı otomatik engeller.
+              </p>
+            </div>
+          </div>
+          <div
+            class="flex items-center gap-4 p-4 rounded-2xl bg-zinc-50 dark:bg-white/5 border border-zinc-100 dark:border-white/5">
+            <div
+              class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400 flex items-center justify-center">
+              <i class="ph-fill ph-arrows-in text-xl"></i>
+            </div>
+            <div>
+              <h4 class="font-bold text-zinc-900 dark:text-white text-sm">
+                Focus Trap
+              </h4>
+              <p class="text-xs text-zinc-500 dark:text-zinc-400">
+                Tab tuşu modal dışına çıkamaz.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="grid lg:grid-cols-12 gap-12 items-start">
+        <div class="lg:col-span-7">
+          <div
+            class="relative bg-zinc-100 dark:bg-[#121214] rounded-[2rem] border border-zinc-200 dark:border-white/10 shadow-2xl overflow-hidden min-h-[600px] flex items-center justify-center group">
+            <div class="absolute inset-0 p-8 opacity-30 grayscale group-hover:grayscale-0 transition-all duration-700">
+              <div class="w-full h-full grid grid-cols-3 gap-4">
+                <div class="col-span-1 bg-white dark:bg-white/5 rounded-2xl h-full"></div>
+                <div class="col-span-2 grid gap-4">
+                  <div class="bg-white dark:bg-white/5 rounded-2xl h-32"></div>
+                  <div class="bg-white dark:bg-white/5 rounded-2xl h-full"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="relative z-10 text-center">
+              <button data-trigger="ui-control" data-target="modal-settings"
+                class="px-8 py-4 bg-zinc-900 dark:bg-white text-white dark:text-black font-bold rounded-2xl shadow-2xl hover:scale-105 transition-transform flex items-center gap-3">
+                <i class="ph-bold ph-gear"></i>
+                Ayarları Aç (Modal 1)
+              </button>
+              <p class="mt-4 text-xs text-zinc-500 uppercase tracking-widest font-bold">
+                Stack Başlatıcı
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="lg:col-span-5 space-y-8">
+          <div class="bg-[#1E1E20] rounded-3xl border border-white/10 shadow-xl overflow-hidden">
+            <div class="flex items-center justify-between px-5 py-4 border-b border-white/5 bg-[#252526]">
+              <div class="flex gap-1.5">
+                <div class="w-2.5 h-2.5 rounded-full bg-[#FF5F56]"></div>
+                <div class="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]"></div>
+                <div class="w-2.5 h-2.5 rounded-full bg-[#27C93F]"></div>
+              </div>
+              <span class="text-[10px] text-zinc-500 font-mono uppercase">stacked-modals.html</span>
+            </div>
+            <div class="p-6 overflow-x-auto custom-scrollbar">
+              <pre class="font-mono text-[12px] leading-6 text-zinc-400">
+<span class="text-zinc-600">&lt;!-- 1. Parent Modal (z-index: 100) --&gt;</span>
+<span class="text-blue-400">&lt;div</span> <span class="text-purple-400">id</span>=<span class="text-green-400">"modal-1"</span> <span class="text-purple-400">data-scroll-lock</span> <span class="text-purple-400">class</span>=<span class="text-green-400">"z-[100]..."</span><span class="text-blue-400">&gt;</span>
+  <span class="text-zinc-500">...</span>
+  <span class="text-blue-400">&lt;button</span> <span class="text-purple-400">data-target</span>=<span class="text-green-400">"modal-2"</span><span class="text-blue-400">&gt;</span>
+     İkinciyi Aç
+  <span class="text-blue-400">&lt;/button&gt;</span>
+<span class="text-blue-400">&lt;/div&gt;</span>
+
+<span class="text-zinc-600">&lt;!-- 2. Nested Modal (z-index: 110) --&gt;</span>
+<span class="text-zinc-600">&lt;!-- Can be anywhere in DOM --&gt;</span>
+<span class="text-blue-400">&lt;div</span> <span class="text-purple-400">id</span>=<span class="text-green-400">"modal-2"</span> <span class="text-purple-400">data-scroll-lock</span> <span class="text-purple-400">class</span>=<span class="text-green-400">"z-[110]..."</span><span class="text-blue-400">&gt;</span>
+  <span class="text-zinc-600">&lt;!-- Auto Focus Trap is Active --&gt;</span>
+  <span class="text-blue-400">&lt;button&gt;</span>Onayla<span class="text-blue-400">&lt;/button&gt;</span>
+<span class="text-blue-400">&lt;/div&gt;</span>
+</pre>
+            </div>
+          </div>
+
+          <div class="p-6 rounded-3xl bg-white dark:bg-[#121214] border border-zinc-200 dark:border-white/10 shadow-sm">
+            <h3 class="font-bold text-zinc-900 dark:text-white flex items-center gap-2 mb-2">
+              <i class="ph-fill ph-stack text-indigo-500"></i>
+              Otomatik Yığın (Stack)
+            </h3>
+            <p class="text-sm text-zinc-600 dark:text-zinc-400">
+              AetherUI, hangi modalın en üstte olduğunu bilir. `ESC` tuşuna
+              bastığınızda sadece en üstteki modal (Modal 2) kapanır, alttaki
+              (Modal 1) açık kalır.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-3xl bg-white dark:bg-[#121214] border border-zinc-200 dark:border-white/10 shadow-sm">
+            <h3 class="font-bold text-zinc-900 dark:text-white flex items-center gap-2 mb-2">
+              <i class="ph-fill ph-arrows-out-line-vertical text-purple-500"></i>
+              Scroll Koruması
+            </h3>
+            <p class="text-sm text-zinc-600 dark:text-zinc-400">
+              Çoklu modal açıldığında `body` scroll bar'ı titreme yapmaz.
+              Sistem dolgu (padding) değerlerini otomatik hesaplar ve düzen
+              kaymasını engeller.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="modal-settings" data-scroll-lock data-click-outside
+    class="hidden fixed inset-0 z-[100] flex items-center justify-center px-4 bg-black/40 backdrop-blur-sm transition-base opacity-0"
+    data-active-class="opacity-100" data-inactive-class="opacity-0">
+    <div
+      class="w-full max-w-2xl bg-white dark:bg-[#18181B] rounded-2xl shadow-2xl border border-zinc-200 dark:border-white/10 overflow-hidden transform scale-95 transition-all duration-300 ease-out-expo"
+      data-active-class="scale-100 translate-y-0" data-inactive-class="scale-95 translate-y-4">
+      <div
+        class="px-6 py-4 border-b border-zinc-100 dark:border-white/5 flex items-center justify-between bg-zinc-50 dark:bg-white/5">
+        <h3 class="font-bold text-lg text-zinc-900 dark:text-white">
+          Sistem Ayarları
+        </h3>
+        <button data-trigger="ui-control" data-target="modal-settings"
+          class="p-1 rounded hover:bg-zinc-200 dark:hover:bg-white/10 transition-colors">
+          <i class="ph-bold ph-x"></i>
+        </button>
+      </div>
+
+      <div class="p-8 space-y-6">
+        <div class="grid grid-cols-2 gap-4">
+          <div class="space-y-2">
+            <label class="text-xs font-bold text-zinc-500 uppercase">Kullanıcı Adı</label>
+            <input type="text" value="aether_admin"
+              class="w-full px-3 py-2 rounded-lg bg-zinc-50 dark:bg-black/20 border border-zinc-200 dark:border-white/10 text-sm"
+              disabled />
+          </div>
+          <div class="space-y-2">
+            <label class="text-xs font-bold text-zinc-500 uppercase">E-posta</label>
+            <input type="email" value="admin@aether.ui"
+              class="w-full px-3 py-2 rounded-lg bg-zinc-50 dark:bg-black/20 border border-zinc-200 dark:border-white/10 text-sm" />
+          </div>
+        </div>
+
+        <div
+          class="p-4 rounded-xl bg-red-50 dark:bg-red-900/10 border border-red-100 dark:border-red-900/20 flex items-center justify-between">
+          <div>
+            <h4 class="text-sm font-bold text-red-700 dark:text-red-400">
+              Tehlikeli Bölge
+            </h4>
+            <p class="text-xs text-red-600/70 dark:text-red-400/60">
+              Bu işlem geri alınamaz.
+            </p>
+          </div>
+          <button data-trigger="ui-control" data-target="modal-confirm"
+            class="px-4 py-2 bg-red-600 text-white text-xs font-bold rounded-lg hover:bg-red-700 transition-colors shadow-lg shadow-red-500/30">
+            Hesabı Sil (Modal 2)
+          </button>
+        </div>
+      </div>
+
+      <div
+        class="px-6 py-4 bg-zinc-50 dark:bg-white/5 border-t border-zinc-100 dark:border-white/5 flex justify-end gap-3">
+        <button data-trigger="ui-control" data-target="modal-settings"
+          class="px-4 py-2 text-sm font-medium text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-colors">
+          Vazgeç
+        </button>
+        <button class="px-4 py-2 bg-zinc-900 dark:bg-white text-white dark:text-black text-sm font-bold rounded-lg">
+          Kaydet
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-confirm" data-scroll-lock data-click-outside
+    class="hidden fixed inset-0 z-[110] flex items-center justify-center px-4 bg-black/60 backdrop-blur-md transition-base opacity-0"
+    data-active-class="opacity-100" data-inactive-class="opacity-0">
+    <div
+      class="w-full max-w-sm bg-white dark:bg-[#18181B] rounded-2xl shadow-2xl border border-zinc-200 dark:border-white/10 overflow-hidden transform scale-90 transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)]"
+      data-active-class="scale-100" data-inactive-class="scale-90">
+      <div class="p-6 text-center">
+        <div
+          class="w-16 h-16 bg-red-100 dark:bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-4 text-red-600 dark:text-red-400">
+          <i class="ph-fill ph-warning-circle text-3xl"></i>
+        </div>
+        <h3 class="text-xl font-bold text-zinc-900 dark:text-white mb-2">
+          Emin misiniz?
+        </h3>
+        <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">
+          "Hesap Ayarları" modalının üzerindesiniz. Bunu onaylarsanız bir
+          önceki modal açık kalacak, ancak veriler silinecek.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-2 gap-px bg-zinc-100 dark:bg-white/10 border-t border-zinc-100 dark:border-white/10">
+        <button data-trigger="ui-control" data-target="modal-confirm"
+          class="bg-white dark:bg-[#18181B] p-4 text-sm font-bold text-zinc-500 hover:bg-zinc-50 dark:hover:bg-white/5 transition-colors">
+          İptal Et
+        </button>
+        <button data-trigger="ui-control" data-target="modal-confirm"
+          class="bg-white dark:bg-[#18181B] p-4 text-sm font-bold text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors">
+          Evet, Sil
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <section class="py-32 bg-zinc-50 dark:bg-[#0B0C0E] border-t border-zinc-200 dark:border-white/5">
+    <div class="max-w-[1600px] mx-auto px-4 lg:px-6">
+      <div class="grid lg:grid-cols-2 gap-20 items-start">
+        <div class="space-y-10 lg:sticky lg:top-32">
+          <div>
+            <div
+              class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-50 dark:bg-amber-500/10 text-amber-600 dark:text-amber-300 text-xs font-bold uppercase tracking-wide mb-6">
+              <i class="ph-bold ph-puzzle-piece"></i>
+              Modül 03: Kompozit Yapılar
+            </div>
+            <h2 class="text-4xl md:text-5xl font-display font-bold text-zinc-900 dark:text-white leading-[1.1]">
+              İç İçe Geçmiş <br />
+              <span class="text-zinc-400">Evrenler.</span>
+            </h2>
+            <p class="mt-6 text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed">
+              Bir Akordiyonun içine Tab, onun içine de başka bir Akordiyon
+              koyduğunuzda ne olur? AetherUI ile hiçbir şey bozulmaz. Her
+              bileşen kendi `scope`'unu bilir ve üst katmanları etkilemeden
+              çalışır.
+            </p>
+          </div>
+
+          <div class="space-y-6">
+            <div
+              class="p-6 bg-white dark:bg-white/5 rounded-2xl border border-zinc-200 dark:border-white/5 shadow-sm hover:border-amber-500/30 transition-colors">
+              <div class="flex gap-4">
+                <div
+                  class="w-10 h-10 shrink-0 rounded-lg bg-amber-100 dark:bg-amber-500/20 text-amber-600 dark:text-amber-400 flex items-center justify-center">
+                  <i class="ph-fill ph-selection-all text-xl"></i>
+                </div>
+                <div>
+                  <h3 class="font-bold text-zinc-900 dark:text-white">
+                    State İzolasyonu
+                  </h3>
+                  <p class="text-sm text-zinc-500 dark:text-zinc-400 mt-1">
+                    İçerideki bir taba tıkladığınızda, dışarıdaki akordiyon
+                    kapanmaz. Olaylar (Events) akıllıca filtrelenir.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="p-6 bg-white dark:bg-white/5 rounded-2xl border border-zinc-200 dark:border-white/5 shadow-sm hover:border-indigo-500/30 transition-colors">
+              <div class="flex gap-4">
+                <div
+                  class="w-10 h-10 shrink-0 rounded-lg bg-indigo-100 dark:bg-indigo-500/20 text-indigo-600 dark:text-indigo-400 flex items-center justify-center">
+                  <i class="ph-fill ph-arrows-vertical text-xl"></i>
+                </div>
+                <div>
+                  <h3 class="font-bold text-zinc-900 dark:text-white">
+                    Dinamik Yükseklik
+                  </h3>
+                  <p class="text-sm text-zinc-500 dark:text-zinc-400 mt-1">
+                    İçerideki tab değiştiğinde veya alt akordiyon açıldığında,
+                    ana kapsayıcının yüksekliği otomatik olarak yeniden
+                    hesaplanır (Auto-Reflow).
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="relative">
+          <div
+            class="absolute -top-10 -right-10 w-64 h-64 bg-gradient-to-br from-amber-500/20 to-purple-500/20 rounded-full blur-[80px] -z-10">
+          </div>
+
+          <div
+            class="relative bg-white dark:bg-[#121214] rounded-3xl border border-zinc-200 dark:border-white/10 shadow-2xl overflow-hidden">
+            <div class="px-8 py-6 border-b border-zinc-100 dark:border-white/5 bg-zinc-50/50 dark:bg-white/5">
+              <div class="flex items-center justify-between">
+                <div>
+                  <h3 class="font-bold text-lg text-zinc-900 dark:text-white">
+                    Sistem Ayarları
+                  </h3>
+                  <p class="text-xs text-zinc-500">
+                    v1.0.0 Konfigürasyon Yöneticisi
+                  </p>
+                </div>
+                <div class="flex gap-2">
+                  <span class="w-2 h-2 rounded-full bg-red-400"></span>
+                  <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+                  <span class="w-2 h-2 rounded-full bg-green-400"></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-4 space-y-3" data-ui="accordion-group">
+              <div
+                class="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-white/10 rounded-xl overflow-hidden">
+                <button data-trigger="accordion" data-target="acc-profile"
+                  class="w-full flex items-center justify-between p-4 text-left hover:bg-zinc-50 dark:hover:bg-white/5 transition-colors group">
+                  <div class="flex items-center gap-3">
+                    <div
+                      class="w-8 h-8 rounded-lg bg-zinc-100 dark:bg-white/10 flex items-center justify-center text-zinc-500">
+                      <i class="ph-bold ph-user"></i>
+                    </div>
+                    <span class="font-bold text-sm text-zinc-700 dark:text-zinc-200">Profil Bilgileri</span>
+                  </div>
+                  <i
+                    class="ph-bold ph-caret-down text-zinc-400 transition-transform duration-300 group-aria-expanded:rotate-180"></i>
+                </button>
+                <div id="acc-profile" data-ui="accordion-panel"
+                  class="hidden overflow-hidden transition-all duration-300 ease-[cubic-bezier(0.87,0,0.13,1)] max-h-0 opacity-0"
+                  data-active-class="max-h-40 opacity-100" data-inactive-class="max-h-0 opacity-0">
+                  <div class="p-4 pt-0 border-t border-zinc-100 dark:border-white/5 mt-2">
+                    <div class="grid grid-cols-2 gap-4 pt-4">
+                      <input type="text" placeholder="Ad"
+                        class="bg-zinc-50 dark:bg-black/20 border border-zinc-200 dark:border-white/10 rounded-lg px-3 py-2 text-xs" />
+                      <input type="text" placeholder="Soyad"
+                        class="bg-zinc-50 dark:bg-black/20 border border-zinc-200 dark:border-white/10 rounded-lg px-3 py-2 text-xs" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-white/10 rounded-xl overflow-hidden shadow-sm ring-1 ring-indigo-500/20">
+                <button data-trigger="accordion" data-target="acc-integrations" data-default-accordion
+                  class="w-full flex items-center justify-between p-4 text-left hover:bg-zinc-50 dark:hover:bg-white/5 transition-colors group"
+                  aria-expanded="true">
+                  <div class="flex items-center gap-3">
+                    <div
+                      class="w-8 h-8 rounded-lg bg-indigo-100 dark:bg-indigo-500/20 flex items-center justify-center text-indigo-600 dark:text-indigo-400">
+                      <i class="ph-bold ph-plugs-connected"></i>
+                    </div>
+                    <div>
+                      <span class="font-bold text-sm text-zinc-900 dark:text-white">Entegrasyonlar</span>
+                      <span
+                        class="ml-2 text-[10px] bg-indigo-100 dark:bg-indigo-500/20 text-indigo-600 dark:text-indigo-300 px-1.5 py-0.5 rounded font-bold uppercase">Tab
+                        Inside</span>
+                    </div>
+                  </div>
+                  <i
+                    class="ph-bold ph-caret-down text-zinc-400 transition-transform duration-300 group-aria-expanded:rotate-180"></i>
+                </button>
+
+                <div id="acc-integrations" data-ui="accordion-panel"
+                  class="overflow-hidden transition-all duration-300 ease-[cubic-bezier(0.87,0,0.13,1)] max-h-[500px] opacity-100"
+                  data-active-class="max-h-[500px] opacity-100" data-inactive-class="max-h-0 opacity-0">
+                  <div class="p-4 border-t border-zinc-100 dark:border-white/5 bg-zinc-50/30 dark:bg-black/20">
+                    <div data-ui="tab-group" data-default-tab="sub-slack">
+                      <div class="flex p-1 bg-zinc-200 dark:bg-white/5 rounded-lg mb-4">
+                        <button data-trigger="tab" data-target="sub-slack"
+                          class="flex-1 py-1.5 text-xs font-bold rounded-md transition-all"
+                          data-active-class="bg-white dark:bg-zinc-800 text-black dark:text-white shadow-sm"
+                          data-inactive-class="text-zinc-500 hover:text-zinc-700">
+                          Slack
+                        </button>
+                        <button data-trigger="tab" data-target="sub-discord"
+                          class="flex-1 py-1.5 text-xs font-bold rounded-md transition-all"
+                          data-active-class="bg-white dark:bg-zinc-800 text-black dark:text-white shadow-sm"
+                          data-inactive-class="text-zinc-500 hover:text-zinc-700">
+                          Discord
+                        </button>
+                        <button data-trigger="tab" data-target="sub-webhook"
+                          class="flex-1 py-1.5 text-xs font-bold rounded-md transition-all"
+                          data-active-class="bg-white dark:bg-zinc-800 text-black dark:text-white shadow-sm"
+                          data-inactive-class="text-zinc-500 hover:text-zinc-700">
+                          Webhook
+                        </button>
+                      </div>
+
+                      <div class="relative min-h-[120px]">
+                        <div id="sub-slack" data-ui="tab-panel" class="hidden animate-[fadeIn_0.2s_ease-out]">
+                          <div class="flex items-start gap-3">
+                            <div
+                              class="p-2 bg-white dark:bg-white/10 rounded-lg border border-zinc-200 dark:border-white/5">
+                              <i class="ph-fill ph-slack-logo text-2xl text-zinc-800 dark:text-white"></i>
+                            </div>
+                            <div class="flex-1">
+                              <label class="text-[10px] font-bold text-zinc-500 uppercase">Webhook URL</label>
+                              <input type="text" value="https://hooks.slack.com/..."
+                                class="w-full mt-1 bg-white dark:bg-black/40 border border-zinc-200 dark:border-white/10 rounded-lg px-3 py-2 text-xs font-mono text-zinc-600 dark:text-zinc-300" />
+                              <div class="flex items-center gap-2 mt-2">
+                                <input type="checkbox" checked class="rounded border-zinc-300 text-indigo-600" /><span
+                                  class="text-xs text-zinc-500">Hata bildirimlerini gönder</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div id="sub-discord" data-ui="tab-panel" class="hidden animate-[fadeIn_0.2s_ease-out]">
+                          <div class="text-center py-4">
+                            <i class="ph-duotone ph-discord-logo text-3xl text-indigo-400 mb-2"></i>
+                            <p class="text-xs text-zinc-500 mb-3">
+                              Henüz bir sunucu bağlanmadı.
+                            </p>
+                            <button
+                              class="px-3 py-1.5 bg-indigo-600 text-white text-xs font-bold rounded-lg hover:bg-indigo-700">
+                              Bağla
+                            </button>
+                          </div>
+                        </div>
+
+                        <div id="sub-webhook" data-ui="tab-panel" class="hidden animate-[fadeIn_0.2s_ease-out]">
+                          <div class="space-y-2">
+                            <div
+                              class="flex items-center justify-between p-2 bg-white dark:bg-white/5 border border-zinc-200 dark:border-white/5 rounded-lg">
+                              <span class="text-xs font-mono">POST /api/v1/alert</span>
+                              <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                            </div>
+                            <button
+                              class="w-full py-1.5 border border-dashed border-zinc-300 dark:border-white/20 rounded-lg text-xs text-zinc-500 hover:bg-zinc-50 dark:hover:bg-white/5">
+                              + Yeni Endpoint
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-white/10 rounded-xl overflow-hidden">
+                <button data-trigger="accordion" data-target="acc-advanced"
+                  class="w-full flex items-center justify-between p-4 text-left hover:bg-zinc-50 dark:hover:bg-white/5 transition-colors group">
+                  <div class="flex items-center gap-3">
+                    <div
+                      class="w-8 h-8 rounded-lg bg-red-50 dark:bg-red-500/10 flex items-center justify-center text-red-600 dark:text-red-400">
+                      <i class="ph-bold ph-warning-circle"></i>
+                    </div>
+                    <span class="font-bold text-sm text-zinc-700 dark:text-zinc-200">Gelişmiş</span>
+                  </div>
+                  <i
+                    class="ph-bold ph-caret-down text-zinc-400 transition-transform duration-300 group-aria-expanded:rotate-180"></i>
+                </button>
+
+                <div id="acc-advanced" data-ui="accordion-panel"
+                  class="hidden overflow-hidden transition-all duration-300 ease-[cubic-bezier(0.87,0,0.13,1)] max-h-0 opacity-0"
+                  data-active-class="max-h-96 opacity-100" data-inactive-class="max-h-0 opacity-0">
+                  <div class="p-4 pt-0 border-t border-zinc-100 dark:border-white/5 mt-2">
+                    <p class="text-xs text-zinc-500 mb-4 pt-2">
+                      Bu ayarlar sistemin çalışmasını etkileyebilir.
+                    </p>
+
+                    <div data-ui="accordion-group"
+                      class="pl-4 border-l-2 border-zinc-100 dark:border-white/10 space-y-2">
+                      <div class="border border-zinc-200 dark:border-white/10 rounded-lg overflow-hidden">
+                        <button data-trigger="accordion" data-target="acc-nested-data"
+                          class="w-full flex items-center justify-between p-3 text-xs font-bold bg-zinc-50 dark:bg-white/5 hover:bg-zinc-100 transition-colors">
+                          <span>Veri Yönetimi</span>
+                          <i class="ph-bold ph-plus"></i>
+                        </button>
+                        <div id="acc-nested-data" data-ui="accordion-panel"
+                          class="hidden overflow-hidden transition-all duration-200"
+                          data-active-class="max-h-24 opacity-100" data-inactive-class="max-h-0 opacity-0">
+                          <div class="p-3">
+                            <button
+                              class="w-full py-1.5 bg-white dark:bg-black/20 border border-zinc-200 dark:border-white/10 rounded text-[10px] hover:text-blue-600">
+                              Verileri Dışa Aktar (CSV)
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="border border-red-100 dark:border-red-900/20 rounded-lg overflow-hidden">
+                        <button data-trigger="accordion" data-target="acc-nested-danger"
+                          class="w-full flex items-center justify-between p-3 text-xs font-bold bg-red-50/50 dark:bg-red-900/10 text-red-600 hover:bg-red-100 transition-colors">
+                          <span>Tehlikeli Bölge</span>
+                          <i class="ph-bold ph-warning"></i>
+                        </button>
+                        <div id="acc-nested-danger" data-ui="accordion-panel"
+                          class="hidden overflow-hidden transition-all duration-200"
+                          data-active-class="max-h-24 opacity-100" data-inactive-class="max-h-0 opacity-0">
+                          <div class="p-3">
+                            <button
+                              class="w-full py-1.5 bg-red-600 text-white rounded text-[10px] font-bold hover:bg-red-700">
+                              Hesabı Sil
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-32 bg-[#050505] border-t border-white/10 relative overflow-hidden">
+    <div
+      class="absolute inset-0 bg-[linear-gradient(to_right,#202020_1px,transparent_1px),linear-gradient(to_bottom,#202020_1px,transparent_1px)] bg-[size:40px_40px] opacity-20 pointer-events-none">
+    </div>
+
+    <div
+      class="absolute top-0 right-0 w-[800px] h-[800px] bg-indigo-500/10 blur-[120px] rounded-full pointer-events-none">
+    </div>
+
+    <div class="max-w-[1600px] mx-auto px-4 lg:px-6 relative z-10">
+      <div class="grid lg:grid-cols-2 gap-24 items-center">
+        <div class="relative group">
+          <div
+            class="absolute -inset-0.5 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl opacity-30 blur group-hover:opacity-60 transition duration-1000">
+          </div>
+
+          <div class="relative bg-[#0A0A0A] rounded-xl border border-white/10 shadow-2xl overflow-hidden">
+            <div class="flex items-center justify-between px-4 py-3 bg-[#111] border-b border-white/5">
+              <div class="flex gap-2">
+                <div class="w-3 h-3 rounded-full bg-zinc-700"></div>
+                <div class="w-3 h-3 rounded-full bg-zinc-700"></div>
+              </div>
+              <div class="text-[10px] font-mono text-zinc-500 uppercase tracking-widest flex items-center gap-2">
+                <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                AetherUI Core :: Watcher
+              </div>
+            </div>
+
+            <div
+              class="p-6 font-mono text-xs md:text-sm leading-relaxed space-y-3 h-[400px] overflow-hidden flex flex-col justify-end">
+              <div class="opacity-30 space-y-3">
+                <div>
+                  <span class="text-zinc-500">[10:42:01]</span>
+                  <span class="text-blue-400">INIT</span>
+                  <span class="text-zinc-300">Scanning DOM for [data-ui]...</span>
+                </div>
+                <div>
+                  <span class="text-zinc-500">[10:42:02]</span>
+                  <span class="text-green-400">READY</span>
+                  <span class="text-zinc-300">Found 3 Dropdowns, 1 Modal.</span>
+                </div>
+              </div>
+
+              <div>
+                <span class="text-zinc-500">[10:45:12]</span>
+                <span class="text-purple-400">EVENT</span>
+                <span class="text-white">aether:open</span>
+                <span class="text-zinc-400">→ { target: "#user-menu" }</span>
+              </div>
+              <div>
+                <span class="text-zinc-500">[10:45:15]</span>
+                <span class="text-yellow-400">LOGIC</span>
+                <span class="text-white">Auto-Close</span>
+                <span class="text-zinc-400">→ Closing sibling "#settings-menu"</span>
+              </div>
+              <div>
+                <span class="text-zinc-500">[10:46:03]</span>
+                <span class="text-purple-400">EVENT</span>
+                <span class="text-white">aether:tab-change</span>
+                <span class="text-zinc-400">→ { id: "#tab-profile" }</span>
+              </div>
+
+              <div class="flex items-center gap-2 pt-2 border-t border-white/5 mt-2">
+                <span class="text-green-500">➜</span>
+                <span class="text-zinc-300">Awaiting user interaction...</span>
+                <span class="w-2 h-4 bg-green-500 animate-pulse"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="space-y-12">
+          <div>
+            <h2 class="text-3xl md:text-4xl font-display font-bold text-white leading-tight mb-6">
+              Sistemi Dinleyin. <br />
+              <span class="text-indigo-500">Tepki Verin.</span>
+            </h2>
+            <p class="text-zinc-400 leading-relaxed">
+              AetherUI kapalı bir kutu değildir. Her etkileşim (açma, kapama,
+              tab değişimi) standart bir DOM Event'i fırlatır. Bu sayede
+              analitik araçlarını tetikleyebilir veya özel iş mantığınızı
+              çalıştırabilirsiniz.
+            </p>
+          </div>
+
+          <div class="space-y-4">
+            <div
+              class="group p-5 rounded-xl bg-white/5 border border-white/5 hover:border-indigo-500/30 hover:bg-white/10 transition-all cursor-default">
+              <div class="flex items-center justify-between mb-2">
+                <code class="text-sm font-mono text-indigo-400 font-bold">document.addEventListener(...)</code>
+                <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-indigo-500/20 text-indigo-300">HOOKS</span>
+              </div>
+              <p class="text-sm text-zinc-400">
+                `aether:open`, `aether:close` ve `aether:tab-change`
+                olaylarını dinleyerek UI değişikliklerini yakalayın.
+              </p>
+            </div>
+
+            <div
+              class="group p-5 rounded-xl bg-white/5 border border-white/5 hover:border-purple-500/30 hover:bg-white/10 transition-all cursor-default">
+              <div class="flex items-center justify-between mb-2">
+                <code class="text-sm font-mono text-purple-400 font-bold">AetherUI.toggle(id, action)</code>
+                <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-purple-500/20 text-purple-300">METHOD</span>
+              </div>
+              <p class="text-sm text-zinc-400">
+                Bir bileşeni JavaScript üzerinden manuel olarak açın (`show`),
+                kapatın (`hide`) veya durumunu değiştirin.
+              </p>
+            </div>
+
+            <div
+              class="group p-5 rounded-xl bg-white/5 border border-white/5 hover:border-emerald-500/30 hover:bg-white/10 transition-all cursor-default">
+              <div class="flex items-center justify-between mb-2">
+                <code class="text-sm font-mono text-emerald-400 font-bold">AetherUI.state</code>
+                <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/20 text-emerald-300">STORE</span>
+              </div>
+              <p class="text-sm text-zinc-400">
+                Hangi modalların açık olduğunu, scroll kilidinin aktif olup
+                olmadığını global state nesnesinden okuyun.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-32 bg-[#111] border-t border-white/10 relative overflow-hidden">
+    <div
+      class="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:40px_40px]">
+    </div>
+
+    <div class="max-w-[1600px] mx-auto px-4 lg:px-6 relative z-10">
+      <div class="text-center max-w-3xl mx-auto mb-20">
+        <div
+          class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-white text-xs font-bold uppercase tracking-wide mb-6 border border-white/10">
+          <i class="ph-bold ph-keyboard"></i>
+          Canlı Test Alanı
+        </div>
+        <h2 class="text-4xl md:text-5xl font-display font-bold text-white mb-6">
+          Fareyi Bırakın. <br />
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500">Klavyeye
+            Dokunun.</span>
+        </h2>
+        <p class="text-lg text-zinc-400 leading-relaxed">
+          Aşağıdaki demolar, AetherUI'ın klavye olaylarını nasıl yakaladığını
+          ve yönettiğini göstermek için tasarlanmıştır. Lütfen klavyenizi
+          kullanın.
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-12">
+        <div class="bg-[#1A1A1A] rounded-3xl border border-white/10 overflow-hidden flex flex-col">
+          <div class="p-8 border-b border-white/5">
+            <div class="flex items-center gap-3 mb-2">
+              <div class="p-2 bg-yellow-500/20 text-yellow-500 rounded-lg">
+                <i class="ph-fill ph-corners-in text-xl"></i>
+              </div>
+              <h3 class="text-xl font-bold text-white">Focus Trap</h3>
+            </div>
+            <p class="text-sm text-zinc-400">
+              Modal açıldığında
+              <kbd
+                class="px-1.5 py-0.5 bg-white/10 rounded text-white font-mono text-xs border border-white/20">TAB</kbd>
+              tuşuna arka arkaya basın. Odak asla modalın dışına çıkamaz.
+            </p>
+          </div>
+
+          <div class="flex-1 p-12 bg-black/20 flex items-center justify-center">
+            <button data-trigger="ui-control" data-target="demo-trap-modal"
+              class="px-6 py-3 bg-yellow-500 hover:bg-yellow-400 text-black font-bold rounded-xl transition-colors shadow-[0_0_30px_rgba(234,179,8,0.2)] flex items-center gap-2">
+              <i class="ph-bold ph-lock-key-open"></i>
+              Trap Modalı Başlat
+            </button>
+          </div>
+        </div>
+        <div class="bg-[#1A1A1A] rounded-3xl border border-white/10 overflow-hidden flex flex-col">
+          <div class="p-8 border-b border-white/5">
+            <div class="flex items-center gap-3 mb-2">
+              <div class="p-2 bg-blue-500/20 text-blue-500 rounded-lg">
+                <i class="ph-fill ph-arrows-left-right text-xl"></i>
+              </div>
+              <h3 class="text-xl font-bold text-white">Roving Tabindex</h3>
+            </div>
+            <p class="text-sm text-zinc-400">
+              Araç çubuğuna odaklanın, ardından
+              <kbd class="px-1.5 py-0.5 bg-white/10 rounded text-white font-mono text-xs border border-white/20">←</kbd>
+              ve
+              <kbd class="px-1.5 py-0.5 bg-white/10 rounded text-white font-mono text-xs border border-white/20">→</kbd>
+              tuşlarını kullanın. AetherUI odağı otomatik yönetir.
+            </p>
+          </div>
+
+          <div class="flex-1 p-12 bg-black/20 flex flex-col items-center justify-center gap-8">
+            <div data-ui="tab-group" data-default-tab="tool-cursor"
+              class="bg-[#252525] p-2 rounded-2xl border border-white/10 flex gap-2">
+              <button data-trigger="tab" data-target="tool-cursor"
+                class="w-12 h-12 rounded-xl flex items-center justify-center text-zinc-400 hover:text-white hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white/10 transition-all"
+                data-active-class="bg-blue-600 text-white shadow-lg shadow-blue-500/40 ring-0" aria-label="Seçim Aracı">
+                <i class="ph-fill ph-cursor text-xl"></i>
+              </button>
+
+              <button data-trigger="tab" data-target="tool-draw"
+                class="w-12 h-12 rounded-xl flex items-center justify-center text-zinc-400 hover:text-white hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white/10 transition-all"
+                data-active-class="bg-blue-600 text-white shadow-lg shadow-blue-500/40 ring-0" aria-label="Çizim Aracı">
+                <i class="ph-fill ph-pencil-simple text-xl"></i>
+              </button>
+
+              <button data-trigger="tab" data-target="tool-shape"
+                class="w-12 h-12 rounded-xl flex items-center justify-center text-zinc-400 hover:text-white hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white/10 transition-all"
+                data-active-class="bg-blue-600 text-white shadow-lg shadow-blue-500/40 ring-0" aria-label="Şekil Aracı">
+                <i class="ph-fill ph-square text-xl"></i>
+              </button>
+
+              <button data-trigger="tab" data-target="tool-text"
+                class="w-12 h-12 rounded-xl flex items-center justify-center text-zinc-400 hover:text-white hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white/10 transition-all"
+                data-active-class="bg-blue-600 text-white shadow-lg shadow-blue-500/40 ring-0" aria-label="Metin Aracı">
+                <i class="ph-fill ph-text-t text-xl"></i>
+              </button>
+            </div>
+
+            <div class="text-center h-6">
+              <div id="tool-cursor" data-ui="tab-panel"
+                class="hidden text-sm text-blue-400 font-bold animate-[fadeIn_0.2s]">
+                Seçim Modu Aktif
+              </div>
+              <div id="tool-draw" data-ui="tab-panel"
+                class="hidden text-sm text-blue-400 font-bold animate-[fadeIn_0.2s]">
+                Çizim Modu Aktif
+              </div>
+              <div id="tool-shape" data-ui="tab-panel"
+                class="hidden text-sm text-blue-400 font-bold animate-[fadeIn_0.2s]">
+                Şekil Modu Aktif
+              </div>
+              <div id="tool-text" data-ui="tab-panel"
+                class="hidden text-sm text-blue-400 font-bold animate-[fadeIn_0.2s]">
+                Metin Modu Aktif
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div id="demo-trap-modal" data-scroll-lock data-click-outside data-return-focus
+    class="hidden fixed inset-0 z-[200] flex items-center justify-center px-4 bg-black/80 backdrop-blur-md transition-base opacity-0"
+    data-active-class="opacity-100" data-inactive-class="opacity-0">
+    <div
+      class="w-full max-w-sm bg-[#1A1A1A] border border-white/10 p-8 rounded-3xl shadow-2xl transform scale-95 transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)]"
+      data-active-class="scale-100 translate-y-0" data-inactive-class="scale-95 translate-y-8">
+      <div class="text-center mb-6">
+        <div
+          class="w-16 h-16 bg-yellow-500/10 rounded-full flex items-center justify-center mx-auto mb-4 text-yellow-500 border border-yellow-500/20">
+          <i class="ph-fill ph-shield-check text-3xl"></i>
+        </div>
+        <h3 class="text-xl font-bold text-white mb-2">
+          Güvenlik Doğrulaması
+        </h3>
+        <p class="text-sm text-zinc-400">
+          Lütfen
+          <kbd class="text-white bg-white/10 px-1 rounded">TAB</kbd> tuşunu
+          kullanarak inputlar arasında gezinin.
+        </p>
+      </div>
+
+      <div class="space-y-4">
+        <div>
+          <label class="block text-[10px] font-bold text-zinc-500 uppercase mb-1">Kod</label>
+          <input type="text" placeholder="123-456"
+            class="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all text-center font-mono text-lg tracking-widest" />
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <button data-trigger="ui-control" data-target="demo-trap-modal"
+            class="py-3 rounded-xl border border-white/10 text-zinc-400 hover:text-white hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-white/20 transition-all font-medium text-sm">
+            İptal
+          </button>
+          <button
+            class="py-3 rounded-xl bg-yellow-500 text-black font-bold hover:bg-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 focus:ring-offset-[#1A1A1A] transition-all text-sm">
+            Doğrula
+          </button>
+        </div>
+      </div>
+
+      <div class="mt-6 pt-4 border-t border-white/5 text-center">
+        <span class="text-[10px] text-zinc-600 flex items-center justify-center gap-2">
+          <i class="ph-bold ph-lock-key"></i> Focus Loop Active
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <section class="relative bg-black pt-32 pb-12 border-t border-white/10 overflow-hidden">
+    <div
+      class="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-indigo-600/20 blur-[150px] rounded-full pointer-events-none">
+    </div>
+
+    <div class="max-w-[1600px] mx-auto px-4 lg:px-6 relative z-10">
+      <div class="relative bg-[#0F0F0F] border border-white/10 rounded-[3rem] p-12 md:p-24 text-center overflow-hidden">
+        <div
+          class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-5 mix-blend-overlay">
+        </div>
+        <div
+          class="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:60px_60px] opacity-20">
+        </div>
+
+        <div class="relative z-10 max-w-3xl mx-auto space-y-10">
+          <h2 class="text-5xl md:text-7xl font-display font-bold text-white tracking-tight leading-tight">
+            Hazır mısınız? <br />
+            <span
+              class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400">Projenizi
+              Ateşleyin.</span>
+          </h2>
+
+          <p class="text-xl text-zinc-400 leading-relaxed">
+            Bağımlılık yok. Karmaşık ayarlar yok. <br />
+            Sadece saf, performanslı ve yönetilebilir arayüzler var.
+          </p>
+
+          <div
+            class="inline-flex items-center gap-4 p-2 pl-6 bg-white/5 border border-white/10 rounded-2xl backdrop-blur-xl hover:border-indigo-500/50 transition-colors group cursor-pointer">
+            <code class="font-mono text-lg text-indigo-300">npm install aether-ui</code>
+            <button class="p-3 bg-white/10 rounded-xl hover:bg-white/20 text-white transition-colors">
+              <i class="ph-bold ph-copy text-xl"></i>
+            </button>
+          </div>
+
+          <div class="flex flex-wrap justify-center gap-6 pt-8">
+            <a href="#"
+              class="px-8 py-4 bg-white text-black font-bold rounded-full hover:scale-105 transition-transform flex items-center gap-2">
+              <i class="ph-bold ph-book-open"></i> Dokümantasyonu Oku
+            </a>
+            <a href="#"
+              class="px-8 py-4 bg-transparent border border-white/20 text-white font-bold rounded-full hover:bg-white/10 transition-colors flex items-center gap-2">
+              <i class="ph-fill ph-github-logo"></i> GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+      <footer class="mt-32 border-t border-white/10 pt-16">
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-10 mb-16">
+          <div class="col-span-2 lg:col-span-2 space-y-6">
+            <a href="#" class="flex items-center gap-2 group">
+              <div
+                class="w-8 h-8 rounded-lg bg-white text-black flex items-center justify-center group-hover:scale-110 transition-transform">
+                <i class="ph-bold ph-diamond text-lg"></i>
+              </div>
+              <span class="font-display font-bold text-xl text-white">Aether<span
+                  class="text-indigo-400">UI</span></span>
+            </a>
+            <p class="text-sm text-zinc-500 leading-relaxed max-w-xs">
+              Modern web için geliştirilmiş, hafif ve headless UI kontrolcüsü.
+              Tasarım özgürlüğünüzü kısıtlamadan gücü elinize alın.
+            </p>
+            <div class="flex gap-4">
+              <a href="#" class="text-zinc-400 hover:text-white transition-colors"><i
+                  class="ph-fill ph-twitter-logo text-2xl"></i></a>
+              <a href="#" class="text-zinc-400 hover:text-white transition-colors"><i
+                  class="ph-fill ph-discord-logo text-2xl"></i></a>
+              <a href="#" class="text-zinc-400 hover:text-white transition-colors"><i
+                  class="ph-fill ph-github-logo text-2xl"></i></a>
+            </div>
+          </div>
+
+          <div class="space-y-4">
+            <h4 class="text-sm font-bold text-white uppercase tracking-wider">
+              Ürün
+            </h4>
+            <ul class="space-y-2 text-sm text-zinc-500">
+              <li>
+                <a href="#" class="hover:text-indigo-400 transition-colors">Özellikler</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-indigo-400 transition-colors">Entegrasyonlar</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-indigo-400 transition-colors">Changelog</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-indigo-400 transition-colors">Roadmap</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="space-y-4">
+            <h4 class="text-sm font-bold text-white uppercase tracking-wider">
+              Kaynaklar
+            </h4>
+            <ul class="space-y-2 text-sm text-zinc-500">
+              <li>
+                <a href="#" class="hover:text-indigo-400 transition-colors">Dokümantasyon</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-indigo-400 transition-colors">API Referansı</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-indigo-400 transition-colors">Örnekler</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-indigo-400 transition-colors">Topluluk</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="space-y-4">
+            <h4 class="text-sm font-bold text-white uppercase tracking-wider">
+              Yasal
+            </h4>
+            <ul class="space-y-2 text-sm text-zinc-500">
+              <li>
+                <a href="#" class="hover:text-indigo-400 transition-colors">Lisans (MIT)</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-indigo-400 transition-colors">Gizlilik</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-indigo-400 transition-colors">İletişim</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p class="text-xs text-zinc-600">
+            &copy; 2024 AetherUI Open Source Project. Tüm hakları saklıdır.
+          </p>
+          <div class="flex items-center gap-2">
+            <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+            <span class="text-xs font-bold text-zinc-400">Tüm Sistemler Operasyonel</span>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </section>
+  <script src="aether-ui.js"></script>
+</body>
+
+</html>
