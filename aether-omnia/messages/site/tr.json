@@ -1,0 +1,22 @@
+{
+    "home": "Anasayfa",
+    "profile": "Profilim",
+    "logout": "Çıkış Yap",
+    "login_title": "Giriş Yap",
+    "admin": "Yönetim",
+    "register_title": "Kayıt Ol",
+    "email_label": "E-posta Adresi",
+    "password_label": "Parola",
+    "submit_login": "Giriş",
+    "submit_register": "Kayıt Ol",
+    "have_account": "Zaten hesabın var mı?",
+    "no_account": "Hesabın yok mu?",
+    "save": "Kaydet",
+    "cancel": "İptal",
+    "delete": "Sil",
+    "edit": "Düzenle",
+    "search": "Ara...",
+    "loading": "Yükleniyor...",
+    "error": "Bir hata oluştu",
+    "success": "İşlem başarılı"
+}

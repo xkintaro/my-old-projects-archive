@@ -1,0 +1,22 @@
+{
+    "home": "Home",
+    "profile": "My Profile",
+    "logout": "Logout",
+    "login_title": "Login",
+    "admin": "Admin",
+    "register_title": "Register",
+    "email_label": "Email Address",
+    "password_label": "Password",
+    "submit_login": "Sign In",
+    "submit_register": "Sign Up",
+    "have_account": "Already have an account?",
+    "no_account": "Don't have an account?",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "search": "Search...",
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "success": "Operation successful"
+}

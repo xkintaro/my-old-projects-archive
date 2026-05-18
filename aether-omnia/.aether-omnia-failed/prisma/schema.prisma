@@ -1,0 +1,182 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum TranslationScope {
+  ADMIN
+  SITE
+  COMMON
+}
+
+model Language {
+  code String  @id
+  name String
+  flag String?
+
+  isDefault Boolean @default(false)
+  direction String  @default("ltr")
+
+  isActivePublic Boolean @default(true)
+  isActiveAdmin  Boolean @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  staticTranslations     StaticTranslation[]
+  roleTranslations       RoleTranslation[]
+  permissionTranslations PermissionTranslation[]
+  routeAliases           RouteAlias[]
+
+  @@map("languages")
+}
+
+model RouteAlias {
+  id String @id @default(cuid())
+
+  key String
+
+  sourcePath String
+
+  path String
+
+  languageCode String
+  language     Language @relation(fields: [languageCode], references: [code], onDelete: Cascade)
+
+  scope TranslationScope @default(COMMON)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([path, languageCode])
+  @@unique([key, languageCode])
+  @@map("route_aliases")
+}
+
+model StaticTranslation {
+  id String @id @default(cuid())
+
+  key   String
+  value String
+
+  scope TranslationScope @default(COMMON)
+
+  languageCode String
+  language     Language @relation(fields: [languageCode], references: [code], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([key, languageCode, scope])
+  @@map("static_translations")
+}
+
+enum UserType {
+  GOD
+  ADMIN
+  USER
+}
+
+model User {
+  id String @id @default(cuid())
+
+  username String  @unique
+  email    String  @unique
+  password String
+  phone    String? @unique
+
+  name        String?
+  surname     String?
+  description String?
+  avatar      String?
+  banner      String?
+  links       String[]
+
+  emailVerifiedAt DateTime?
+  phoneVerifiedAt DateTime?
+  lastIp          String?
+  lastLoginAt     DateTime?
+  userAgent       String?
+
+  roleId String
+  role   Role   @relation(fields: [roleId], references: [id])
+
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("users")
+}
+
+model Role {
+  id String @id @default(cuid())
+
+  code String @unique
+
+  type     UserType @default(USER)
+  isSystem Boolean  @default(false)
+
+  users        User[]
+  permissions  Permission[]
+  translations RoleTranslation[]
+
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("roles")
+}
+
+model RoleTranslation {
+  id String @id @default(cuid())
+
+  roleId String
+  role   Role   @relation(fields: [roleId], references: [id], onDelete: Cascade)
+
+  languageCode String
+  language     Language @relation(fields: [languageCode], references: [code], onDelete: Cascade)
+
+  name        String
+  description String?
+
+  @@unique([roleId, languageCode])
+  @@map("role_translations")
+}
+
+model Permission {
+  id String @id @default(cuid())
+
+  resource String
+  action   String
+
+  isSystem Boolean @default(false)
+
+  roles        Role[]
+  translations PermissionTranslation[]
+
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([resource, action])
+  @@map("permissions")
+}
+
+model PermissionTranslation {
+  id String @id @default(cuid())
+
+  permissionId String
+  permission   Permission @relation(fields: [permissionId], references: [id], onDelete: Cascade)
+
+  languageCode String
+  language     Language @relation(fields: [languageCode], references: [code], onDelete: Cascade)
+
+  name        String
+  description String?
+
+  @@unique([permissionId, languageCode])
+  @@map("permission_translations")
+}

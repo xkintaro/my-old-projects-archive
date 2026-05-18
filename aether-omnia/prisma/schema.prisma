@@ -1,0 +1,97 @@
+generator client {
+  provider = "prisma-client"
+  output   = "./generated"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// --------------------------------------------------------
+// ENUM'S
+// --------------------------------------------------------
+
+enum RoleType {
+  GOD
+  ADMIN
+  USER
+}
+
+// --------------------------------------------------------
+// 1. ENTITY: USER
+// --------------------------------------------------------
+
+model User {
+  id String @id @default(cuid())
+
+  username String  @unique
+  email    String  @unique
+  phone    String? @unique
+  password String
+
+  name        String?
+  surname     String?
+  description String?
+  avatar      String?
+  banner      String?
+  links       String[]
+
+  emailVerifiedAt DateTime?
+  phoneVerifiedAt DateTime?
+  lastIp          String?
+  lastLoginAt     DateTime?
+  userAgent       String?
+
+  isActive Boolean @default(true)
+
+  roleId String
+  role   Role   @relation(fields: [roleId], references: [id])
+
+  permissions Permission[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("users")
+}
+
+// --------------------------------------------------------
+// 2. ENTITY: ROLE
+// --------------------------------------------------------
+
+model Role {
+  id          String  @id @default(cuid())
+  name        String
+  code        String  @unique
+  description String?
+
+  type     RoleType @default(USER)
+  isSystem Boolean  @default(false)
+
+  users User[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("roles")
+}
+
+// --------------------------------------------------------
+// 3. ENTITY: PERMISSION
+// --------------------------------------------------------
+
+model Permission {
+  id          String  @id @default(cuid())
+  resource    String
+  action      String
+  description String?
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([userId, resource, action])
+  @@map("permissions")
+}
