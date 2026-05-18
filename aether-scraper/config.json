@@ -1,0 +1,43 @@
+{
+    "url": {
+        "login": "https://example.com.tr/admin/login",
+        "base": "https://example.com.tr"
+    },
+    "credentials": {
+        "email": "admin@example.com",
+        "password": "admin-password-123"
+    },
+    "settings": {
+        "start_id": 1,
+        "end_id": 100,
+        "image_folder": "downloaded_images",
+        "output_file": "scraped_data.json"
+    },
+    "fields": [
+        {
+            "key": "ad",
+            "selector": "name",
+            "type": "translatable"
+        },
+        {
+            "key": "slug",
+            "selector": "slug",
+            "type": "translatable"
+        },
+        {
+            "key": "aciklama",                  
+            "selector": "description",
+            "type": "translatable"
+        },
+        {
+            "key": "meta_title",
+            "selector": "meta_title",
+            "type": "translatable"
+        },
+        {
+            "key": "meta_description",
+            "selector": "meta_description",
+            "type": "translatable"
+        }
+    ]
+}
