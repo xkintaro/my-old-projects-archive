@@ -1,3 +1,7 @@
+## 📌 Main Repository
+
+[https://github.com/xkintaro/aether-js](https://github.com/xkintaro/aether-js)
+
 ## 📋 About
 
 **EN - ENGLISH**
@@ -9,7 +13,3 @@ I made my first demo experiments for AetherJS in this project. Almost the entire
 **TR - TÜRKÇE**
 
 AetherJS için ilk demo denemelerimi bu projede gerçekleştirdim. Arayüz tasarımının neredeyse tamamı yapay zekâ tarafından oluşturuldu.
-
-## 📌 Main Repository
-
-- [https://github.com/xkintaro/aether-js](https://github.com/xkintaro/aether-js)
