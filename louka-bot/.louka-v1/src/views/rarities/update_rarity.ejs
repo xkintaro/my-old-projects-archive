@@ -1,0 +1,25 @@
+<% layout('layouts/main') -%>
+
+    <div class="kintaro-ui-form-container">
+        <h1 class="kintaro-ui-form-title">Edit Rarity</h1>
+
+        <form class="kintaro-ui-form" action="/rarities/update_rarity/<%= rarity.rarityId %>" method="POST">
+
+            <input placeholder="Rarity Index" type="text" name="rarityIndex" class="kintaro-ui-input" autocomplete="off"
+                value="<%= rarity.rarityIndex %>" required>
+
+            <input placeholder="Rarity Name" type="text" name="rarityName" class="kintaro-ui-input" autocomplete="off"
+                value="<%= rarity.rarityName %>" required>
+
+            <input placeholder="Rarity Image" type="text" name="rarityImage" class="kintaro-ui-input" autocomplete="off"
+                value="<%= rarity.rarityImage %>" required>
+
+            <input placeholder="Rarity Icon" type="text" name="rarityIcon" class="kintaro-ui-input" autocomplete="off"
+                value="<%= rarity.rarityIcon %>" required>
+
+            <input placeholder="Rarity Color (e.g. #00CCFF)" type="text" name="rarityColor" class="kintaro-ui-input"
+                autocomplete="off" value="<%= rarity.rarityColor %>" required>
+
+            <button type="submit" class="kintaro-button-reset kintaro-button-1 w100 accent">Update</button>
+        </form>
+    </div>

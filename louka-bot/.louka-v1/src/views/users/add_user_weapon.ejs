@@ -1,0 +1,27 @@
+<% layout('layouts/main') -%>
+
+    <div class="kintaro-ui-form-container">
+        <h1 class="kintaro-ui-form-title">
+            Add Weapon to User
+            <span class="accent-text">
+                <%= userId %>
+            </span>
+        </h1>
+
+        <form action="/users/add_user_weapon/<%= userId %>" method="POST" class="kintaro-ui-form">
+
+            <select id="weaponId" name="weaponId" class="kintaro-ui-input" required>
+                <option value="">Select Weapon</option>
+                <% weapons.forEach(weapon=> { %>
+                    <option value="<%= weapon.weaponId %>">
+                        <%= weapon.weaponName %> (ID: <%= weapon.weaponId %>)
+                    </option>
+                    <% }) %>
+            </select>
+
+            <input type="number" id="count" class="kintaro-ui-input" name="count" placeholder="Weapon Count" min="1"
+                required>
+
+            <button type="submit" class="kintaro-button-reset kintaro-button-1 accent w100">Add Weapon</button>
+        </form>
+    </div>

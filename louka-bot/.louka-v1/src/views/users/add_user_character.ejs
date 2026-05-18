@@ -1,0 +1,25 @@
+<% layout('layouts/main') -%>
+
+    <div class="kintaro-ui-form-container">
+        <h1 class="kintaro-ui-form-title">
+            Add Character to User <span class="accent-text">
+                <%= userId %>
+            </span>
+        </h1>
+
+        <form action="/users/add_user_character/<%= userId %>" method="POST" class="kintaro-ui-form">
+
+            <select id="characterId" name="characterId" class="kintaro-ui-input" required>
+                <option value="">Select Character</option>
+                <% characters.forEach(character=> { %>
+                    <option value="<%= character.characterId %>">
+                        <%= character.characterName %> (ID: <%= character.characterId %>)
+                    </option>
+                    <% }) %>
+            </select>
+
+          
+
+            <button type="submit" class="kintaro-button-reset kintaro-button-1 accent w100">Add Character</button>
+        </form>
+    </div>

@@ -1,0 +1,102 @@
+<% layout('layouts/main') -%>
+
+    <div class="kintaro-ui-container">
+        <div class="kintaro-ui-actions-header">
+            <h1 class="kintaro-ui-title">User <%= userId %> Characters</h1>
+            <a href="/users/add_user_character/<%= userId %>" class="kintaro-button-reset kintaro-button-1">
+                <i class="fas fa-plus"></i> Add New Character
+            </a>
+        </div>
+
+        <div class="kintaro-ui-table-wrapper">
+            <table class="kintaro-ui-table">
+                <thead>
+                    <tr>
+                        <th>INDEX</th>
+                        <th>CHARACTER ID</th>
+                        <th>IMAGE</th>
+                        <th>NAME</th>
+                        <th>DESCRIPTION</th>
+                        <th>COST</th>
+                        <th>RARITY</th>
+                        <th>CLASS</th>
+                        <th>LEVEL</th>
+                        <th>XP</th>
+                        <th>STAT POINTS</th>
+                        <th>USED STAT POINTS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% characters.forEach(character=> { %>
+                        <tr>
+                            <td>
+                                <span title="<%= character.characterIndex %>" class="text max-length">
+                                    <%= character.characterIndex %>
+                                </span>
+                            </td>
+                            <td>
+                                <span title="<%= character.characterId %>" class="text max-length">
+                                    <%= character.characterId %>
+                                </span>
+                            </td>
+                            <td>
+                                <a href="/img/characters/<%= character.characterImage %>" target="_blank"
+                                    title="<%= character.characterImage %>">
+                                    <img src="/img/characters/<%= character.characterImage %>"
+                                        class="kintaro-ui-icon" />
+                                </a>
+                            </td>
+                            <td>
+                                <span class="max-length text-primary" title="<%= character.characterName %>">
+                                    <%= character.characterName %>
+                                </span>
+                            </td>
+                            <td>
+                                <span class="text max-length" title="<%= character.characterDescription %>">
+                                    <%= character.characterDescription %>
+                                </span>
+                            </td>
+                            <td>
+                                <span title="<%= character.characterCost %>" class="kintaro-ui-badge text max-length">
+                                    <%= character.characterCost %>
+                                </span>
+                            </td>
+                            <td>
+                                <span class="kintaro-ui-badge max-length" title="<%= character.rarityName %>"
+                                    style="color: <%= character.rarityColor %>">
+                                    <%= character.rarityName %>
+                                </span>
+                            </td>
+                            <td>
+                                <span class="kintaro-ui-badge max-length" title="<%= character.className %>"
+                                    style="color: <%= character.classColor %>">
+                                    <%= character.className %>
+                                </span>
+                            </td>
+                            <td>
+                                <span class="kintaro-ui-badge max-length" title=" <%= character.characterLevel %>">
+                                    <%= character.characterLevel %>
+                                </span>
+                            </td>
+                            <td>
+                                <span class="kintaro-ui-badge max-length" title=" <%= character.characterXp %>">
+                                    <%= character.characterXp %>
+                                </span>
+                            </td>
+                            <td>
+                                <span class="kintaro-ui-badge max-length" title=" <%= character.characterStatPoint %>">
+                                    <%= character.characterStatPoint %>
+                                </span>
+                            </td>
+                            <td>
+                                <span class="kintaro-ui-badge max-length"
+                                    title="<%= character.characterUsedStatPoint %>">
+                                    <%= character.characterUsedStatPoint %>
+                                </span>
+                            </td>
+                        </tr>
+                        <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>

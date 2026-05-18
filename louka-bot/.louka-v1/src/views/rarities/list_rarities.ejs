@@ -1,0 +1,180 @@
+<% layout('layouts/main') -%>
+
+    <div class="kintaro-ui-container">
+        <div class="kintaro-ui-actions-header">
+            <h1 class="kintaro-ui-title">Rarities Management</h1>
+        </div>
+
+        <div class="kintaro-ui-filter">
+            <% if (rarities.length !==0) { %>
+                <input type="text" id="searchInput" placeholder="Search rarities by name or color..."
+                    class="kintaro-ui-input full-input-1" aria-label="Search rarities">
+                <% } %>
+                    <a href="rarities/add_rarity" class="kintaro-button-reset kintaro-button-1">
+                        <i class="fas fa-plus"></i> Add New Rarity
+                    </a>
+        </div>
+
+        <% if (rarities.length===0) { %>
+            <p class="text">No rarities found. Click "Add New Rarity" to get started!</p>
+            <% } else { %>
+                <div class="kintaro-ui-results-count">
+                    Showing <span id="visibleCount">
+                        <%= rarities.length %>
+                    </span> of <span id="totalCount">
+                        <%= rarities.length %>
+                    </span> rarities
+                </div>
+
+                <div class="kintaro-ui-table-wrapper">
+                    <table class="kintaro-ui-table" id="raritiesTable">
+                        <thead>
+                            <tr>
+                                <th>INDEX</th>
+                                <th>ID</th>
+                                <th>IMAGE</th>
+                                <th>NAME</th>
+                                <th>ICON</th>
+                                <th>COLOR</th>
+                                <th>CREATED</th>
+                                <th>ACTIONS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% rarities.forEach(r=> { %>
+                                <tr data-rarity-id="<%= r.rarityId %>">
+                                    <td>
+                                        <span title="  <%= r.rarityIndex %>" class="text max-length">
+                                            <%= r.rarityIndex %>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span title="   <%= r.rarityId %>" class="text max-length">
+                                            <%= r.rarityId %>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <a href="/img/rarities/<%= r.rarityImage %>" target="_blank">
+                                            <img src="/img/rarities/<%= r.rarityImage %>" title="<%= r.rarityImage  %>"
+                                                class="kintaro-ui-icon">
+                                        </a>
+                                    </td>
+                                    <td class="item-name">
+                                        <span class="text-primary max-length" title=" <%= r.rarityName %>">
+                                            <%= r.rarityName %>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span class="text max-length" title="<%= r.rarityIcon %>">
+                                            <%= r.rarityIcon %>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span class="kintaro-ui-badge max-length" title="<%= r.rarityColor %>"
+                                            style="background-color: <%= r.rarityColor %>;">
+                                            <%= r.rarityColor %>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span class="text max-length"
+                                            title=" <%= new Date(r.rarityDate).toLocaleString() %>">
+                                            <%= new Date(r.rarityDate).toLocaleString() %>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <div class="kintaro-ui-actions">
+                                            <button class="kintaro-button-reset edit-button kintaro-button-2"
+                                                onclick="window.location.href='/rarities/update_rarity/<%= r.rarityId %>'"
+                                                aria-label="Edit rarity <%= r.rarityName %>">
+                                                <i class="fas fa-edit"></i> Edit
+                                            </button>
+                                            <button class="kintaro-button-reset delete-button kintaro-button-2"
+                                                onclick="deleteRarity(<%= r.rarityId %>, '<%= r.rarityName %>')"
+                                                aria-label="Delete rarity <%= r.rarityName %>">
+                                                <i class="fas fa-trash-alt"></i> Delete
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <% }); %>
+                        </tbody>
+                    </table>
+                </div>
+                <% } %>
+    </div>
+
+    <script>
+        function deleteRarity(rarityId, rarityName) {
+            if (confirm(`Are you sure you want to delete the "${rarityName}" rarity?`)) {
+                fetch(`/rarities/delete_rarity/${rarityId}`, {
+                    method: 'DELETE',
+                    headers: { 'Content-Type': 'application/json' }
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            return response.json().then(err => { throw err; });
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        if (data.success) {
+                            const row = document.querySelector(`tr[data-rarity-id="${rarityId}"]`);
+                            if (row) row.remove();
+                            updateCounts();
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('An error occurred while deleting the rarity.');
+                    });
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const searchInput = document.getElementById('searchInput');
+            const tableBody = document.querySelector('#raritiesTable tbody');
+
+            if (!tableBody) return;
+
+            const rows = Array.from(tableBody.querySelectorAll('tr'));
+            const visibleCountEl = document.getElementById('visibleCount');
+            const totalCountEl = document.getElementById('totalCount');
+
+            function filterAndCountItems() {
+                const searchTerm = searchInput.value.toLowerCase();
+                let visibleCount = 0;
+
+                rows.forEach(row => {
+                    const name = row.querySelector('.item-name').textContent.toLowerCase();
+                   
+                    const matchesSearch = searchTerm === '' || name.includes(searchTerm) ;
+
+                    if (matchesSearch) {
+                        row.style.display = '';
+                        visibleCount++;
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+
+                if (visibleCountEl) visibleCountEl.textContent = visibleCount;
+            }
+
+            window.updateCounts = function () {
+                const currentRows = document.querySelectorAll('#raritiesTable tbody tr');
+                const totalCount = currentRows.length;
+                const visibleRows = Array.from(currentRows).filter(r => r.style.display !== 'none');
+                const visibleCount = visibleRows.length;
+
+                if (visibleCountEl) visibleCountEl.textContent = visibleCount;
+                if (totalCountEl) totalCountEl.textContent = totalCount;
+
+                if (totalCount === 0) {
+                    const filterSection = document.querySelector('.kintaro-ui-filter');
+                    filterSection.style.display = 'none';
+                }
+            };
+
+            if (searchInput) searchInput.addEventListener('input', filterAndCountItems);
+        });
+    </script>

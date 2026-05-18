@@ -1,0 +1,76 @@
+<% layout('layouts/main') -%>
+
+    <div class="kintaro-ui-container">
+        <div class="kintaro-ui-actions-header">
+            <h1 class="kintaro-ui-title">User <%= userId %> Weapons</h1>
+            <a href="/users/add_user_weapon/<%= userId %>" class="kintaro-button-reset kintaro-button-1">
+                <i class="fas fa-plus"></i> Add New Weapon
+            </a>
+        </div>
+
+        <div class="kintaro-ui-table-wrapper">
+            <table class="kintaro-ui-table">
+                <thead>
+                    <tr>
+                        <th>INDEX</th>
+                        <th>WEAPON ID</th>
+                        <th>IMAGE</th>
+                        <th>NAME</th>
+                        <th>DESCRIPTION</th>
+                        <th>COST</th>
+                        <th>COUNT</th>
+                        <th>RARITY</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <% weapons.forEach(weapon=> { %>
+                        <tr>
+                            <td>
+                                <span title="<%= weapon.weaponIndex %>" class="text max-length">
+                                    <%= weapon.weaponIndex %>
+                                </span>
+                            </td>
+                            <td>
+                                <span class="text max-length" title=" <%= weapon.weaponId %>">
+                                    <%= weapon.weaponId %>
+                                </span>
+                            </td>
+                            <td>
+                                <a href="/img/weapons/<%= weapon.weaponImage %>" target="_blank">
+                                    <img src="/img/weapons/<%= weapon.weaponImage %>" title="<%= weapon.weaponImage %>"
+                                        class="kintaro-ui-icon">
+                                </a>
+                            </td>
+                            <td>
+                                <span class="text-primary max-length" title="    <%= weapon.weaponName %>">
+                                    <%= weapon.weaponName %>
+                                </span>
+                            </td>
+                            <td>
+                                <span class="text max-length" title="    <%= weapon.weaponDescription %>">
+                                    <%= weapon.weaponDescription %>
+                                </span>
+                            </td>
+                            <td>
+                                <span title="    <%= weapon.weaponCost %>" class="text max-length kintaro-ui-badge">
+                                    <%= weapon.weaponCost %>
+                                </span>
+                            </td>
+                            <td>
+                                <span title="      <%= weapon.userWeaponCount %>" class="kintaro-ui-badge max-length">
+                                    <%= weapon.userWeaponCount %>
+                                </span>
+                            </td>
+                            <td>
+                                <span class="kintaro-ui-badge max-length" title="      <%= weapon.rarityName %>"
+                                    style="color:<%= weapon.rarityColor %>">
+                                    <%= weapon.rarityName %>
+                                </span>
+                            </td>
+                        </tr>
+                        <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>

@@ -1,0 +1,46 @@
+<% layout('layouts/main') -%>
+
+    <div class="kintaro-ui-form-container">
+        <h1 class="kintaro-ui-form-title">Edit Character</h1>
+
+        <form class="kintaro-ui-form" action="/characters/update_character/<%= character.characterId %>" method="POST">
+
+            <input placeholder="Character Index" type="text" name="characterIndex" class="kintaro-ui-input"
+                autocomplete="off" value="<%= character.characterIndex %>" required>
+
+            <input placeholder="Character Name" type="text" name="characterName" class="kintaro-ui-input"
+                autocomplete="off" value="<%= character.characterName %>" required>
+
+            <input placeholder="Character Cost" type="number" name="characterCost" class="kintaro-ui-input"
+                autocomplete="off" value="<%= character.characterCost %>" required>
+
+            <input placeholder="Character Image" type="text" name="characterImage" class="kintaro-ui-input"
+                autocomplete="off" value="<%= character.characterImage %>" required>
+
+            <input placeholder="Character Icon" type="text" name="characterIcon" class="kintaro-ui-input"
+                autocomplete="off" value="<%= character.characterIcon %>" required>
+
+            <input placeholder="Character Description" type="text" name="characterDescription" class="kintaro-ui-input"
+                autocomplete="off" value="<%= character.characterDescription %>" required>
+
+            <select name="rarityId" class="kintaro-ui-input" required>
+                <option value="">Select Rarity</option>
+                <% rarities.forEach(rarity=> { %>
+                    <option value="<%= rarity.rarityId %>" <%=rarity.isSelected ? 'selected' : '' %>>
+                        <%= rarity.rarityName %>
+                    </option>
+                    <% }); %>
+            </select>
+
+            <select name="classId" class="kintaro-ui-input" required>
+                <option value="">Select Class</option>
+                <% classes.forEach(cls=> { %>
+                    <option value="<%= cls.classId %>" <%=cls.isSelected ? 'selected' : '' %>>
+                        <%= cls.className %>
+                    </option>
+                    <% }); %>
+            </select>
+
+            <button type="submit" class="kintaro-button-reset kintaro-button-1 w100 accent">Update</button>
+        </form>
+    </div>

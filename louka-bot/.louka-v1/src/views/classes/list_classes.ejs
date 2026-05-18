@@ -1,0 +1,170 @@
+<% layout('layouts/main') -%>
+
+    <div class="kintaro-ui-container">
+        <div class="kintaro-ui-actions-header">
+            <h1 class="kintaro-ui-title">Classes Management</h1>
+        </div>
+
+        <div class="kintaro-ui-filter">
+            <% if (classes.length> 0) { %>
+                <input type="text" id="searchInput" placeholder="Search Classes..."
+                    class="kintaro-ui-input full-input-1" aria-label="Search Classes">
+                <% } %>
+                    <a href="classes/add_class" class="kintaro-button-reset kintaro-button-1">
+                        <i class="fas fa-plus"></i> Add New Class
+                    </a>
+        </div>
+
+        <% if (classes.length===0) { %>
+            <p class="text">No classes found. Click "Add New Class" to get started!</p>
+            <% } else { %>
+                <div class="kintaro-ui-results-count">
+                    Showing <span id="visibleCount">
+                        <%= classes.length %>
+                    </span> of <span id="totalCount">
+                        <%= classes.length %>
+                    </span> classes
+                </div>
+
+                <div class="kintaro-ui-table-wrapper">
+                    <table class="kintaro-ui-table" id="classesTable">
+                        <thead>
+                            <tr>
+                                <th>INDEX</th>
+                                <th>ID</th>
+                                <th>NAME</th>
+                                <th>DESCRIPTION</th>
+                                <th>COLOR</th>
+                                <th>CREATED</th>
+                                <th>ACTIONS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% classes.forEach(cls=> { %>
+                                <tr data-class-id="<%= cls.classId %>">
+                                    <td>
+                                        <span class="text max-length" title="  <%= cls.classIndex %>">
+                                            <%= cls.classIndex %>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span class="text max-length" title="  <%= cls.classId %>">
+                                            <%= cls.classId %>
+                                        </span>
+                                    </td>
+                                    <td class="item-name">
+                                        <span class="text-primary max-length" title=" <%= cls.className %>">
+                                            <%= cls.className %>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span class="text max-length" title="<%= cls.classDescription %>">
+                                            <%= cls.classDescription || 'No description available' %>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span class="kintaro-ui-badge max-length" title=" <%= cls.classColor %>"
+                                            style="background-color: <%= cls.classColor %>;">
+                                            <%= cls.classColor %>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span class="text max-length"
+                                            title="  <%= new Date(cls.classDate).toLocaleString() %>">
+                                            <%= new Date(cls.classDate).toLocaleString() %>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <div class="kintaro-ui-actions">
+                                            <a href="/classes/update_class/<%= cls.classId %>"
+                                                class="kintaro-button-reset edit-button kintaro-button-2">
+                                                <i class="fas fa-edit"></i> Edit
+                                            </a>
+                                            <button class="kintaro-button-reset delete-button kintaro-button-2"
+                                                onclick="deleteClass(<%= cls.classId %>, '<%= cls.className %>')">
+                                                <i class="fas fa-trash-alt"></i> Delete
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <% }); %>
+                        </tbody>
+                    </table>
+                </div>
+                <% } %>
+    </div>
+
+    <script>
+        function deleteClass(classId, className) {
+            if (confirm(`Are you sure you want to delete "${className}" (ID: ${classId})? This will also remove it from all characters.`)) {
+                fetch(`/classes/delete_class/${classId}`, {
+                    method: 'DELETE',
+                    headers: { 'Content-Type': 'application/json' }
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            return response.json().then(err => { throw err; });
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        if (data.success) {
+                            const row = document.querySelector(`tr[data-class-id="${classId}"]`);
+                            if (row) row.remove();
+                            updateCounts();
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('An error occurred while deleting the class.');
+                    });
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchInput = document.getElementById('searchInput');
+            const classesTableBody = document.querySelector('#classesTable tbody');
+
+            if (!classesTableBody) return;
+
+            const tableRows = Array.from(classesTableBody.querySelectorAll('tr'));
+            const visibleCountElement = document.getElementById('visibleCount');
+            const totalCountElement = document.getElementById('totalCount');
+
+            function filterAndCountItems() {
+                const searchTerm = searchInput.value.toLowerCase();
+                let visibleCount = 0;
+
+                tableRows.forEach(row => {
+                    const name = row.querySelector('.item-name').textContent.toLowerCase();
+                    const matchesSearch = searchTerm === '' || name.includes(searchTerm);
+
+                    if (matchesSearch) {
+                        row.style.display = '';
+                        visibleCount++;
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+
+                if (visibleCountElement) visibleCountElement.textContent = visibleCount;
+            }
+
+            window.updateCounts = function () {
+                const currentRows = document.querySelectorAll('#classesTable tbody tr');
+                const totalCount = currentRows.length;
+                const visibleRows = Array.from(currentRows).filter(row => row.style.display !== 'none');
+                const visibleCount = visibleRows.length;
+
+                if (visibleCountElement) visibleCountElement.textContent = visibleCount;
+                if (totalCountElement) totalCountElement.textContent = totalCount;
+
+                if (totalCount === 0) {
+                    const filterSection = document.querySelector('.kintaro-ui-filter');
+                    filterSection.style.display = 'none';
+                }
+            };
+
+            if (searchInput) searchInput.addEventListener('input', filterAndCountItems);
+        });
+    </script>

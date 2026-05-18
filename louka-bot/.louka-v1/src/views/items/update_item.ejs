@@ -1,0 +1,37 @@
+<% layout('layouts/main') -%>
+
+    <div class="kintaro-ui-form-container">
+        <h1 class="kintaro-ui-form-title">Edit Item</h1>
+
+        <form class="kintaro-ui-form" action="/items/update_item/<%= item.itemId %>" method="POST">
+
+            <input placeholder="Item Index" type="text" name="itemIndex" class="kintaro-ui-input" autocomplete="off"
+                value="<%= item.itemIndex %>" required>
+
+            <input placeholder="Item Name" type="text" name="itemName" class="kintaro-ui-input" autocomplete="off"
+                value="<%= item.itemName %>" required>
+
+            <input placeholder="Item Cost" type="number" name="itemCost" class="kintaro-ui-input" autocomplete="off"
+                value="<%= item.itemCost %>" required>
+
+            <input placeholder="Item Image" type="text" name="itemImage" class="kintaro-ui-input" autocomplete="off"
+                value="<%= item.itemImage %>" required>
+
+            <input placeholder="Item Icon" type="text" name="itemIcon" class="kintaro-ui-input" autocomplete="off"
+                value="<%= item.itemIcon %>" required>
+
+            <input placeholder="Item Description" type="text" name="itemDescription" class="kintaro-ui-input"
+                autocomplete="off" value="<%= item.itemDescription %>" required>
+
+            <select name="rarityId" class="kintaro-ui-input" required>
+                <option value="">Select Rarity</option>
+                <% rarities.forEach(rarity=> { %>
+                    <option value="<%= rarity.rarityId %>" <%=rarity.isSelected ? 'selected' : '' %>>
+                        <%= rarity.rarityName %>
+                    </option>
+                    <% }); %>
+            </select>
+
+            <button type="submit" class="kintaro-button-reset kintaro-button-1 w100 accent">Update</button>
+        </form>
+    </div>

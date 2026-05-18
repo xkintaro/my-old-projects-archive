@@ -1,0 +1,307 @@
+<% layout('layouts/main') -%>
+
+    <div class="kintaro-ui-container">
+        <div class="kintaro-ui-actions-header">
+            <h1 class="kintaro-ui-title">Characters Management</h1>
+        </div>
+
+        <div class="kintaro-ui-filter">
+            <% if (characters.length> 0) { %>
+                <input type="text" id="searchInput" placeholder="Search Characters..."
+                    class="kintaro-ui-input full-input-1" aria-label="Search characters">
+
+                <select id="rarityFilter" class="kintaro-ui-input full-input-2" aria-label="Filter by rarity">
+                    <option value="">All Rarities</option>
+                    <% rarities.forEach(rarity=> { %>
+                        <option value="<%= rarity.rarityId %>" style="color: <%= rarity.rarityColor %>">
+                            <%= rarity.rarityName %>
+                        </option>
+                        <% }); %>
+                </select>
+
+                <select id="classFilter" class="kintaro-ui-input full-input-2" aria-label="Filter by class">
+                    <option value="">All Classes</option>
+                    <% classes.forEach(cls=> { %>
+                        <option value="<%= cls.classId %>" style="color: <%= cls.classColor %>">
+                            <%= cls.className %>
+                        </option>
+                        <% }); %>
+                </select>
+                <% } %>
+                    <a href="characters/add_character" class="kintaro-button-reset kintaro-button-1">
+                        <i class="fas fa-plus"></i> Add New Character
+                    </a>
+        </div>
+
+        <% if (characters.length===0) { %>
+            <p class="text">No characters found. Click "Add New Character" to get started!</p>
+            <% } else { %>
+                <div class="kintaro-ui-results-count">
+                    Showing <span id="visibleCount">
+                        <%= characters.length %>
+                    </span> of <span id="totalCount">
+                        <%= characters.length %>
+                    </span> characters
+                </div>
+
+                <div class="kintaro-ui-table-wrapper">
+                    <table class="kintaro-ui-table" id="itemsTable">
+                        <thead>
+                            <tr>
+                                <th>INDEX</th>
+                                <th>ID</th>
+                                <th>IMAGE</th>
+                                <th>NAME</th>
+                                <th>ICON</th>
+                                <th>DESCRIPTION</th>
+                                <th>COST</th>
+                                <th>CREATED</th>
+                                <th>RARITY</th>
+                                <th>CLASS</th>
+                                <th>STATS</th>
+                                <th>ACTIONS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% characters.forEach(character=> { %>
+                                <tr data-item-id="<%= character.characterId %>"
+                                    data-rarity-id="<%= character.rarityId %>" data-class-id="<%= character.classId %>">
+                                    <td>
+                                        <span title="   <%= character.characterIndex %>" class="text max-length">
+                                            <%= character.characterIndex %>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span title="   <%= character.characterId %>" class="text max-length">
+                                            <%= character.characterId %>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <a href="/img/characters/<%= character.characterImage %>" target="_blank">
+                                            <img src="/img/characters/<%= character.characterImage %>"
+                                                title="<%= character.characterImage %>" class="kintaro-ui-icon">
+                                        </a>
+                                    </td>
+                                    <td class="item-name">
+                                        <span class="text-primary max-length" title="   <%= character.characterName %>">
+                                            <%= character.characterName %>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span class="text max-length" title="<%= character.characterIcon %>">
+                                            <%= character.characterIcon %>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span class="text max-length" title=" <%= character.characterDescription %>">
+                                            <%= character.characterDescription || 'No description available' %>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span class="text max-length kintaro-ui-badge"
+                                            title="   <%= character.characterCost %>">
+                                            <%= character.characterCost %>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span class="text max-length"
+                                            title="<%= new Date(character.characterDate).toLocaleString() %>">
+                                            <%= new Date(character.characterDate).toLocaleString() %>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span class="kintaro-ui-badge max-length" title="  <%= character.rarityName %>"
+                                            style="color: <%= character.rarityColor %>">
+                                            <%= character.rarityName %>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span class="kintaro-ui-badge max-length" title="   <%= character.className %>"
+                                            style="color: <%= character.classColor %>">
+                                            <%= character.className %>
+                                        </span>
+                                    </td>
+
+
+
+                                    <td class="stats-cell">
+                                        <% if (character.characterStats) { %>
+                                            <div class="stats-dropdown">
+                                                <button
+                                                    class="stats-toggle kintaro-button-reset kintaro-button-2 accent"
+                                                    aria-expanded="false"
+                                                    aria-controls="stats-<%= character.characterId %>">
+                                                    <i class="fas fa-chart-bar"></i> View Stats
+                                                </button>
+                                                <div class="stats-content" id="stats-<%= character.characterId %>">
+                                                    <div class="stats-grid">
+                                                        <% if (character.characterStats) { %>
+                                                            <% for (const [statName, statData] of
+                                                                Object.entries(character.characterStats)) { %>
+                                                                <div class="stat-item">
+                                                                    <% if (statData.icon) { %>
+                                                                        <img src="<%= statData.icon %>"
+                                                                            class="stat-icon">
+                                                                        <% } %>
+                                                                            <span class="text max-length">
+                                                                                <%= statName %>
+                                                                            </span>
+
+                                                                            <div class="kintaro-ui-badge max-length">
+                                                                                <%= statData.value %>
+                                                                            </div>
+                                                                </div>
+                                                                <% } %>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <% } %>
+                                                <% } else { %>
+                                                    <p class="text max-length">No stats available</p>
+                                                    <% } %>
+                                    </td>
+
+
+                                    <td>
+                                        <div class="kintaro-ui-actions">
+                                            <button class="kintaro-button-reset edit-button kintaro-button-2"
+                                                onclick="window.location.href='/characters/update_character/<%= character.characterId %>'"
+                                                aria-label="Edit character <%= character.characterName %>">
+                                                <i class="fas fa-edit"></i> Edit
+                                            </button>
+                                            <button class="kintaro-button-reset delete-button kintaro-button-2"
+                                                onclick="deleteItem(<%= character.characterId %>, '<%= character.characterName %>')"
+                                                aria-label="Delete character <%= character.characterName %>">
+                                                <i class="fas fa-trash-alt"></i> Delete
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <% }); %>
+                        </tbody>
+                    </table>
+                </div>
+                <% } %>
+    </div>
+    <style>
+
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('.stats-toggle').forEach(button => {
+                button.addEventListener('click', function () {
+                    const expanded = this.getAttribute('aria-expanded') === 'true';
+                    this.setAttribute('aria-expanded', !expanded);
+
+                    const content = this.nextElementSibling;
+                    content.classList.toggle('show');
+
+                    document.querySelectorAll('.stats-content').forEach(otherContent => {
+                        if (otherContent !== content && otherContent.classList.contains('show')) {
+                            otherContent.classList.remove('show');
+                            otherContent.previousElementSibling.setAttribute('aria-expanded', 'false');
+                        }
+                    });
+                });
+            });
+
+             document.addEventListener('click', function (event) {
+                if (!event.target.closest('.stats-dropdown')) {
+                    document.querySelectorAll('.stats-content').forEach(content => {
+                        content.classList.remove('show');
+                    });
+                    document.querySelectorAll('.stats-toggle').forEach(button => {
+                        button.setAttribute('aria-expanded', 'false');
+                    });
+                }
+            });
+        });
+
+     </script>
+
+    <script>
+        function deleteItem(itemId, itemName) {
+            if (confirm(`Are you sure you want to delete "${itemName}" (ID: ${itemId})? This will also remove it from all user inventories.`)) {
+                fetch(`/characters/delete_character/${itemId}`, {
+                    method: 'DELETE',
+                    headers: { 'Content-Type': 'application/json' }
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            return response.json().then(err => { throw err; });
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        if (data.success) {
+                            const row = document.querySelector(`tr[data-item-id="${itemId}"]`);
+                            if (row) row.remove();
+                            updateCounts();
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('An error occurred while deleting the item.');
+                    });
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const searchInput = document.getElementById('searchInput');
+            const rarityFilter = document.getElementById('rarityFilter');
+            const classFilter = document.getElementById('classFilter');
+            const itemsTableBody = document.querySelector('#itemsTable tbody');
+
+            if (!itemsTableBody) return;
+
+            const tableRows = Array.from(itemsTableBody.querySelectorAll('tr'));
+            const visibleCountElement = document.getElementById('visibleCount');
+            const totalCountElement = document.getElementById('totalCount');
+
+            function filterAndCountItems() {
+                const searchTerm = searchInput.value.toLowerCase();
+                const rarityValue = rarityFilter.value;
+                const classValue = classFilter.value;
+                let visibleCount = 0;
+
+                tableRows.forEach(row => {
+                    const name = row.querySelector('.item-name').textContent.toLowerCase();
+                    const rarityId = row.getAttribute('data-rarity-id');
+                    const classId = row.getAttribute('data-class-id');
+
+                    const matchesSearch = searchTerm === '' || name.includes(searchTerm);
+                    const matchesRarity = rarityValue === '' || rarityId === rarityValue;
+                    const matchesClass = classValue === '' || classId === classValue;
+
+                    if (matchesSearch && matchesRarity && matchesClass) {
+                        row.style.display = '';
+                        visibleCount++;
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+
+                if (visibleCountElement) visibleCountElement.textContent = visibleCount;
+            }
+
+            window.updateCounts = function () {
+                const currentRows = document.querySelectorAll('#itemsTable tbody tr');
+                const totalCount = currentRows.length;
+                const visibleRows = Array.from(currentRows).filter(row => row.style.display !== 'none');
+                const visibleCount = visibleRows.length;
+
+                if (visibleCountElement) visibleCountElement.textContent = visibleCount;
+                if (totalCountElement) totalCountElement.textContent = totalCount;
+
+                if (totalCount === 0) {
+                    const filterSection = document.querySelector('.kintaro-ui-filter');
+                    filterSection.style.display = 'none';
+                }
+            };
+
+            if (searchInput) searchInput.addEventListener('input', filterAndCountItems);
+            if (rarityFilter) rarityFilter.addEventListener('change', filterAndCountItems);
+            if (classFilter) classFilter.addEventListener('change', filterAndCountItems);
+        });
+    </script>

@@ -1,0 +1,165 @@
+<% layout('layouts/main') -%>
+
+    <div class="kintaro-ui-container">
+        <div class="kintaro-ui-actions-header">
+            <h1 class="kintaro-ui-title">Skills Management</h1>
+        </div>
+
+        <div class="kintaro-ui-filter">
+            <% if (skills.length !==0) { %>
+                <input type="text" id="searchInput" placeholder="Search skills by name..."
+                    class="kintaro-ui-input full-input-1" aria-label="Search skills">
+                <% } %>
+                    <a href="skills/add_skill" class="kintaro-button-reset kintaro-button-1">
+                        <i class="fas fa-plus"></i> Add New Skill
+                    </a>
+        </div>
+
+        <% if (skills.length===0) { %>
+            <p class="text">No skills found. Click "Add New Skill" to get started!</p>
+            <% } else { %>
+                <div class="kintaro-ui-results-count">
+                    Showing <span id="visibleCount">
+                        <%= skills.length %>
+                    </span> of <span id="totalCount">
+                        <%= skills.length %>
+                    </span> skills
+                </div>
+
+                <div class="kintaro-ui-table-wrapper">
+                    <table class="kintaro-ui-table" id="skillsTable">
+                        <thead>
+                            <tr>
+                                <th>INDEX</th>
+                                <th>ID</th>
+                                <th>IMAGE</th>
+                                <th>NAME</th>
+                                <th>ICON</th>
+                                <th>ACTIONS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% skills.forEach(s=> { %>
+                                <tr data-skill-id="<%= s.skillId %>">
+                                    <td>
+                                        <span title="<%= s.skillIndex %>" class="text max-length">
+                                            <%= s.skillIndex %>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span title="<%= s.skillId %>" class="text max-length">
+                                            <%= s.skillId %>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <a href="/img/skills/<%= s.skillImage %>" target="_blank">
+                                            <img src="/img/skills/<%= s.skillImage %>" title="<%= s.skillImage %>"
+                                                class="kintaro-ui-icon">
+                                        </a>
+                                    </td>
+                                    <td class="item-name">
+                                        <span class="text-primary max-length" title="<%= s.skillName %>">
+                                            <%= s.skillName %>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span class="text max-length" title="<%= s.skillIcon %>">
+                                            <%= s.skillIcon %>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <div class="kintaro-ui-actions">
+                                            <button class="kintaro-button-reset edit-button kintaro-button-2"
+                                                onclick="window.location.href='/skills/update_skill/<%= s.skillId %>'"
+                                                aria-label="Edit skill <%= s.skillName %>">
+                                                <i class="fas fa-edit"></i> Edit
+                                            </button>
+                                            <button class="kintaro-button-reset delete-button kintaro-button-2"
+                                                onclick="deleteSkill(<%= s.skillId %>, '<%= s.skillName %>')"
+                                                aria-label="Delete skill <%= s.skillName %>">
+                                                <i class="fas fa-trash-alt"></i> Delete
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <% }); %>
+                        </tbody>
+                    </table>
+                </div>
+                <% } %>
+    </div>
+
+    <script>
+        function deleteSkill(skillId, skillName) {
+            if (confirm(`Are you sure you want to delete the "${skillName}" skill?`)) {
+                fetch(`/skills/delete_skill/${skillId}`, {
+                    method: 'DELETE',
+                    headers: { 'Content-Type': 'application/json' }
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            return response.json().then(err => { throw err; });
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        if (data.success) {
+                            const row = document.querySelector(`tr[data-skill-id="${skillId}"]`);
+                            if (row) row.remove();
+                            updateCounts();
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('An error occurred while deleting the skill.');
+                    });
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const searchInput = document.getElementById('searchInput');
+            const tableBody = document.querySelector('#skillsTable tbody');
+
+            if (!tableBody) return;
+
+            const rows = Array.from(tableBody.querySelectorAll('tr'));
+            const visibleCountEl = document.getElementById('visibleCount');
+            const totalCountEl = document.getElementById('totalCount');
+
+            function filterAndCountItems() {
+                const searchTerm = searchInput.value.toLowerCase();
+                let visibleCount = 0;
+
+                rows.forEach(row => {
+                    const name = row.querySelector('.item-name').textContent.toLowerCase();
+                    const matchesSearch = searchTerm === '' || name.includes(searchTerm);
+
+                    if (matchesSearch) {
+                        row.style.display = '';
+                        visibleCount++;
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+
+                if (visibleCountEl) visibleCountEl.textContent = visibleCount;
+            }
+
+            window.updateCounts = function () {
+                const currentRows = document.querySelectorAll('#skillsTable tbody tr');
+                const totalCount = currentRows.length;
+                const visibleRows = Array.from(currentRows).filter(r => r.style.display !== 'none');
+                const visibleCount = visibleRows.length;
+
+                if (visibleCountEl) visibleCountEl.textContent = visibleCount;
+                if (totalCountEl) totalCountEl.textContent = totalCount;
+
+                if (totalCount === 0) {
+                    const filterSection = document.querySelector('.kintaro-ui-filter');
+                    filterSection.style.display = 'none';
+                }
+            };
+
+            if (searchInput) searchInput.addEventListener('input', filterAndCountItems);
+        });
+    </script>

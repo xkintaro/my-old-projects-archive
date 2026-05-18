@@ -1,0 +1,69 @@
+<% layout('layouts/main') -%>
+
+    <div class="kintaro-ui-form-container">
+        <h1 class="kintaro-ui-form-title">New Character</h1>
+
+        <form class="kintaro-ui-form" action="/characters/add_character" method="POST">
+
+            <input placeholder="Character Index" type="number" name="characterIndex"
+                class="kintaro-ui-input full-input-1" autocomplete="off" required>
+
+            <input placeholder="Character Name" type="text" name="characterName" class="kintaro-ui-input full-input-1"
+                autocomplete="off" required>
+
+            <input placeholder="Character Cost" type="number" name="characterCost" class="kintaro-ui-input full-input-1"
+                autocomplete="off" required>
+
+            <input placeholder="Character Image" type="text" name="characterImage" class="kintaro-ui-input full-input-1"
+                autocomplete="off" required>
+
+            <input placeholder="Character Icon" type="text" name="characterIcon" class="kintaro-ui-input full-input-1"
+                autocomplete="off" required>
+
+            <input placeholder="Character Description" type="text" name="characterDescription"
+                class="kintaro-ui-input full-input-1" autocomplete="off" required>
+
+            <select name="rarityId" class="kintaro-ui-input full-input-1" required>
+                <option value="">Select Rarity</option>
+                <% rarities.forEach(rarity=> { %>
+                    <option value="<%= rarity.rarityId %>">
+                        <%= rarity.rarityName %>
+                    </option>
+                    <% }); %>
+            </select>
+
+            <select name="classId" class="kintaro-ui-input full-input-1" required>
+                <option value="">Select Class</option>
+                <% classes.forEach(cls=> { %>
+                    <option value="<%= cls.classId %>">
+                        <%= cls.className %>
+                    </option>
+                    <% }); %>
+            </select>
+
+            <div class="kintaro-ui-form-stats">
+                <% const stats=[ 'resolution' , 'patience' , 'hp' , 'armor' , 'magicResistance' , 'damageReduction'
+                    , 'absoluteDefense' , 'attackPower' , 'magicPower' , 'armorPiercing' , 'armorPenetration'
+                    , 'magicalInfluence' , 'speed' , 'criticalProbability' , 'criticalDamage' , 'avoidance' , 'luck'
+                    , 'mana' , 'energy' , 'fatigue' ]; %>
+
+                    <% stats.forEach(stat=> { %>
+                        <div class="kintaro-ui-form-stats-item">
+
+                            <h3 class="text">
+                                <%= stat %>
+                            </h3>
+                            <input type="number" placeholder="<%= stat %> Value"
+                                name="characterStats[<%= stat %>][value]" class="kintaro-ui-input" required>
+
+                            <input type="text" placeholder="<%= stat %> Icon" name="characterStats[<%= stat %>][icon]"
+                                class="kintaro-ui-input">
+
+                            <input type="text" placeholder="<%= stat %> Description"
+                                name="characterStats[<%= stat %>][description]" class="kintaro-ui-input">
+                        </div>
+                        <% }); %>
+            </div>
+            <button type="submit" class="kintaro-button-reset kintaro-button-1 accent">Add Character</button>
+        </form>
+    </div>

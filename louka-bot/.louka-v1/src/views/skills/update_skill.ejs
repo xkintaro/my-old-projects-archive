@@ -1,0 +1,22 @@
+<% layout('layouts/main') -%>
+
+    <div class="kintaro-ui-form-container">
+        <h1 class="kintaro-ui-form-title">Edit Skill</h1>
+
+        <form class="kintaro-ui-form" action="/skills/update_skill/<%= skill.skillId %>" method="POST">
+
+            <input placeholder="Skill Index" type="number" name="skillIndex" class="kintaro-ui-input" autocomplete="off"
+                value="<%= skill.skillIndex %>" required>
+
+            <input placeholder="Skill Name" type="text" name="skillName" class="kintaro-ui-input" autocomplete="off"
+                value="<%= skill.skillName %>" required>
+
+            <input placeholder="Skill Image" type="text" name="skillImage" class="kintaro-ui-input" autocomplete="off"
+                value="<%= skill.skillImage %>" required>
+
+            <input placeholder="Skill Icon" type="text" name="skillIcon" class="kintaro-ui-input" autocomplete="off"
+                value="<%= skill.skillIcon %>" required>
+
+            <button type="submit" class="kintaro-button-reset kintaro-button-1 w100 accent">Update</button>
+        </form>
+    </div>

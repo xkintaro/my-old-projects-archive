@@ -1,0 +1,22 @@
+<% layout('layouts/main') -%>
+
+    <div class="kintaro-ui-form-container">
+        <h1 class="kintaro-ui-form-title">Edit Class</h1>
+
+        <form class="kintaro-ui-form" action="/classes/update_class/<%= cls.classId %>" method="POST">
+
+            <input placeholder="Class Index" type="text" name="classIndex" class="kintaro-ui-input" autocomplete="off"
+                value="<%= cls.classIndex %>" required>
+
+            <input placeholder="Class Name" type="text" name="className" class="kintaro-ui-input" autocomplete="off"
+                value="<%= cls.className %>" required>
+
+            <input placeholder="Class Description" type="text" name="classDescription" class="kintaro-ui-input"
+                autocomplete="off" value="<%= cls.classDescription %>" required>
+
+            <input placeholder="Class Color (e.g. #FFAA00)" type="text" name="classColor" class="kintaro-ui-input"
+                autocomplete="off" value="<%= cls.classColor %>" required>
+
+            <button type="submit" class="kintaro-button-reset kintaro-button-1 w100 accent">Update</button>
+        </form>
+    </div>

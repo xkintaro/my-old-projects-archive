@@ -1,0 +1,114 @@
+        .kintaro-ui-container {
+            padding: var(--kintaro-gap-lg);
+            animation: var(--kintaro-animation);
+        }
+
+        .kintaro-ui-actions-header {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: var(--kintaro-gap-xs);
+            padding: var(--kintaro-gap-sm) 0;
+        }
+
+        .kintaro-ui-title {
+            color: var(--kintaro-text-color-1);
+            font-size: var(--kintaro-font-xl);
+            text-shadow: var(--kintaro-text-shadow);
+            font-weight: var(--kintaro-font-weight);
+        }
+
+        .kintaro-button-reset {
+            border-radius: var(--kintaro-border-radius-1);
+            font-size: var(--kintaro-font-md);
+            transition: var(--kintaro-transition-1);
+            color: var(--kintaro-text-color-1);
+            text-shadow: var(--kintaro-text-shadow);
+            gap: var(--kintaro-gap-xs);
+            width: fit-content;
+            background: transparent;
+            user-select: none;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--kintaro-gap-sm);
+        }
+
+        .kintaro-button-reset:hover:not(.kintaro-button-disabled) {
+            filter: brightness(1.2);
+        }
+
+        .kintaro-button-disabled {
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
+        .kintaro-button-disabled:hover {
+            filter: none !important;
+            cursor: not-allowed;
+        }
+
+        .kintaro-button-1 {
+            background: var(--kintaro-input-color);
+        }
+
+        .kintaro-button-2 {
+            padding: 6px 12px;
+            font-size: var(--kintaro-gap-sm);
+        }
+
+        .accent-button {
+            background: var(--kintaro-accent-color-1);
+        }
+
+        .delete-button {
+            background: var(--kintaro-error-color);
+        }
+
+        .edit-button {
+            background: var(--kintaro-success-color);
+        }
+
+        .w100 {
+            width: 100%;
+        }
+
+        .accent {
+            background: var(--kintaro-accent-color-1);
+        }
+
+        .accent-text {
+            color: var(--kintaro-accent-color-1);
+        }
+
+        .text {
+            font-size: var(--kintaro-gap-sm);
+            color: var(--kintaro-text-color-2);
+            text-shadow: var(--kintaro-text-shadow);
+        }
+
+        .text-primary {
+            font-size: var(--kintaro-gap-sm);
+            color: var(--kintaro-text-color-1);
+            text-shadow: var(--kintaro-text-shadow);
+            font-weight: 500;
+        }
+
+        .max-length {
+            display: block;
+            max-width: 10rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        @media (max-width: 768px) {
+            .kintaro-ui-container {
+                padding: var(--kintaro-gap-md);
+            }
+        }

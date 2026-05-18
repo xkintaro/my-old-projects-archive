@@ -1,0 +1,68 @@
+<% layout('layouts/main') -%>
+
+    <div class="kintaro-ui-container">
+
+        <div class="kintaro-ui-actions-header">
+            <h1 class="kintaro-ui-title">users</h1>
+        </div>
+
+        <div class="kintaro-ui-table-wrapper">
+            <table class="kintaro-ui-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>USERNAME</th>
+                        <th>CREATED</th>
+                        <th>LASTDAILY</th>
+                        <th>COINS</th>
+                        <th>ACTIONS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% users.forEach(user=> { %>
+                        <tr>
+                            <td>
+                                <span class="text max-length" title=" <%= user.userId %>">
+                                    <%= user.userId %>
+                                </span>
+                            </td>
+                            <td>
+                                <span class="text-primary max-length" title=" <%= user.username %>">
+                                    <%= user.username %>
+                                </span>
+                            </td>
+                            <td>
+                                <span class="text max-length"
+                                    title="   <%= new Date(user.createdAt).toLocaleString() %>">
+                                    <%= new Date(user.createdAt).toLocaleString() %>
+                                </span>
+                            </td>
+                            <td>
+                                <span class="text max-length"
+                                    title="  <%= new Date(user.lastDaily).toLocaleString() %>">
+                                    <%= new Date(user.lastDaily).toLocaleString() %>
+                                </span>
+                            </td>
+                            <td>
+                                <span class="kintaro-ui-badge max-length">
+                                    <%= user.coin %>
+                                </span>
+                            </td>
+                            <td>
+                                <div class="kintaro-ui-actions">
+                                    <a href="/users/user_items/<%= Number(user.userId) %>"
+                                        class="kintaro-button-reset accent-button kintaro-button-2">Items</a>
+
+                                    <a href="/users/user_weapons/<%= Number(user.userId) %>"
+                                        class="kintaro-button-reset accent-button kintaro-button-2">Weapons</a>
+
+                                    <a href="/users/user_characters/<%= Number(user.userId) %>"
+                                        class="kintaro-button-reset accent-button kintaro-button-2">Characters</a>
+                                </div>
+                            </td>
+                        </tr>
+                        <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>

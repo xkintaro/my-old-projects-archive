@@ -1,0 +1,37 @@
+<% layout('layouts/main') -%>
+
+    <div class="kintaro-ui-form-container">
+        <h1 class="kintaro-ui-form-title">New Weapon</h1>
+
+        <form class="kintaro-ui-form" action="/weapons/add_weapon" method="POST">
+
+            <input placeholder="Weapon Index" type="number" name="weaponIndex" class="kintaro-ui-input"
+                autocomplete="off" required>
+
+            <input placeholder="Weapon Name" type="text" name="weaponName" class="kintaro-ui-input" autocomplete="off"
+                required>
+
+            <input placeholder="Weapon Cost" type="number" name="weaponCost" class="kintaro-ui-input" autocomplete="off"
+                required>
+
+            <input placeholder="Weapon Image" type="text" name="weaponImage" class="kintaro-ui-input" autocomplete="off"
+                required>
+
+            <input placeholder="Weapon Icon" type="text" name="weaponIcon" class="kintaro-ui-input" autocomplete="off"
+                required>
+
+            <input placeholder="Weapon Description" type="text" name="weaponDescription" class="kintaro-ui-input"
+                autocomplete="off" required>
+
+            <select name="rarityId" class="kintaro-ui-input" required>
+                <option value="">Select Rarity</option>
+                <% rarities.forEach(rarity=> { %>
+                    <option value="<%= rarity.rarityId %>">
+                        <%= rarity.rarityName %>
+                    </option>
+                    <% }); %>
+            </select>
+
+            <button type="submit" class="kintaro-button-reset kintaro-button-1 w100 accent">Add</button>
+        </form>
+    </div>

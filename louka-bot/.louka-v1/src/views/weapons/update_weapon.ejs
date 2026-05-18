@@ -1,0 +1,38 @@
+<% layout('layouts/main') -%>
+
+    <div class="kintaro-ui-form-container">
+        <h1 class="kintaro-ui-form-title">Edit Weapon</h1>
+
+        <form class="kintaro-ui-form" action="/weapons/update_weapon/<%= weapon.weaponId %>" method="POST">
+
+            <input placeholder="Weapon Index" type="text" name="weaponIndex" class="kintaro-ui-input" autocomplete="off"
+                value="<%= weapon.weaponIndex %>" required>
+
+            <input placeholder="Weapon Name" type="text" name="weaponName" class="kintaro-ui-input" autocomplete="off"
+                value="<%= weapon.weaponName %>" required>
+
+            <input placeholder="Weapon Cost" type="number" name="weaponCost" class="kintaro-ui-input" autocomplete="off"
+                value="<%= weapon.weaponCost %>" required>
+
+            <input placeholder="Weapon Image" type="text" name="weaponImage" class="kintaro-ui-input" autocomplete="off"
+                value="<%= weapon.weaponImage %>" required>
+
+            <input placeholder="Weapon Icon" type="text" name="weaponIcon" class="kintaro-ui-input" autocomplete="off"
+                value="<%= weapon.weaponIcon %>" required>
+
+            <input placeholder="Weapon Description" type="text" name="weaponDescription" class="kintaro-ui-input"
+                autocomplete="off" value="<%= weapon.weaponDescription %>" required>
+
+            <select name="rarityId" class="kintaro-ui-input" required>
+                <option value="">Select Rarity</option>
+                <% rarities.forEach(rarity=> { %>
+                    <option value="<%= rarity.rarityId %>" <%=rarity.isSelected ? 'selected' : '' %>>
+                        <%= rarity.rarityName %>
+                    </option>
+                    <% }); %>
+            </select>
+
+
+            <button type="submit" class="kintaro-button-reset kintaro-button-1 w100 accent">Update</button>
+        </form>
+    </div>

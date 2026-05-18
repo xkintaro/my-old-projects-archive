@@ -1,0 +1,188 @@
+.kintaro-ui-table-wrapper {
+    background-color: var(--kintaro-color-3-transparent);
+    border-radius: var(--kintaro-border-radius-1);
+    box-shadow: var(--kintaro-box-shadow);
+    overflow: auto;
+}
+
+.kintaro-ui-table {
+    width: 100%;
+    border-collapse: collapse;
+    color: var(--kintaro-text-color-2);
+}
+
+.kintaro-ui-table thead {
+    background-color: var(--kintaro-color-3);
+    border-bottom: 2px solid var(--kintaro-border);
+}
+
+.kintaro-ui-table th {
+    padding: var(--kintaro-gap-sm);
+    text-align: left;
+    font-size: var(--kintaro-font-md);
+    font-weight: var(--kintaro-font-weight);
+    color: var(--kintaro-text-color-1);
+    text-transform: uppercase;
+    position: sticky;
+    top: 0;
+}
+
+.kintaro-ui-table td {
+    padding: var(--kintaro-gap-sm);
+    border-bottom: 1px solid var(--kintaro-border);
+    vertical-align: middle;
+    font-size: var(--kintaro-font-md);
+    line-height: 1.5;
+}
+
+.kintaro-ui-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.kintaro-ui-table tbody tr:hover {
+    background-color: var(--kintaro-hover);
+    transition: var(--kintaro-transition-1);
+}
+
+.kintaro-ui-icon {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+    background-color: var(--kintaro-color-2);
+    box-shadow: var(--kintaro-box-shadow);
+}
+
+.kintaro-ui-badge {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    font-size: var(--kintaro-font-xs);
+    font-weight: 600;
+    border-radius: 0.25rem;
+    text-transform: uppercase;
+    color: var(--kintaro-text-color-1);
+    text-shadow: var(--kintaro-text-shadow);
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.kintaro-ui-actions {
+    display: flex;
+    gap: var(--kintaro-gap-xs);
+}
+
+.kintaro-ui-filter {
+    width: 100%;
+    display: flex;
+    gap: var(--kintaro-gap-xs);
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: var(--kintaro-gap-sm);
+}
+
+.kintaro-ui-results-count {
+    margin-bottom: var(--kintaro-gap-sm);
+    color: var(--kintaro-text-color-disabled);
+    font-size: var(--kintaro-gap-sm);
+}
+
+@media (max-width: 768px) {
+    .kintaro-ui-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .kintaro-ui-table th,
+    .kintaro-ui-table td {
+        padding: 0.75rem;
+    }
+}
+
+.stats-dropdown {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.stats-toggle[aria-expanded="true"] i {
+    transform: rotate(180deg);
+}
+
+.stats-toggle i {
+    transition: transform 0.3s ease;
+}
+
+.stats-content {
+    background: var(--kintaro-color-3);
+    border-radius: var(--kintaro-border-radius-1);
+    padding: var(--kintaro-gap-sm);
+    box-shadow: var(--kintaro-box-shadow);
+    display: none;
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    margin-top: 4px;
+    min-width: 300px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.stats-content.show {
+    display: block;
+}
+
+.stats-content::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+.stats-content::-webkit-scrollbar-track {
+    background: var(--kintaro-color-3);
+    border-radius: 5px;
+}
+
+.stats-content::-webkit-scrollbar-thumb {
+    background: var(--kintaro-text-color-1);
+    border: 2px solid transparent;
+    border-radius: 5px;
+}
+
+.stats-content::-webkit-scrollbar-thumb:hover {
+    background: var(--kintaro-hover);
+}
+
+.stats-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--kintaro-gap-xs);
+}
+
+.stat-item {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--kintaro-gap-xs);
+    padding: var(--kintaro-gap-xs);
+    align-items: center;
+    border-bottom: 1px solid var(--kintaro-border);
+}
+
+.stat-item:last-child {
+    border: none;
+}
+
+.stat-icon {
+    width: 24px;
+    height: 24px;
+    object-fit: cover;
+}
+
+@media (max-width: 768px) {
+    .stats-content {
+        min-width: 250px;
+        max-height: 300px;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    }
+}

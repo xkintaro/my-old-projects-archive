@@ -1,0 +1,76 @@
+<% layout('layouts/main') -%>
+
+    <div class="kintaro-ui-container">
+        <div class="kintaro-ui-actions-header">
+            <h1 class="kintaro-ui-title">User <%= userId %> Items</h1>
+            <a href="/users/add_user_item/<%= userId %>" class="kintaro-button-reset kintaro-button-1">
+                <i class="fas fa-plus"></i> Add New Item
+            </a>
+        </div>
+
+        <div class="kintaro-ui-table-wrapper">
+            <table class="kintaro-ui-table">
+                <thead>
+                    <tr>
+                        <th>INDEX</th>
+                        <th>ITEM ID</th>
+                        <th>Image</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Cost</th>
+                        <th>Count</th>
+                        <th>Rarity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% items.forEach(item=> { %>
+                        <tr>
+                            <td>
+                                <span title=" <%= item.itemIndex%>" class="text max-length">
+                                    <%= item.itemIndex%>
+                                </span>
+                            </td>
+                            <td>
+                                <span title="<%= item.itemId %>" class="text max-length">
+                                    <%= item.itemId %>
+                                </span>
+                            </td>
+                            <td>
+                                <a href="/img/items/<%= item.itemImage %>" title="<%= item.itemImage %>"
+                                    target="_blank">
+                                    <img src="/img/items/<%= item.itemImage %>" alt="image" class="kintaro-ui-icon">
+                                </a>
+                            </td>
+                            <td>
+                                <span class="max-length text-primary" title="<%=item.itemName %>">
+                                    <%= item.itemName %>
+                                </span>
+                            </td>
+                            <td>
+                                <span class="text max-length" title=" <%= item.itemDescription %>">
+                                    <%= item.itemDescription %>
+                                </span>
+                            </td>
+
+                            <td>
+                                <span title=" <%= item.itemCost %>" class="kintaro-ui-badge text max-length">
+                                    <%= item.itemCost %>
+                                </span>
+                            </td>
+                            <td>
+                                <span class="kintaro-ui-badge max-length" title="  <%= item.userItemCount %>">
+                                    <%= item.userItemCount %>
+                                </span>
+                            </td>
+                            <td>
+                                <span class="kintaro-ui-badge max-length" title="<%= item.rarityName %>"
+                                    style="color: <%= item.rarityColor %>">
+                                    <%= item.rarityName %>
+                                </span>
+                            </td>
+                        </tr>
+                        <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>

@@ -1,0 +1,85 @@
+.kintaro-ui-form-container {
+    padding: var(--kintaro-gap-lg);
+    animation: var(--kintaro-animation);
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1600px;
+}
+
+.kintaro-ui-form-title {
+    color: var(--kintaro-text-color-1);
+    font-size: var(--kintaro-font-xl);
+    margin-bottom: var(--kintaro-gap-sm);
+    text-align: center;
+    text-shadow: var(--kintaro-text-shadow);
+}
+
+.kintaro-ui-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--kintaro-gap-sm);
+    width: 100%;
+}
+
+.kintaro-ui-form-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--kintaro-gap-sm);
+    width: 100%;
+}
+
+.kintaro-ui-form-stats-item {
+    max-width: 350px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--kintaro-gap-xs);
+}
+
+.kintaro-ui-input {
+    width: 100%;
+    max-width: 100%;
+    padding: var(--kintaro-gap-sm);
+    background-color: var(--kintaro-input-color);
+    border: 1px solid var(--kintaro-border);
+    border-radius: var(--kintaro-border-radius-1);
+    color: var(--kintaro-text-color-1);
+    font-size: var(--kintaro-font-md);
+    transition: var(--kintaro-transition-1);
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.kintaro-ui-input:focus {
+    box-shadow: var(--kintaro-box-shadow);
+}
+
+.fit-input {
+    width: fit-content;
+}
+
+.full-input-1 {
+    max-width: 350px;
+}
+
+.full-input-2 {
+    max-width: 200px;
+}
+
+select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23ffffff' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right var(--kintaro-gap-sm) center;
+    background-size: 16px 12px;
+    padding-right: var(--kintaro-gap-lg);
+}
+
+@media (max-width: 768px) {
+    .kintaro-ui-form-container {
+        padding: var(--kintaro-gap-md);
+    }
+
+    .kintaro-ui-form {
+        padding: var(--kintaro-gap-md);
+    }
+}

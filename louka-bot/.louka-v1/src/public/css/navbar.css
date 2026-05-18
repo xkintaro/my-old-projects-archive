@@ -1,0 +1,89 @@
+  .kintaro-ui-navbar {
+      background-color: var(--kintaro-color-1);
+      padding: 0 var(--kintaro-gap-lg);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--kintaro-border);
+  }
+
+  .kintaro-ui-nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+  }
+
+  .kintaro-ui-nav-logo {
+      color: var(--kintaro-accent-color-1);
+      font-size: var(--kintaro-font-lg);
+      font-weight: var(--kintaro-font-weight);
+      text-decoration: none;
+      padding: var(--kintaro-gap-md) 0;
+      margin-right: var(--kintaro-gap-xl);
+      letter-spacing: 1px;
+  }
+
+  .kintaro-ui-nav-menu {
+      display: flex;
+      gap: var(--kintaro-gap-md);
+      list-style: none;
+      margin: 0;
+      padding: 0;
+  }
+
+  .kintaro-ui-nav-link {
+      color: var(--kintaro-text-color-2);
+      text-decoration: none;
+      padding: var(--kintaro-gap-md) 0;
+      font-size: var(--kintaro-font-md);
+      font-weight: var(--kintaro-font-weight);
+      transition: var(--kintaro-transition-1);
+      position: relative;
+  }
+
+  .kintaro-ui-nav-link:hover {
+      color: var(--kintaro-text-color-1);
+  }
+
+  .kintaro-ui-nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--kintaro-accent-color-1);
+      transition: var(--kintaro-transition-1);
+  }
+
+  .kintaro-ui-nav-link:hover::after,
+  .kintaro-ui-nav-link.active::after {
+      width: 100%;
+  }
+
+  .kintaro-ui-nav-link.active {
+      color: var(--kintaro-text-color-1);
+  }
+
+  @media (max-width: 768px) {
+      .kintaro-ui-nav-container {
+          flex-direction: column;
+          align-items: flex-start;
+      }
+
+      .kintaro-ui-nav-logo {
+          margin-bottom: var(--kintaro-gap-sm);
+      }
+
+      .kintaro-ui-nav-menu {
+          flex-direction: column;
+          gap: var(--kintaro-gap-sm);
+          width: 100%;
+      }
+
+      .kintaro-ui-nav-link {
+          padding: var(--kintaro-gap-sm) 0;
+      }
+  }
