@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+input,
+button,
+textarea {
+    @apply border border-black/50 p-3;
+}
+
+button {
+    @apply cursor-pointer;
+}
